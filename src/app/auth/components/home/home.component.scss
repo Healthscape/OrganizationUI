@@ -1,0 +1,23 @@
+@use "../../../../variables" as v;
+
+.card{
+  width: 400px;
+  height: 400px;
+  max-width: 80vw;
+  max-height: 80vh;
+  background-color: v.$dark-gray-background;
+}
+
+app-logo {
+  margin: 15% 10% 5% 10%;
+}
+
+.form {
+  margin: 10%;
+}
+
+.form form{
+  display: flex;
+  flex-direction: column;
+}
+
