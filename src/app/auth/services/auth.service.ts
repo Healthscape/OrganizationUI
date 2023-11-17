@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {LoginDto} from "../dto/login.dto";
-import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environment";
 import {TokensDto} from "../dto/tokes.dto";
 import {TokenService} from "./token.service";
@@ -10,16 +10,15 @@ import {Subject} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
-  private REQUEST_MAPPING: string = "/auth";
-
   public errorResponse: Subject<any> = new Subject<any>();
+  private REQUEST_MAPPING: string = "/auth";
 
   constructor(private _http: HttpClient, private _tokenService: TokenService) {
   }
 
 
   logInUser(loginDto: LoginDto) {
-    this._http.post<TokensDto>(environment.apiUrl  + this.REQUEST_MAPPING + "/login", loginDto,).subscribe(
+    this._http.post<TokensDto>(environment.apiUrl + this.REQUEST_MAPPING + "/login", loginDto,).subscribe(
       {
         next: (response) => {
           console.log(response)

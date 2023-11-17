@@ -69,18 +69,25 @@ $organization-ui-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { font-family: Roboto, 'Helvetica Neue', sans-serif; margin: 0; }
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
 
 @font-face {
   font-family: heandwritting;
   src: url('Arizonia-Regular.ttf');
 }
+
 $color-config: mat.get-color-config($organization-ui-theme);
 // Get the primary color palette from the color-config.
 $warn-palette: map.get($color-config, 'warn');
 
-.error-tooltip *{
-  font-size: small!important;
-  background-color: mat.get-color-from-palette($warn-palette)!important;
+.error-tooltip * {
+  font-size: small !important;
+  background-color: mat.get-color-from-palette($warn-palette) !important;
 }

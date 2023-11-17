@@ -1,6 +1,6 @@
 @use '../../../variables' as v;
 
-.heart-rate path{
+.heart-rate path {
   stroke-dasharray: 6900;
   animation: line-anim 5s linear 1;
   animation-delay: 1s;
@@ -8,11 +8,11 @@
 }
 
 @keyframes line-anim {
-  from{
+  from {
     stroke-dashoffset: 6900;
   }
 
-  to{
+  to {
     stroke-dashoffset: 0;
   }
 }

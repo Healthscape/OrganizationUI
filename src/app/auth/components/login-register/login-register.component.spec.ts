@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LoginRegisterComponent } from './login-register.component';
+import {LoginRegisterComponent} from './login-register.component';
 
 describe('LoginComponent', () => {
   let component: LoginRegisterComponent;
@@ -10,7 +10,7 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       imports: [LoginRegisterComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LoginRegisterComponent);
     component = fixture.componentInstance;

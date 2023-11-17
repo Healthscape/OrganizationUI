@@ -21,10 +21,10 @@ export class HomeComponent {
 
   onChange() {
     let elements = this.elem.nativeElement.querySelector('.background-container');
-    let element = <HTMLElement> elements
-    if (element.classList.length > 1){
+    let element = <HTMLElement>elements
+    if (element.classList.length > 1) {
       element.classList.remove('active-sign-up')
-    }else{
+    } else {
       element.classList.add('active-sign-up')
     }
   }

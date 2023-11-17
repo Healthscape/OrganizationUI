@@ -51,33 +51,6 @@ export class LoginRegisterComponent {
     })
   }
 
-  private initLoginForm() {
-    this.loginEmailCtrl = new FormControl('', [Validators.email, Validators.required])
-    this.loginPasswordCtrl = new FormControl('', [Validators.required])
-    this.loginForm = new FormGroup({
-      'email': this.loginEmailCtrl,
-      'password': this.loginPasswordCtrl
-    })
-  }
-
-  private initRegisterForm() {
-    this.registerEmailCtrl = new FormControl('', [Validators.email, Validators.required])
-    this.registerPasswordCtrl = new FormControl('', [Validators.required])
-    this.registerConfirmPasswordCtrl = new FormControl('', [Validators.required])
-    this.registerNameCtrl = new FormControl('', [Validators.required])
-    this.registerSurnameCtrl = new FormControl('', [Validators.required])
-    this.registerForm = new FormGroup({
-        'name': this.registerNameCtrl,
-        'surname': this.registerSurnameCtrl,
-        'email': this.registerEmailCtrl,
-        'password': this.registerPasswordCtrl,
-        'confirmPassword': this.registerConfirmPasswordCtrl
-      },
-      {
-        validators: [ConfirmPasswordValidator.match('password', 'confirmPassword')]
-      })
-  }
-
   onChange() {
     this.isSignUp = !this.isSignUp;
     if (this.isSignUp) {
@@ -109,11 +82,38 @@ export class LoginRegisterComponent {
   }
 
   onLogin() {
-    if(this.loginForm.valid){
+    if (this.loginForm.valid) {
       this._authService.logInUser(this.loginForm.value);
-    }else{
+    } else {
       this.errorMessage = "The email and password you entered did not match out records. Please double-check and try again."
       this.showErrorMessage = true;
     }
+  }
+
+  private initLoginForm() {
+    this.loginEmailCtrl = new FormControl('', [Validators.email, Validators.required])
+    this.loginPasswordCtrl = new FormControl('', [Validators.required])
+    this.loginForm = new FormGroup({
+      'email': this.loginEmailCtrl,
+      'password': this.loginPasswordCtrl
+    })
+  }
+
+  private initRegisterForm() {
+    this.registerEmailCtrl = new FormControl('', [Validators.email, Validators.required])
+    this.registerPasswordCtrl = new FormControl('', [Validators.required])
+    this.registerConfirmPasswordCtrl = new FormControl('', [Validators.required])
+    this.registerNameCtrl = new FormControl('', [Validators.required])
+    this.registerSurnameCtrl = new FormControl('', [Validators.required])
+    this.registerForm = new FormGroup({
+        'name': this.registerNameCtrl,
+        'surname': this.registerSurnameCtrl,
+        'email': this.registerEmailCtrl,
+        'password': this.registerPasswordCtrl,
+        'confirmPassword': this.registerConfirmPasswordCtrl
+      },
+      {
+        validators: [ConfirmPasswordValidator.match('password', 'confirmPassword')]
+      })
   }
 }
