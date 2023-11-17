@@ -1,25 +1,15 @@
-<mat-card class="card">
-  <app-logo></app-logo>
-  <div class="form">
-    <form>
-      <mat-form-field class="example-full-width">
-        <mat-icon matPrefix>
-          <span class="material-symbols-outlined">person</span>
-        </mat-icon>
-        <input matInput placeholder="Email">
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-icon matPrefix>
-          <span class="material-symbols-outlined">lock</span>
-        </mat-icon>
-        <input matInput placeholder="Password">
-      </mat-form-field>
-    </form>
+<div class="background-container">
+  <div class="left-container">
+    <div class="left-color-container">
+      <app-login-register (onChange)="onChange()"></app-login-register>
+    </div>
   </div>
-  <button mat-raised-button>Sign in</button>
-
-</mat-card>
-
-
-
+  <div class="right-container">
+    <div class="right-color-container">
+      <div class="image-container">
+        <img src="assets/Honeycomb-Transparent%20(2).png" alt="" class="image1">
+        <img src="assets/26363-PhotoRoom.png-PhotoRoom%20(1).png" alt="" class="image2">
+      </div>
+    </div>
+  </div>
+</div>

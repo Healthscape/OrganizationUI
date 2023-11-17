@@ -1,4 +1,5 @@
-@use "variables";
+@use 'variables' as v;
+@use 'sass:map';
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -9,11 +10,44 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$healthscape-green-palette: (
+  50 : #e2eae9,
+  100 : #b7cbc8,
+  200 : #88a8a3,
+  300 : #58857e,
+  400 : #346b62,
+  500 : #105146,
+  600 : #0e4a3f,
+  700 : #0c4037,
+  800 : #09372f,
+  900 : #052720,
+  A100 : #63ffd8,
+  A200 : #30ffcb,
+  A400 : #00fcbc,
+  A700 : #00e2a9,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #fff,
+    400 : #fff,
+    500 : #fff,
+    600 : #fff,
+    700 : #fff,
+    800 : #fff,
+    900 : #fff,
+    A100 : #000,
+    A200 : #000,
+    A400 : #000,
+    A700 : #000,
+  )
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$organization-ui-primary: mat.define-palette(mat.$indigo-palette);
-$organization-ui-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$organization-ui-primary: mat.define-palette($healthscape-green-palette);
+$organization-ui-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $organization-ui-warn: mat.define-palette(mat.$red-palette);
@@ -36,9 +70,17 @@ $organization-ui-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { font-family: Roboto, 'Helvetica Neue', sans-serif; margin: 0; }
 
 @font-face {
   font-family: heandwritting;
-  src: url(Arizonia-Regular.ttf);
+  src: url('Arizonia-Regular.ttf');
+}
+$color-config: mat.get-color-config($organization-ui-theme);
+// Get the primary color palette from the color-config.
+$warn-palette: map.get($color-config, 'warn');
+
+.error-tooltip *{
+  font-size: small!important;
+  background-color: mat.get-color-from-palette($warn-palette)!important;
 }

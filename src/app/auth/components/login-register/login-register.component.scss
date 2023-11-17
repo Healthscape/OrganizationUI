@@ -1,0 +1,68 @@
+.auth-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+app-logo {
+  width: 80%;
+  margin: 5% 0 0;
+}
+
+.form-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0 10%;
+  transition: all 0.6s ease-in-out;
+
+  button{
+
+  }
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container{
+  margin-top: 10%;
+}
+
+.change-question{
+  display: flex;
+  margin-top: 15px;
+
+  p {
+    color: gray;
+    margin: 0;
+  }
+
+  .link{
+    margin-left: 5px;
+    text-underline: gray;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+}
+
+.name-surname-container{
+  display: flex;
+  gap: 15px;
+
+  *{
+    flex: 1;
+  }
+}
+
+.form-filed-multiple-icons{
+  display: flex;
+}
+
+.form-field-icons{
+  display: flex;
+  align-items: center;
+}

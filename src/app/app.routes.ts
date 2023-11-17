@@ -6,17 +6,6 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
     data: {requiresLogin: false},
-    canActivate: [],
-    children: [
-      {
-        path: 'login',
-        component: HomeComponent
-      },
-
-      {
-        path: 'register',
-        component: HomeComponent
-      }
-    ]
+    canActivate: []
   },
 ];

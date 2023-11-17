@@ -1,13 +1,15 @@
-@use "../variables" as v;
+@use '../variables' as v;
+
 
 main {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  box-sizing: inherit;
   position: relative;
-  background-color: v.$gray-background;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  box-sizing: inherit;
+  width: 100vw;
+  height: 100vh;
+  //background-image: radial-gradient(circle closest-corner at 83% 50%, rgb(151, 194, 187) 40%, rgb(141, 191, 183) 55%, rgb(126, 186, 176) 70%, rgb(106, 178, 166) 84%);
+  //linear-gradient(90deg, rgb(106, 178, 166) 5%, rgb(126, 186, 176) 30%, rgb(141, 191, 183) 62%, rgb(151,194,187) 71%)
+  background-size: cover;
 }
