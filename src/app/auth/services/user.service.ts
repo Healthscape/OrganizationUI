@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environment";
 import {RegisterDto} from "../dto/register.dto";
@@ -8,8 +8,9 @@ import {RegisterDto} from "../dto/register.dto";
 })
 export class UserService {
   private REQUEST_MAPPING: string = "/user";
+  _http = inject(HttpClient)
 
-  constructor(private _http: HttpClient) {
+  constructor() {
   }
 
   registerUser(registerDto: RegisterDto) {
