@@ -8,7 +8,7 @@
 
 app-logo {
   width: 80%;
-  margin: 5% 0 0;
+  margin: 5% auto auto;
 }
 
 .form-container {
@@ -17,10 +17,6 @@ app-logo {
   flex-direction: column;
   margin: 0 10%;
   transition: all 0.6s ease-in-out;
-
-  button {
-
-  }
 }
 
 .form-container form {

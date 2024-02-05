@@ -1,4 +1,4 @@
-@use '../../../../variables' as v;
+@use '../../../../variables' as *;
 
 .background-container {
   display: flex;
@@ -6,6 +6,48 @@
   width: 100%;
   height: 100%;
   min-height: 100%;
+  background-size: cover;
+}
+
+.background-container:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-image: url('/assets/Introduction.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  filter: blur(2px);
+}
+
+.border-container-left {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  bottom: 0;
+  left: 0;
+  height: 80%;
+  min-height: 500px;
+  margin: auto 0 auto 17.5%;
+  border: 7px $dark-dark-blue;
+  border-style: solid none solid solid;
+  border-radius: 50px 0 0 50px;
+}
+
+.border-container-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  height: 80%;
+  min-height: 500px;
+  margin: auto 17.5% auto 0;
+  border: 7px $dark-dark-blue;
+  border-style: solid solid solid none;
+  border-radius: 0 50px 50px 0;
 }
 
 .left-container {
@@ -13,16 +55,21 @@
   flex-direction: column;
   flex-grow: 1;
   width: 50%;
-  background-color: v.$dark-green;
+  transition: all 0.6s ease-in-out;
 }
 
 .left-color-container {
+  position: relative;
   z-index: 1;
-  flex: 1;
-  margin: 10% 0 10% 15%;
+  height: 80%;
+  min-height: 500px;
+  margin: auto 0 auto 35%;
   box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.2);
   transition: all 0.6s ease-in-out;
-  background-color: v.$light-green;
+  border: 7px $dark-dark-blue;
+  border-style: solid none solid solid;
+  border-radius: 50px 0 0 50px;
+  background-color: oklch(0.78 0.02 231.99);
 
 }
 
@@ -32,61 +79,94 @@
   flex-grow: 1;
   width: 50%;
   transition: all 0.6s ease-in-out;
-  background-color: v.$light-green;
 }
 
 .right-color-container {
+  z-index: 1;
   overflow: hidden;
-  flex: 1;
-  margin: 10% 15% 10% 0;
+  height: 80%;
+  min-height: 500px;
+  margin: auto 35% auto 0;
   box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.39);
   transition: all 0.6s ease-in-out;
-  background-color: v.$dark-green;
+  border: 7px transparent;
+  border-style: solid solid solid none;
+  border-radius: 0 50px 50px 0;
 }
 
 .image-container {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  z-index: 1;
+  width: 300%;
   height: 100%;
-}
-
-
-.image1 {
-  width: 100%;
-  opacity: 0.4;
-}
-
-.image2 {
-  position: absolute;
-  width: 120%;
-  min-width: 500px;
-  filter: drop-shadow(7px 7px 3px rgba(34, 34, 34, 0.3));
+  content: '';
   transition: all 0.6s ease-in-out;
+  transform: translate(-38%);
+  background-image: url('/assets/Introduction.jpg');
+  background-attachment: fixed;
+  background-size: cover;
 }
 
+.active-sign-up .right-container .right-color-container {
+  box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.39);
+  transform: translate(-100%);
+  border-style: solid none solid solid;
+  border-radius: 50px 0 0 50px;
 
-.active-sign-up .right-container {
-  background-color: v.$dark-green;
-
-  .right-color-container {
-    box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.39);
-    transform: translate(-100%);
-    background-color: v.$dark-green;
-  }
-
-  .image2 {
-    transform: rotateY(180deg) translate(-15%);
+  .image-container {
+    transform: translate(-13%);
   }
 }
 
+.active-sign-up .left-container .left-color-container {
+  box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.39);
+  transform: translate(100%);
+  animation-name: slidein;
+  animation-duration: 1s;
+  border-style: solid solid solid none;
+  border-radius: 0 50px 50px 0;
 
-.active-sign-up .left-container {
-  background-color: v.$light-green;
-
-  .left-color-container {
-    box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.39);
+  .image-container {
     transform: translate(100%);
+  }
+}
+
+.left-container .left-color-container:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border-radius: 50px;
+  background-color: transparent;
+}
+
+.active-sign-up .left-container .left-color-container:before {
+  z-index: 0;
+  animation-name: slide-before;
+  animation-duration: 1s;
+  background-color: transparent;
+
+}
+
+
+@keyframes slidein {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide-before {
+  0% {
+    z-index: 2;
+    background-color: #aabcc6;
+  }
+
+  100% {
+    background-color: #aabcc6;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LogoComponent} from "../../../utils/logo/logo.component";
 import {MatButtonModule} from "@angular/material/button";
@@ -24,7 +24,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class LoginRegisterComponent {
   @Output('onChange') onChangeEmitter: EventEmitter<void> = new EventEmitter<void>();
-  isSignUp: boolean = false;
+  @Input() isSignUp: boolean = false;
 
   registerForm: FormGroup = new FormGroup({});
   loginForm: FormGroup = new FormGroup({});

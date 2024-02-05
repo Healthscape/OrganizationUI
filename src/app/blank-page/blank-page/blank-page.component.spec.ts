@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BlankPageComponent } from './blank-page.component';
+import {BlankPageComponent} from './blank-page.component';
 
 describe('BlankPageComponent', () => {
   let component: BlankPageComponent;
@@ -10,8 +10,8 @@ describe('BlankPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BlankPageComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(BlankPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

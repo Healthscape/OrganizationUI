@@ -7,8 +7,8 @@ import {RegisterDto} from "../dto/register.dto";
   providedIn: 'root'
 })
 export class UserService {
-  private REQUEST_MAPPING: string = "/user";
   _http = inject(HttpClient)
+  private REQUEST_MAPPING: string = "/user";
 
   constructor() {
   }

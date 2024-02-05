@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environment";
 
@@ -11,14 +11,14 @@ import {environment} from "../../../environment";
   styleUrl: './blank-page.component.scss'
 })
 export class BlankPageComponent {
-  private REQUEST_MAPPING: string = "/fabric";
   _http = inject(HttpClient)
+  private REQUEST_MAPPING: string = "/fabric";
 
   onClick() {
     return this._http.get(environment.apiUrl + this.REQUEST_MAPPING).subscribe({
-      next:(response)=> {
+      next: (response) => {
         console.log(response)
-      },error:(err)=> {
+      }, error: (err) => {
         console.log(err)
       }
     });

@@ -32,7 +32,7 @@
     "rule-empty-line-before": [
       "always-multi-line",
       {
-        except: [
+        "except": [
           "after-single-line-comment",
           "first-nested"
         ]

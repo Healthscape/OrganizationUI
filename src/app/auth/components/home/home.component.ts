@@ -16,6 +16,8 @@ import {LoginRegisterComponent} from "../login-register/login-register.component
 })
 export class HomeComponent {
 
+  activeSignUp: boolean = false;
+
   constructor(private renderer: Renderer2, private elem: ElementRef) {
   }
 
@@ -24,8 +26,10 @@ export class HomeComponent {
     let element = <HTMLElement>elements
     if (element.classList.length > 1) {
       element.classList.remove('active-sign-up')
+      this.activeSignUp = false
     } else {
       element.classList.add('active-sign-up')
+      this.activeSignUp = true
     }
   }
 }

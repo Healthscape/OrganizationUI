@@ -1,10 +1,10 @@
-@use '../../../variables' as v;
+@use '../../../variables' as *;
 
 .heart-rate path {
   stroke-dasharray: 6900;
   animation: line-anim 5s linear 1;
   animation-delay: 1s;
-  stroke: v.$dark-dark-green;
+  stroke: $dark-dark-blue;
 }
 
 @keyframes line-anim {

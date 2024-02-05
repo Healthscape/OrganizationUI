@@ -16,7 +16,7 @@ export class AuthService {
   public errorResponse: Subject<any> = new Subject<any>();
   private REQUEST_MAPPING: string = "/auth";
 
-  constructor(private router: Router,private _tokenService: TokenService) {
+  constructor(private router: Router, private _tokenService: TokenService) {
   }
 
 
