@@ -8,13 +8,14 @@ import {MatButtonModule} from "@angular/material/button";
 import {LoginRegisterComponent} from "../login-register/login-register.component";
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-auth',
+  host: {class:'auth-host-wrapper'},
   standalone: true,
   imports: [CommonModule, MatCardModule, LogoComponent, MatInputModule, MatIconModule, MatButtonModule, NgOptimizedImage, LoginRegisterComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss'
 })
-export class HomeComponent {
+export class AuthComponent {
 
   activeSignUp: boolean = false;
 

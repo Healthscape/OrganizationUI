@@ -2,9 +2,18 @@
 
 .heart-rate path {
   stroke-dasharray: 6900;
+  stroke: $dark-dark-blue;
+}
+
+.animation{
   animation: line-anim 5s linear 1;
   animation-delay: 1s;
-  stroke: $dark-dark-blue;
+
+}
+
+.no-animation{
+  animation: none;
+
 }
 
 @keyframes line-anim {

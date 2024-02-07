@@ -1,0 +1,43 @@
+<div class="sidebar-wrapper" [ngClass]="isCollapsed ? 'no-show-border' : 'show-border'">
+    <div class="nav-list">
+      <div class="sidebar-header card" [ngClass]="isCollapsed ? 'no-show-grid' : 'show-grid'" >
+        <app-logo class="sidebar-logo left-align"  [ngClass]="isCollapsed ? 'no-show' : 'show'" [animation]="false"></app-logo>
+          <span class="material-symbols-outlined menu-icon right-align" (click)="toggleMenu()">
+sort
+</span>
+      </div>
+      <div class="sidebar-main">
+        <div class="card">
+          <span class="material-symbols-outlined right-align" >dashboard</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Dashboard</p></span>
+        </div>
+        <div class="card">
+          <span class=" material-symbols-outlined material-icons  right-align">group</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Patients</p></span>
+        </div>
+        <div class="card">
+          <span class=" material-symbols-outlined right-align">calendar_month</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Scheduling</p></span>
+        </div>
+        <div class="card">
+          <span class=" material-symbols-outlined right-align">signal_cellular_alt</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Reports</p></span>
+        </div>
+        <div class="card">
+          <span class=" material-symbols-outlined right-align">chat</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Messages</p></span>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="card">
+          <span class=" material-symbols-outlined right-align">settings</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Settings</p></span>
+        </div>
+        <div class="card">
+          <span class=" material-symbols-outlined right-align">logout</span>
+          <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
+        </div>
+      </div>
+    </div>
+</div>
+
