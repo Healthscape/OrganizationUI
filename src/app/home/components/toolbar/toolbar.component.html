@@ -1,1 +1,20 @@
-<p>toolbar works!</p>
+<div class="search-container">
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Search...">
+    <span class="material-symbols-outlined" matSuffix>search</span>
+  </mat-form-field>
+</div>
+<div class="date-container">
+  <div class="date-outline__leading">
+  </div>
+  <div class="date-outline">
+    <img src="favicon.ico">
+    <p>{{hour}}:{{minute}}, {{currentDate | date : 'EEEE, MMM d'}}</p>
+  </div>
+  <div class="date-outline__trailing">
+  </div>
+</div>
+<div class="notifications-container">
+      <div mat-card-avatar class="avatar-image">
+      </div>
+</div>

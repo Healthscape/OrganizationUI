@@ -1,0 +1,82 @@
+@use '../../../../styles/variables' as *;
+
+::ng-deep .toolbar-host-wrapper {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0 20px;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.search-container{
+  flex: 1;
+}
+
+.date-container {
+  display: flex;
+
+  .date-outline__leading{
+    width: 10px;
+    height: auto;
+    border-width: 1px;
+    border-style: solid none solid solid;
+    border-color: lightgray;
+    border-radius: 20px 0 0 20px;
+  }
+
+  .date-outline {
+    display: flex;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: lightgray;
+    background-color: #fff;
+
+    img{
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    p {
+      font-family: sans-serif;
+      font-weight: bolder;
+      color: rgb(42 56 71 / 88%);
+      margin: 0;
+      padding: 11px 0;
+    }
+  }
+
+  .date-outline__trailing{
+    width: 10px;
+    border-width: 1px;
+    border-style: solid solid solid none;
+    border-color: lightgray;
+    border-radius: 0 20px 20px 0;
+  }
+}
+
+.notifications-container{
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-end;
+  box-sizing: border-box;
+
+  .avatar-image {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 4px 5px lightgray;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background-image: url('/assets/portrait.png');
+    background-size: cover;
+    object-fit: cover;
+  }
+
+}
+

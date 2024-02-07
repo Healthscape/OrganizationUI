@@ -1,4 +1,5 @@
-@use 'variables' as v;
+@use 'styles/variables' as v;
+@use 'styles/material' as m;
 @use 'sass:map';
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -79,7 +80,7 @@ body {
 
 @font-face {
   font-family: heandwritting;
-  src: url('Arizonia-Regular.ttf');
+  src: url('assets/Arizonia-Regular.ttf');
 }
 
 $color-config: mat.get-color-config($organization-ui-theme);
@@ -131,4 +132,8 @@ $warn-palette: map.get($color-config, 'warn');
 .my-material-icon {
   vertical-align: middle;
   display: inline;
+}
+@font-face {
+  font-family: Roboto;
+  src: url('/assets/Roboto-Regular.ttf');
 }
