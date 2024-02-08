@@ -20,7 +20,7 @@ import {MatButtonModule} from "@angular/material/button";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  isCollapsed: boolean = true;
+  isCollapsed: boolean = false;
 
   toggleMenu(event: boolean) {
     this.isCollapsed = event;
@@ -29,7 +29,7 @@ export class HomeComponent {
   getStyles() {
     if(this.isCollapsed){
       return {
-        'grid-template-columns': `70px auto`,
+        'grid-template-columns': `90px auto`,
       };
     } else {
       return {

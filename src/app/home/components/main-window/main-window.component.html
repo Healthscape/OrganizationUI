@@ -1,1 +1,14 @@
-<p>main-window works!</p>
+<div class="breadcrumbs">
+  <span class="material-symbols-outlined home-icon"  (click)="navigate('home')" >
+home
+</span>
+  <span class="material-symbols-outlined">
+chevron_right
+</span>
+  <span class="navigation-label" *ngFor="let item of menuItems" (click)="navigate(item.url)">
+    {{item.label}}
+  </span>
+  <span class="navigation-label" *ngIf="menuItems.length == 0">Home</span>
+
+</div>
+<router-outlet></router-outlet>

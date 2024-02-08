@@ -1,13 +1,14 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LogoComponent} from "../../../utils/logo/logo.component";
-import {MatSidenav, MatSidenavModule} from "@angular/material/sidenav";
+import { MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainWindowComponent} from "../main-window/main-window.component";
 import {ToolbarComponent} from "../toolbar/toolbar.component";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -22,31 +23,39 @@ import {ToolbarComponent} from "../toolbar/toolbar.component";
 export class SidebarComponent {
   @Output('toggleMenuEvent') toggleMenuEvent: EventEmitter<boolean>= new EventEmitter();
   isMobile= true;
-  isCollapsed = true;
+  isCollapsed = false;
+  selected = 'dashboard';
 
-  constructor(private observer: BreakpointObserver) {
+  constructor(private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd){
+        let currentlySelected = this.route.snapshot.children?.at(0)?.routeConfig?.path;
+        if(currentlySelected){
+          this.selected = currentlySelected
+        }else{
+          this.selected = 'home'
+        }
+      }
+    });
 
   }
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-      if(screenSize.matches){
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
+      this.isMobile = screenSize.matches;
     });
   }
 
   toggleMenu() {
-    // if(this.isMobile){
-    //   this.sidenav.toggle();
-    //   this.isCollapsed = false; // On mobile, the menu can never be collapsed
-    // } else {
-    //   this.sidenav.open(); // On desktop/tablet, the menu can never be fully closed
-    //   this.isCollapsed = !this.isCollapsed;
-    // }
     this.isCollapsed = !this.isCollapsed
     this.toggleMenuEvent.emit(this.isCollapsed);
   }
 
+  select(cardName: string) {
+    this.selected = cardName;
+    if (cardName != 'home') {
+      this.router.navigate(['home', cardName]).then();
+    }else{
+      this.router.navigate(['home']).then();
+    }
+  }
 }

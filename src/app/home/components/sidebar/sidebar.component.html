@@ -7,33 +7,33 @@ sort
 </span>
       </div>
       <div class="sidebar-main">
-        <div class="card">
-          <span class="material-symbols-outlined right-align" >dashboard</span>
+        <div class="card card-hover-container" (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''">
+          <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Dashboard</p></span>
         </div>
-        <div class="card">
+        <div class="card card-hover-container" (click)="select('patients')" [ngClass]="selected == 'patients' ? 'selected' : ''">
           <span class=" material-symbols-outlined material-icons  right-align">group</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Patients</p></span>
         </div>
-        <div class="card">
+        <div class="card card-hover-container" (click)="select('calendar_month')" [ngClass]="selected == 'calendar_month' ? 'selected' : ''">
           <span class=" material-symbols-outlined right-align">calendar_month</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Scheduling</p></span>
         </div>
-        <div class="card">
+        <div class="card card-hover-container" (click)="select('signal_cellular_alt')" [ngClass]="selected == 'signal_cellular_alt' ? 'selected' : ''">
           <span class=" material-symbols-outlined right-align">signal_cellular_alt</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Reports</p></span>
         </div>
-        <div class="card">
+        <div class="card card-hover-container" (click)="select('chat')" [ngClass]="selected == 'chat' ? 'selected' : ''">
           <span class=" material-symbols-outlined right-align">chat</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Messages</p></span>
         </div>
       </div>
       <div class="sidebar-footer">
-        <div class="card">
+        <div class="card card-hover-container" (click)="select('settings')" [ngClass]="selected == 'settings' ? 'selected' : ''">
           <span class=" material-symbols-outlined right-align">settings</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Settings</p></span>
         </div>
-        <div class="card">
+        <div class="card card-hover-container" (click)="select('logout')" [ngClass]="selected == 'logout' ? 'selected' : ''">
           <span class=" material-symbols-outlined right-align">logout</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
         </div>
