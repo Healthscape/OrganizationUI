@@ -5,6 +5,9 @@ import {filter, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-main-window',
+  host:{
+    class: 'main-window-host-wrapper'
+  },
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './main-window.component.html',
