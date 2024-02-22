@@ -6,14 +6,22 @@
         <mat-icon matPrefix>
           <span class="material-symbols-outlined">person</span>
         </mat-icon>
-        <input [formControl]="loginEmailCtrl" matInput placeholder="Email">
+        <input [formControl]="loginEmailCtrl" autocomplete="email" matInput placeholder="Email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-icon matPrefix>
           <span class="material-symbols-outlined">lock</span>
         </mat-icon>
-        <input [formControl]="loginPasswordCtrl" matInput placeholder="Password">
+        <input [formControl]="loginPasswordCtrl" matInput autocomplete="current-password" [type]="loginPasswordVisible ? 'text' : 'password'" placeholder="Password">
+        <div class="form-field-icons" matSuffix>
+          <button (click)="loginPasswordVisible = !loginPasswordVisible" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="!loginPasswordVisible"
+                  mat-icon-button
+                  type="button">
+            <mat-icon>{{loginPasswordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </button>
+        </div>
       </mat-form-field>
 
 
@@ -48,6 +56,17 @@
           </mat-icon>
         </mat-form-field>
       </div>
+
+      <mat-form-field>
+        <input [formControl]="registerIDCtrl" matInput placeholder="Identification number">
+        <mat-icon
+          *ngIf="(registerIDCtrl.touched && registerIDCtrl.invalid)"
+          [matTooltipClass]="'error-tooltip'" class="material-symbols-outlined"
+          color="warn"
+          matSuffix
+          matTooltip="Please enter your email address in format: yourname@example.com.">error
+        </mat-icon>
+      </mat-form-field>
 
       <mat-form-field>
         <input [formControl]="registerEmailCtrl" matInput placeholder="Email">

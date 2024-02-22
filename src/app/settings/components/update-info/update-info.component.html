@@ -1,0 +1,71 @@
+<div class="update-info-wrapper" [formGroup]="form">
+  <div class="title">
+    <mat-form-field appearance="fill" class="update-info">
+      <input matInput [formControl]="nameCtrl">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="update-info">
+      <input matInput [formControl]="surnameCtrl">
+    </mat-form-field>
+  </div>
+  <div class="content">
+    <div class="profile-image">
+      <input type="file" style="display: none;" #fileInput (change)="onChangePhoto($event, avatarPhoto)">
+      <div mat-card-avatar class="avatar-image" [ngStyle]="{'background-image': 'url(data:image/png;base64, ' + me?.photo + ')'}" #avatarPhoto>
+      </div>
+      <div class="avatar-image-overlay">
+        <button mat-icon-button [matTooltip]="'Change photo'" (click)="onChangePhotoButton(fileInput)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Identifier</mat-label>
+          <div class="material-symbols-outlined" matPrefix>fingerprint</div>
+          <input matInput [formControl]="idCtrl">
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Address</mat-label>
+          <div class="material-symbols-outlined" matPrefix>home</div>
+          <input matInput  [formControl]="addressCtrl">
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Date of birth</mat-label>
+          <div class="material-symbols-outlined" matPrefix>person</div>
+          <input matInput  [formControl]="birthDateCtrl">
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Phone</mat-label>
+          <div class="material-symbols-outlined" matPrefix>call</div>
+          <input matInput  [formControl]="phoneCtrl">
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Gender</mat-label>
+          <div class="material-symbols-outlined" matPrefix>transgender</div>
+          <input matInput  [formControl]="genderCtrl">
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Marital status</mat-label>
+          <div class="material-symbols-outlined" matPrefix>loyalty</div>
+          <input matInput  [formControl]="maritalStatusCtrl">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+    <button mat-flat-button color="warn" (click)="onCancel()">Cancel</button>
+  </div>
+</div>
+

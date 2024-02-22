@@ -39,7 +39,9 @@ export class LoginRegisterComponent {
   registerConfirmPasswordCtrl: FormControl = new FormControl();
   passwordVisible: boolean = false;
   confirmPasswordVisible: boolean = false;
+  loginPasswordVisible: boolean = false;
   isLoading: boolean = false;
+  registerIDCtrl: FormControl = new FormControl();
 
   constructor(private _userService: UserService, private _authService: AuthService, private _snackBar: MatSnackBar) {
     this.initLoginForm();
@@ -91,7 +93,9 @@ export class LoginRegisterComponent {
   }
 
   private initLoginForm() {
-    this.loginEmailCtrl = new FormControl('', [Validators.email, Validators.required])
+    this.loginEmailCtrl = new FormControl('', [Validators.required])
+    // TODO: uncomment
+    // this.loginEmailCtrl = new FormControl('', [Validators.email, Validators.required])
     this.loginPasswordCtrl = new FormControl('', [Validators.required])
     this.loginForm = new FormGroup({
       'email': this.loginEmailCtrl,
@@ -105,12 +109,14 @@ export class LoginRegisterComponent {
     this.registerConfirmPasswordCtrl = new FormControl('', [Validators.required])
     this.registerNameCtrl = new FormControl('', [Validators.required])
     this.registerSurnameCtrl = new FormControl('', [Validators.required])
+    this.registerIDCtrl = new FormControl('', [Validators.required])
     this.registerForm = new FormGroup({
         'name': this.registerNameCtrl,
         'surname': this.registerSurnameCtrl,
         'email': this.registerEmailCtrl,
         'password': this.registerPasswordCtrl,
-        'confirmPassword': this.registerConfirmPasswordCtrl
+        'confirmPassword': this.registerConfirmPasswordCtrl,
+        'identifier': this.registerIDCtrl
       },
       {
         validators: [ConfirmPasswordValidator.match('password', 'confirmPassword')]

@@ -11,21 +11,21 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-$healthscape-green-palette: (
-  50 : #e2eae9,
-  100 : #b7cbc8,
-  200 : #88a8a3,
-  300 : #58857e,
-  400 : #346b62,
-  500 : #105146,
-  600 : #0e4a3f,
-  700 : #0c4037,
-  800 : #09372f,
-  900 : #052720,
-  A100 : #63ffd8,
-  A200 : #30ffcb,
-  A400 : #00fcbc,
-  A700 : #00e2a9,
+$healthscape-blue-accent-palette: (
+  50 : #e2e6ea,
+  100 : #b7c1cb,
+  200 : #8898a8,
+  300 : #586f85,
+  400 : #34506b,
+  500 : #103151,
+  600 : #0e2c4a,
+  700 : #0c2540,
+  800 : #091f37,
+  900 : #051327,
+  A100 : #6396ff,
+  A200 : #3074ff,
+  A400 : #0053fc,
+  A700 : #004ae2,
   contrast: (
     50 : #000,
     100 : #000,
@@ -38,20 +38,116 @@ $healthscape-green-palette: (
     800 : #fff,
     900 : #fff,
     A100 : #000,
+    A200 : #fff,
+    A400 : #fff,
+    A700 : #fff,
+  )
+);
+$healthscape-primary-palette: (
+  50 : #f8fbfe,
+  100 : #eff4fc,
+  200 : #e4edfa,
+  300 : #d9e6f7,
+  400 : #d0e0f6,
+  500 : #c8dbf4,
+  600 : #c2d7f3,
+  700 : #bbd2f1,
+  800 : #b4cdef,
+  900 : #a7c4ec,
+  A100 : #fff,
+  A200 : #fff,
+  A400 : #fff,
+  A700 : #fff,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #000,
+    400 : #000,
+    500 : #000,
+    600 : #000,
+    700 : #000,
+    800 : #000,
+    900 : #000,
+    A100 : #000,
     A200 : #000,
     A400 : #000,
     A700 : #000,
   )
 );
-
+$healthscape-accent-palette: (
+  50 : #fff7eb,
+  100 : #feebce,
+  200 : #fedead,
+  300 : #fdd18c,
+  400 : #fcc773,
+  500 : #fcbd5a,
+  600 : #fcb752,
+  700 : #fbae48,
+  800 : #fba63f,
+  900 : #fa982e,
+  A100 : #fff,
+  A200 : #fff,
+  A400 : #ffead4,
+  A700 : #fdb,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #000,
+    400 : #000,
+    500 : #000,
+    600 : #000,
+    700 : #000,
+    800 : #000,
+    900 : #000,
+    A100 : #000,
+    A200 : #000,
+    A400 : #000,
+    A700 : #000,
+  )
+);
+$healthscape-warn-palette: (
+  50 : #faecec,
+  100 : #f4cfd0,
+  200 : #ecafb0,
+  300 : #e48e90,
+  400 : #df7679,
+  500 : #d95e61,
+  600 : #d55659,
+  700 : #cf4c4f,
+  800 : #ca4245,
+  900 : #c03133,
+  A100 : #fff,
+  A200 : #ffd3d3,
+  A400 : #ffa0a1,
+  A700 : #ff8688,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #000,
+    400 : #000,
+    500 : #000,
+    600 : #fff,
+    700 : #fff,
+    800 : #fff,
+    900 : #fff,
+    A100 : #000,
+    A200 : #000,
+    A400 : #000,
+    A700 : #000,
+  )
+);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$organization-ui-primary: mat.define-palette($healthscape-green-palette);
-$organization-ui-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$organization-ui-primary: mat.define-palette($healthscape-primary-palette);
+$organization-ui-accent: mat.define-palette($healthscape-accent-palette);
+$organization-ui-blue-accent: mat.define-palette($healthscape-blue-accent-palette);
 
 // The warn palette is optional (defaults to red).
-$organization-ui-warn: mat.define-palette(mat.$red-palette);
+$organization-ui-warn: mat.define-palette($healthscape-warn-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -59,7 +155,7 @@ $organization-ui-theme: mat.define-light-theme((
   color: (
     primary: $organization-ui-primary,
     accent: $organization-ui-accent,
-    warn: $organization-ui-warn,
+    warn: $organization-ui-warn
   )
 ));
 
@@ -136,4 +232,9 @@ $warn-palette: map.get($color-config, 'warn');
 @font-face {
   font-family: Roboto;
   src: url('/assets/Roboto-Regular.ttf');
+}
+
+button[color='blue-accent'].mat-mdc-unelevated-button:not( :disabled ){
+  color: #fff;
+  background-color: #103151;
 }

@@ -1,9 +1,14 @@
 <div class="breadcrumbs">
   <span class="material-symbols-outlined home-icon" (click)="navigate('home')">home</span>
+  <div class="navigation-label" *ngFor="let item of menuItems" (click)="navigate(item.url)">
   <span class="material-symbols-outlined">chevron_right</span>
-  <span class="navigation-label" *ngFor="let item of menuItems" (click)="navigate(item.url)">
-    {{item.label}}
-  </span>
+    <span>{{item.label}}</span>
+  </div>
   <span class="navigation-label" *ngIf="menuItems.length == 0">Home</span>
+  <div class="action-button">
+    <button mat-raised-button *ngIf="me.role == 'ROLE_ADMIN' && router.url.includes('users')" (click)="onNewDoctor()">
+      New doctor
+    </button>
+  </div>
 </div>
 <router-outlet class="main-window-router"></router-outlet>

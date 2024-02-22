@@ -25,7 +25,6 @@ export class TokenService {
   }
 
   public getToken(): string | null {
-    console.log(window.sessionStorage.getItem(TOKEN_KEY))
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
 

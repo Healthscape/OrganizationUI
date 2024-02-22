@@ -9,6 +9,8 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainWindowComponent} from "../main-window/main-window.component";
 import {ToolbarComponent} from "../toolbar/toolbar.component";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {UserDto} from "../../../auth/dto/user.dto";
+import {UserService} from "../../../auth/services/user.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -25,8 +27,14 @@ export class SidebarComponent {
   isMobile= true;
   isCollapsed = false;
   selected = 'dashboard';
+  me: UserDto = new UserDto();
 
-  constructor(private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
+    userService.me().subscribe({
+      next: (user) =>{
+        this.me = user;
+      }
+    })
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd){
         let currentlySelected = this.route.snapshot.children?.at(0)?.routeConfig?.path;

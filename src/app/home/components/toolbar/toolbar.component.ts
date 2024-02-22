@@ -3,6 +3,8 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
+import {UserService} from "../../../auth/services/user.service";
+import {UserDto} from "../../../auth/dto/user.dto";
 
 @Component({
   selector: 'app-toolbar',
@@ -18,6 +20,15 @@ export class ToolbarComponent {
   public minute: string = '';
   public hour: any;
   public currentDate: Date = new Date();
+  me: UserDto = new UserDto();
+
+  constructor(private userService: UserService) {
+    userService.me().subscribe({
+      next: (user) =>{
+        this.me = user;
+      }
+    })
+  }
 
   ngOnInit() {
     this.currentDate = new Date();
@@ -40,4 +51,5 @@ export class ToolbarComponent {
     const minutes = this.currentDate.getMinutes();
     this.minute = minutes < 10 ? '0' + minutes : minutes.toString();
   }
+
 }

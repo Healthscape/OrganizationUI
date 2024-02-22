@@ -1,0 +1,39 @@
+<div class="title">
+  <h1>{{me?.name}} {{me?.surname}}</h1>
+</div>
+<div class="content">
+  <div class="profile-image">
+  <div mat-card-avatar class="avatar-image" [ngStyle]="{'background-image': 'url(data:image/png;base64, ' + me?.photo + ')'}">
+    </div>
+  </div>
+  <div class="profile-info">
+    <div class="info-cell">
+      <div class="material-symbols-outlined">fingerprint</div>
+      <p><span>Identifier:</span> {{me?.identifier}}</p>
+    </div>
+    <div class="info-cell">
+      <div class="material-symbols-outlined">home</div>
+      <p><span>Address:</span> {{me?.address}}</p>
+    </div>
+    <div class="info-cell">
+      <div class="material-symbols-outlined">person</div>
+      <p><span>Date of birth:</span> {{me?.birthDate}}</p>
+    </div>
+    <div class="info-cell">
+      <div class="material-symbols-outlined">call</div>
+      <p><span>Phone:</span> {{me?.phone}}</p>
+    </div>
+    <div class="info-cell">
+      <div class="material-symbols-outlined">transgender</div>
+      <p><span>Gender:</span> {{me?.gender}}</p>
+    </div>
+    <div class="info-cell">
+      <div class="material-symbols-outlined">alternate_email</div>
+      <p><span>Email:</span> {{me?.email}}</p>
+    </div>
+    <div class="info-cell">
+      <div class="material-symbols-outlined">loyalty</div>
+      <p><span>Marital status:</span> {{me?.maritalStatus}}</p>
+    </div>
+  </div>
+</div>
