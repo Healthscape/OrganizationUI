@@ -1,6 +1,7 @@
 @use '../../../../styles/variables' as *;
 
 ::ng-deep .users-host-wrapper {
+  overflow: auto;
   margin: 10px;
   gap: 10px;
 }

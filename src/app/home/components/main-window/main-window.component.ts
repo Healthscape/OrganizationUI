@@ -7,6 +7,7 @@ import {UserService} from "../../../auth/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {NewDoctorComponent} from "../../../users/components/new-doctor/new-doctor.component";
 import {MatDialog} from "@angular/material/dialog";
+import {SubjectService} from "../../../utils/events/subject.service";
 
 @Component({
   selector: 'app-main-window',
@@ -25,7 +26,7 @@ export class MainWindowComponent {
   subscription: Subscription | undefined;
   me = new UserDto();
 
-  constructor(public router: Router, private userService: UserService, private activatedRoute: ActivatedRoute, public dialog: MatDialog) {
+  constructor(private subjectService: SubjectService, public router: Router, private userService: UserService, private activatedRoute: ActivatedRoute, public dialog: MatDialog) {
     userService.me().subscribe({
       next: (user) => {
         this.me = user;
@@ -65,7 +66,7 @@ export class MainWindowComponent {
 
     dialogRef.afterClosed().subscribe({
       next:(response) =>{
-        console.log(response)
+        this.subjectService.newDoctorSubject.next(response);
       }
     });
   }

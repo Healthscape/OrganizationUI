@@ -1,34 +1,48 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {UserService} from "../../../auth/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {MatTableModule} from "@angular/material/table";
+import {MatTable, MatTableModule} from "@angular/material/table";
+import {SubjectService} from "../../../utils/events/subject.service";
 
 @Component({
-  selector: 'app-users',
-  host: {
-    class: 'users-host-wrapper'
-  },
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatTooltipModule, MatTableModule],
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+    selector: 'app-users',
+    host: {
+        class: 'users-host-wrapper'
+    },
+    standalone: true,
+    imports: [CommonModule, MatCardModule, MatTooltipModule, MatTableModule],
+    templateUrl: './users.component.html',
+    styleUrl: './users.component.scss'
 })
 export class UsersComponent {
-  users: UserDto[] = []
-  displayedColumns: string[] = ['role', 'name', 'email', 'date-created'];
+    users: UserDto[] = []
+    @ViewChild(MatTable) table?: MatTable<UserDto>;
+    displayedColumns: string[] = ['role', 'name', 'email', 'date-created'];
 
-  constructor(private userService: UserService) {
-    userService.getUsers().subscribe({
-      next: (users) => {
-        this.users = users
-      },
-      error: (err) => {
-        console.log(err)
-      }
-    })
-  }
+    constructor(_subjectService: SubjectService, private userService: UserService) {
+        _subjectService.newDoctorSubject.subscribe({
+            next: (response) => {
+                console.log(response)
+                this.users.push(response);
+                console.log(this.users)
+                this.table?.renderRows();
+            },
+            error: (err) =>{
+                console.log(err)
+            }
+
+        })
+        userService.getUsers().subscribe({
+            next: (users) => {
+                this.users = users
+            },
+            error: (err) => {
+                console.log(err)
+            }
+        })
+    }
 
 }

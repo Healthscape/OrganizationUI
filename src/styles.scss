@@ -195,14 +195,7 @@ $warn-palette: map.get($color-config, 'warn');
   font-size: small !important;
   background-color: mat.get-color-from-palette($warn-palette) !important;
 }
-//
-///* fallback */
-//@font-face {
-//  font-family: 'Material Symbols Outlined';
-//  src: url('https://fonts.gstatic.com/s/materialsymbolsoutlined/v39/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2') format('woff2');
-//  font-weight: 100 700;
-//  font-style: normal;
-//}
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-size: 24px;
