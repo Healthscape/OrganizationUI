@@ -1,6 +1,6 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .sidebar-host-wrapper{
+::ng-deep .sidebar-host-wrapper {
   position: relative;
   height: 100%;
 }
@@ -11,7 +11,7 @@
   grid-area: sidebar-logo;
 }
 
-.sidebar-header{
+.sidebar-header {
   justify-content: flex-end;
   margin: auto;
 }
@@ -29,7 +29,7 @@
   margin: 0 15px;
 }
 
-.sidebar-wrapper{
+.sidebar-wrapper {
   box-sizing: border-box;
   height: 100%;
   border: 2px solid $accent-light-blue;
@@ -37,7 +37,7 @@
   background-color: #fff;
 }
 
-.nav-list{
+.nav-list {
   display: grid;
   height: 100%;
   grid-template-areas: 'sidebar-logo''sidebar-main'' sidebar-footer';
@@ -70,19 +70,19 @@
   }
 }
 
-.card-hover-container:hover{
+.card-hover-container:hover {
   cursor: pointer;
 
-  span{
+  span {
     font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48 !important;
   }
 
-  p{
+  p {
     font-weight: 700;
   }
 }
 
-.card-hover-container:before{
+.card-hover-container:before {
   position: absolute;
   z-index: 0;
   top: 0;
@@ -94,22 +94,22 @@
   background-color: transparent;
 }
 
-.card-hover-container:hover:before{
+.card-hover-container:hover:before {
   background-color: $accent-light-blue;
 }
 
-.selected{
-  &.card{
-    span{
+.selected {
+  &.card {
+    span {
       font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48 !important;
     }
 
-    p{
+    p {
       font-weight: 700;
     }
   }
 
-  &.card-hover-container:before{
+  &.card-hover-container:before {
     background-color: $accent-light-blue;
   }
 
@@ -117,76 +117,76 @@
 }
 
 
-.menu-icon{
+.menu-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90px!important;
-  margin: 0!important;
+  width: 90px !important;
+  margin: 0 !important;
 
 }
 
-.menu-icon:hover{
+.menu-icon:hover {
   cursor: pointer;
 
-  span{
+  span {
     font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48 !important;
   }
 
-  p{
+  p {
     font-weight: 700;
   }
 }
 
-.no-show-grid{
+.no-show-grid {
   grid-template-columns: 0;
   animation-name: grid-no-show-animation;
   animation-duration: 1s;
 }
 
-.show-grid{
+.show-grid {
   grid-template-columns: 1fr;
   animation-name: grid-show-animation;
   animation-duration: 1s;
 }
 
 @keyframes grid-show-animation {
-  0%{
+  0% {
     grid-template-columns: 0;
   }
 
-  50%{
+  50% {
     grid-template-columns: 0.5fr;
   }
 
-  100%{
+  100% {
     grid-template-columns: 1fr;
   }
 }
 
 @keyframes grid-no-show-animation {
-  0%{
+  0% {
     grid-template-columns: 1fr;
   }
 
-  50%{
+  50% {
     grid-template-columns: 0.5fr;
   }
 
-  100%{
+  100% {
     grid-template-columns: 0;
   }
 
 }
 
-.show{
+.show {
   display: inline;
   opacity: 1;
   animation-name: slow-show;
   animation-duration: 1s;
 }
 
-.no-show{
+.no-show {
   display: none;
   opacity: 0;
   animation-name: slow-disappear;
@@ -194,12 +194,12 @@
 }
 
 @keyframes slow-show {
-  0%{
+  0% {
     display: none;
     opacity: 0;
   }
 
-  50%{
+  50% {
     display: none;
     opacity: 0.5;
   }
@@ -210,13 +210,14 @@
   }
 
 }
+
 @keyframes slow-disappear {
-  0%{
+  0% {
     display: inline;
     opacity: 1;
   }
 
-  50%{
+  50% {
     display: none;
     opacity: 0.5;
   }
@@ -228,24 +229,24 @@
 
 }
 
-.show-border{
+.show-border {
   animation-name: border-show;
   animation-duration: 1s;
   border-radius: 0 20px 20px 0;
 }
 
-.no-show-border{
+.no-show-border {
   animation-name: border-disappear;
   animation-duration: 1s;
   border-radius: 0;
 }
 
 @keyframes border-show {
-  0%{
+  0% {
     border-radius: 0;
   }
 
-  50%{
+  50% {
     border-radius: 0 10px 10px 0;
   }
 
@@ -254,17 +255,18 @@
   }
 
 }
+
 @keyframes border-disappear {
-  0%{
+  0% {
     border-radius: 0 20px 20px 0;
   }
 
-  50%{
+  50% {
     border-radius: 0 10px 10px 0;
   }
 
   100% {
-    border-radius: 0 ;
+    border-radius: 0;
   }
 
 }

@@ -1,20 +1,3 @@
-import {HttpInterceptorFn} from "@angular/common/http";
-import {TokenService} from "./services/token.service";
-import {inject} from "@angular/core";
-
-// export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
-//   let tokenService = inject(TokenService);
-//   let authReq = req.clone();
-//   const token = tokenService.getToken();
-//   if (token != null) {
-//     authReq = req.clone({
-//       headers: req.headers.set('Authorization', token)
-//     })
-//   }
-//
-//   return next(authReq);
-// }
-
 import {
   HTTP_INTERCEPTORS,
   HttpErrorResponse,
@@ -23,13 +6,15 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpResponse
-} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+} from "@angular/common/http";
+import {TokenService} from "./services/token.service";
+import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, tap, throwError} from 'rxjs';
 import {catchError, filter, switchMap, take} from 'rxjs/operators';
 import {AuthService} from "./services/auth.service";
 import {Router} from "@angular/router";
 import {LoadingService} from "./services/loading.service";
+import {TokensDto} from "./dto/tokes.dto";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -87,10 +72,9 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse && error.status === 401) {
           return this.handle401Error(authReq, next);
         }
-        return throwError(error);
+        return throwError(() => error);
       }));
   }
-
 
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
@@ -102,10 +86,10 @@ export class AuthInterceptor implements HttpInterceptor {
         return this.authService.refreshToken(token).pipe(
           switchMap((token: any) => {
             this.isRefreshing = false;
-            this.tokenService.saveToken(token.access_token);
-            this.refreshTokenSubject.next(token.access_token);
+            this.tokenService.saveToken(token.accessToken);
+            this.refreshTokenSubject.next(token.accessToken);
 
-            return next.handle(AuthInterceptor.addTokenHeader(request, token.access_token));
+            return next.handle(AuthInterceptor.addTokenHeader(request, token.accessToken));
           }),
           catchError((err) => {
             this.isRefreshing = false;
@@ -113,7 +97,7 @@ export class AuthInterceptor implements HttpInterceptor {
             this.tokenService.signOut();
             this.authService.logInUserChanged.next(false)
             this.router.navigate(['/login']).then()
-            return throwError(err);
+            return throwError(() => err);
           })
         );
       }
@@ -126,7 +110,3 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 }
-
-export const authInterceptorProviders = [
-  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-];

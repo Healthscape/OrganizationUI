@@ -1,53 +1,59 @@
-<div class="sidebar-wrapper" [ngClass]="isCollapsed ? 'no-show-border' : 'show-border'">
-    <div class="nav-list">
-      <div class="sidebar-header card" [ngClass]="isCollapsed ? 'no-show-grid' : 'show-grid'" >
-        <app-logo class="sidebar-logo left-align"  [ngClass]="isCollapsed ? 'no-show' : 'show'" [animation]="false"></app-logo>
-          <span class="material-symbols-outlined menu-icon right-align" (click)="toggleMenu()">
+<div [ngClass]="isCollapsed ? 'no-show-border' : 'show-border'" class="sidebar-wrapper">
+  <div class="nav-list">
+    <div [ngClass]="isCollapsed ? 'no-show-grid' : 'show-grid'" class="sidebar-header card">
+      <app-logo [animation]="false" [ngClass]="isCollapsed ? 'no-show' : 'show'"
+                class="sidebar-logo left-align"></app-logo>
+      <span (click)="toggleMenu()" class="material-symbols-outlined menu-icon right-align">
 sort
 </span>
+    </div>
+    <div *ngIf="me.role == 'ROLE_ADMIN'" class="sidebar-main">
+      <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''" class="card card-hover-container">
+        <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
       </div>
-      <div class="sidebar-main" *ngIf="me.role == 'ROLE_ADMIN'">
-        <div class="card card-hover-container" (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''">
-          <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Dashboard</p></span>
-        </div>
-        <div class="card card-hover-container" (click)="select('users')" [ngClass]="selected == 'users' ? 'selected' : ''">
-          <span class=" material-symbols-outlined material-icons  right-align">group</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Users</p></span>
-        </div>
-        </div>
-      <div class="sidebar-main" *ngIf="me.role == 'ROLE_PATIENT'">
-        <div class="card card-hover-container" (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''">
-          <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Dashboard</p></span>
-        </div>
-        <div class="card card-hover-container" (click)="select('patients')" [ngClass]="selected == 'patients' ? 'selected' : ''">
-          <span class=" material-symbols-outlined material-icons  right-align">group</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Patients</p></span>
-        </div>
-        <div class="card card-hover-container" (click)="select('calendar_month')" [ngClass]="selected == 'calendar_month' ? 'selected' : ''">
-          <span class=" material-symbols-outlined right-align">calendar_month</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Scheduling</p></span>
-        </div>
-        <div class="card card-hover-container" (click)="select('signal_cellular_alt')" [ngClass]="selected == 'signal_cellular_alt' ? 'selected' : ''">
-          <span class=" material-symbols-outlined right-align">signal_cellular_alt</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Reports</p></span>
-        </div>
-        <div class="card card-hover-container" (click)="select('chat')" [ngClass]="selected == 'chat' ? 'selected' : ''">
-          <span class=" material-symbols-outlined right-align">chat</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Messages</p></span>
-        </div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="card card-hover-container" (click)="select('settings')" [ngClass]="selected == 'settings' ? 'selected' : ''">
-          <span class=" material-symbols-outlined right-align">settings</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Settings</p></span>
-        </div>
-        <div class="card card-hover-container" (click)="logout()" [ngClass]="selected == 'logout' ? 'selected' : ''">
-          <span class=" material-symbols-outlined right-align">logout</span>
-          <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
-        </div>
+      <div (click)="select('users')" [ngClass]="selected == 'users' ? 'selected' : ''"
+           class="card card-hover-container">
+        <span class=" material-symbols-outlined material-icons  right-align">group</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Users</p></span>
       </div>
     </div>
+    <div *ngIf="me.role == 'ROLE_PATIENT'" class="sidebar-main">
+      <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''" class="card card-hover-container">
+        <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
+      </div>
+      <div (click)="select('patients')" [ngClass]="selected == 'patients' ? 'selected' : ''"
+           class="card card-hover-container">
+        <span class=" material-symbols-outlined material-icons  right-align">group</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Patients</p></span>
+      </div>
+      <div (click)="select('calendar_month')" [ngClass]="selected == 'calendar_month' ? 'selected' : ''"
+           class="card card-hover-container">
+        <span class=" material-symbols-outlined right-align">calendar_month</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Scheduling</p></span>
+      </div>
+      <div (click)="select('signal_cellular_alt')" [ngClass]="selected == 'signal_cellular_alt' ? 'selected' : ''"
+           class="card card-hover-container">
+        <span class=" material-symbols-outlined right-align">signal_cellular_alt</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Reports</p></span>
+      </div>
+      <div (click)="select('chat')" [ngClass]="selected == 'chat' ? 'selected' : ''" class="card card-hover-container">
+        <span class=" material-symbols-outlined right-align">chat</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Messages</p></span>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div (click)="select('settings')" [ngClass]="selected == 'settings' ? 'selected' : ''"
+           class="card card-hover-container">
+        <span class=" material-symbols-outlined right-align">settings</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Settings</p></span>
+      </div>
+      <div (click)="logout()" [ngClass]="selected == 'logout' ? 'selected' : ''" class="card card-hover-container">
+        <span class=" material-symbols-outlined right-align">logout</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
+      </div>
+    </div>
+  </div>
 </div>
 

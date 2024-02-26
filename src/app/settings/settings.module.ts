@@ -14,4 +14,5 @@ import {AccountSettingsComponent} from "./components/account-settings/account-se
   ],
   declarations: [SettingsComponent]
 })
-export class SettingsModule {}
+export class SettingsModule {
+}

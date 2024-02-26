@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {Router} from "@angular/router";
 import {FhirPatientDto} from "../../dto/fhir.patient.dto";
@@ -12,7 +12,6 @@ import {UserService} from "../../../auth/services/user.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import {Enum} from "../../../utils/enums/enum";
 import {NgxMaskDirective} from "ngx-mask";
 import {FhirService} from "../../service/fhir.service";
 import {GenderEnum} from "../../../utils/enums/gender.enum";
@@ -20,7 +19,7 @@ import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
 
 @Component({
   selector: 'app-update-info',
-  host:{
+  host: {
     class: 'update-info-host-wrapper'
   },
   standalone: true,
@@ -49,12 +48,12 @@ export class UpdateInfoComponent {
 
   constructor(private router: Router, private userService: UserService, _fhirService: FhirService) {
     this.me = this.router.getCurrentNavigation()?.extras?.state?.['me'];
-    if(!this.me){
+    if (!this.me) {
       _fhirService.me().subscribe({
-        next: (user) =>{
+        next: (user) => {
           this.me = user;
         }
-    })
+      })
     }
     this.initializeForm();
   }
@@ -63,8 +62,8 @@ export class UpdateInfoComponent {
     fileInput.click()
   }
 
-  onChangePhoto(event: Event, avatarPhoto: HTMLDivElement){
-    const target = event.target  as HTMLInputElement;
+  onChangePhoto(event: Event, avatarPhoto: HTMLDivElement) {
+    const target = event.target as HTMLInputElement;
     const files = target?.files as FileList;
 
     if (files.length === 0)
@@ -88,29 +87,33 @@ export class UpdateInfoComponent {
 
   onSave() {
     this.userService.updateUserInfo(this.form.getRawValue()).subscribe({
-    next:(response) =>  {
-      console.log(response);
-      this.router.navigate(["home", "settings"], {state:{me:this.form.getRawValue()}}).then()
-    },
+      next: (response) => {
+        console.log(response);
+        this.router.navigate(["home", "settings"], {state: {me: this.form.getRawValue()}}).then()
+      },
       error: (err) => {
-      console.log(err)
-        this.router.navigate(["home", "settings"], {state:{me:this.form.getRawValue()}}).then()
+        console.log(err)
+        this.router.navigate(["home", "settings"], {state: {me: this.form.getRawValue()}}).then()
       }
-  })
+    })
   }
 
   onCancel() {
     this.initializeForm();
   }
 
+  public isFocused(element: HTMLInputElement) {
+    return document.activeElement == element
+  }
+
   private initializeForm() {
     this.nameCtrl = new FormControl<any>(this.me?.name, {validators: [Validators.required]});
     this.surnameCtrl = new FormControl<any>(this.me?.surname, {validators: [Validators.required]});
-    this.idCtrl =  new FormControl<any>({value: this.me?.identifier,disabled: true});
-    this.birthDateCtrl =  new FormControl<any>(this.me?.birthDate);
-    this.addressCtrl =  new FormControl<any>(this.me?.address);
-    this.genderCtrl =  new FormControl<any>(this.me?.gender);
-    this.maritalStatusCtrl =  new FormControl<any>(this.me?.maritalStatus);
+    this.idCtrl = new FormControl<any>({value: this.me?.identifier, disabled: true});
+    this.birthDateCtrl = new FormControl<any>(this.me?.birthDate);
+    this.addressCtrl = new FormControl<any>(this.me?.address);
+    this.genderCtrl = new FormControl<any>(this.me?.gender);
+    this.maritalStatusCtrl = new FormControl<any>(this.me?.maritalStatus);
     this.phoneCtrl = new FormControl<any>(this.me?.phone);
     this.photoCtrl = new FormControl<any>(this.me?.photo);
     this.emailCtrl = new FormControl<any>(this.me?.email);
@@ -126,10 +129,6 @@ export class UpdateInfoComponent {
       'photo': this.photoCtrl,
       'email': this.emailCtrl
     })
-  }
-
-  public isFocused(element: HTMLInputElement){
-    return document.activeElement == element
   }
 
 }

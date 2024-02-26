@@ -1,12 +1,12 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .update-info-host-wrapper{
+::ng-deep .update-info-host-wrapper {
   display: flex;
   overflow: auto;
   flex-direction: column;
 }
 
-.update-info-wrapper{
+.update-info-wrapper {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -16,12 +16,12 @@
   background-color: #fff;
 }
 
-.avatar-image{
+.avatar-image {
   width: 150px;
   height: 150px;
 }
 
-.avatar-image-overlay{
+.avatar-image-overlay {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,33 +32,33 @@
   border-radius: 50%;
   background-color: transparent;
 
-  *{
+  * {
     color: white;
     display: none;
   }
 }
 
-.avatar-image-overlay:hover{
+.avatar-image-overlay:hover {
   background-color: rgba(45, 45, 45, 0.47);
 
-  *{
+  * {
     display: block;
   }
 }
 
-.title{
+.title {
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
 
-.profile-info{
+.profile-info {
   display: grid;
   flex: 1;
   grid-template-rows: repeat(4, 1fr);
@@ -67,28 +67,28 @@
   column-gap: 40px;
 }
 
-.info-cell{
+.info-cell {
   display: flex;
   align-items: center;
   gap: 10px;
 
-  p span{
+  p span {
     font-weight: 400;
     color: $dark-gray;
   }
 
 
-  p{
+  p {
     font-weight: bolder;
     color: $dark-dark-blue;
   }
 
-  mat-form-field{
+  mat-form-field {
     flex: 1;
   }
 }
 
-.actions{
+.actions {
   display: flex;
   flex: 1;
   justify-content: flex-end;
@@ -98,7 +98,7 @@
 }
 
 @media screen and ( max-width: 1200px ) {
-  .profile-info{
+  .profile-info {
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(1, 1fr);
   }

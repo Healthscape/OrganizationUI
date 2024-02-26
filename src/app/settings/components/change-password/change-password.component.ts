@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -14,7 +14,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-change-password',
-  host:{
+  host: {
     class: 'change-password-host-wrapper'
   },
   standalone: true,
@@ -46,16 +46,16 @@ export class ChangePasswordComponent {
   onSaveEmail() {
 
     this.userService.changeEmail(this.emailCtrl.value).subscribe({
-      next:(response) =>  {
+      next: (response) => {
         console.log(response);
         this.authService.updateTokens(response);
         this.snackBar.open("Your have successfully changed your email!");
         this.me.email = this.emailCtrl.value
       },
       error: (err) => {
-        if(err.error.status == 400){
+        if (err.error.status == 400) {
           this.snackBar.open(err.error.message);
-        }else{
+        } else {
           console.log(err)
           this.snackBar.open("Something went wrong, please try again!");
         }
@@ -70,14 +70,14 @@ export class ChangePasswordComponent {
   onSavePassword() {
 
     this.userService.changePassword(this.passwordForm.value).subscribe({
-      next:(response) =>  {
+      next: (response) => {
         this.snackBar.open("Your have successfully changed your password!");
         this.initializeForm();
       },
       error: (err) => {
-        if(err.error.status == 400){
+        if (err.error.status == 400) {
           this.snackBar.open(err.error.message);
-        }else{
+        } else {
           console.log(err)
           this.snackBar.open("Something went wrong, please try again!");
         }

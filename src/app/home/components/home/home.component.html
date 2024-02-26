@@ -1,4 +1,4 @@
-<div class="home-container" [ngStyle]="getStyles()">
+<div [ngStyle]="getStyles()" class="home-container">
   <div class="sidebar">
     <app-sidebar (toggleMenuEvent)="toggleMenu($event)"></app-sidebar>
   </div>

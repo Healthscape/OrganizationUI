@@ -9,14 +9,14 @@
   gap: 20px;
 }
 
-.search-container{
+.search-container {
   flex: 1;
 }
 
 .date-container {
   display: flex;
 
-  .date-outline__leading{
+  .date-outline__leading {
     width: 10px;
     height: auto;
     border-width: 1px;
@@ -33,7 +33,7 @@
     border-color: lightgray;
     background-color: #fff;
 
-    img{
+    img {
       width: 24px;
       height: 24px;
       margin-right: 10px;
@@ -48,7 +48,7 @@
     }
   }
 
-  .date-outline__trailing{
+  .date-outline__trailing {
     width: 10px;
     border-width: 1px;
     border-style: solid solid solid none;
@@ -57,7 +57,7 @@
   }
 }
 
-.notifications-container{
+.notifications-container {
   position: relative;
   display: flex;
   flex: 1;

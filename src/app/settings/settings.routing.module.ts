@@ -12,26 +12,27 @@ const routes: Routes = [
     },
     component: SettingsComponent
   },
-    {
-      path: 'profile',
-      data:{
-        breadcrumb: 'Information'
-      },
-      component: UpdateInfoComponent
+  {
+    path: 'profile',
+    data: {
+      breadcrumb: 'Information'
     },
-    {
-      path: 'password',
-      data:{
-        breadcrumb: 'Email & Password'
-      },
-      component: ChangePasswordComponent
+    component: UpdateInfoComponent
+  },
+  {
+    path: 'password',
+    data: {
+      breadcrumb: 'Email & Password'
     },
+    component: ChangePasswordComponent
+  },
 ]
 
 @NgModule({
-  imports:[
+  imports: [
     RouterModule.forChild(routes)
   ],
-  exports:[RouterModule]
+  exports: [RouterModule]
 })
-export class SettingsRoutingModule{}
+export class SettingsRoutingModule {
+}

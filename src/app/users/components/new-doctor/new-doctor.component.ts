@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -14,7 +14,6 @@ import {SpecialtyDto} from "../../dtos/specialty.dto";
 import {SpecialtyService} from "../../services/specialty.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ResponseJson} from "../../../utils/dto/response-json.dto";
-import {UserService} from "../../../auth/services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AdminService} from "../../../utils/services/admin.service";
 import {UserDto} from "../../../auth/dto/user.dto";
@@ -24,7 +23,7 @@ import {UserDto} from "../../../auth/dto/user.dto";
   standalone: true,
   imports: [CommonModule, MatDialogActions, MatButtonModule, MatDialogClose, MatDialogContent, MatDialogTitle, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule, MatTooltipModule, ReactiveFormsModule, MatSelectModule],
   templateUrl: './new-doctor.component.html',
-  styleUrls: ['./new-doctor.component.scss','../../../auth/components/login-register/login-register.component.scss']
+  styleUrls: ['./new-doctor.component.scss', '../../../auth/components/login-register/login-register.component.scss']
 })
 export class NewDoctorComponent {
   nameCtrl: FormControl = new FormControl<any>('');

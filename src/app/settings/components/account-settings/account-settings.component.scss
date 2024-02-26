@@ -1,12 +1,12 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .account-settings-host-wrapper{
+::ng-deep .account-settings-host-wrapper {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.action{
+.action {
   color: $dark-gray;
   display: flex;
   align-self: end;
@@ -16,21 +16,21 @@
   transition: all 0.5s ease-in-out;
   border: 2px solid $accent-light-blue;
   border-radius: 10px;
-  background-color: rgba(200,219,244,0.2);
+  background-color: rgba(200, 219, 244, 0.2);
   gap: 10px;
 
-  p{
+  p {
     margin: 0;
   }
 }
 
-.action:hover{
+.action:hover {
   font-weight: 500;
   width: 99%;
   cursor: pointer;
-  background-color: rgba(200,219,244,1);
+  background-color: rgba(200, 219, 244, 1);
 
-  span{
+  span {
     font-variation-settings: 'wght' 700;
   }
 }

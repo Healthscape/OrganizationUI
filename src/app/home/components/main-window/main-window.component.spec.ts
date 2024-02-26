@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MainWindowComponent } from './main-window.component';
+import {MainWindowComponent} from './main-window.component';
 
 describe('MainWindowComponent', () => {
   let component: MainWindowComponent;
@@ -10,8 +10,8 @@ describe('MainWindowComponent', () => {
     await TestBed.configureTestingModule({
       imports: [MainWindowComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(MainWindowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

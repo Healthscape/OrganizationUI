@@ -9,14 +9,14 @@ import {UserDto} from "../../../auth/dto/user.dto";
 @Component({
   selector: 'app-toolbar',
   host: {
-    class:'toolbar-host-wrapper'
+    class: 'toolbar-host-wrapper'
   },
   standalone: true,
   imports: [CommonModule, MatInputModule, MatCardModule, NgOptimizedImage, MatIconModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent implements OnDestroy{
+export class ToolbarComponent implements OnDestroy {
   public minute: string = '';
   public hour: any;
   public currentDate: Date = new Date();
@@ -28,12 +28,12 @@ export class ToolbarComponent implements OnDestroy{
     this.currentDate = new Date();
     this.updateDate();
     this.timer = setInterval(() => {
-        this.currentDate = new Date();
-        this.updateDate();
-        this.changeDetectorRef.detectChanges();
-      }, 1000);
+      this.currentDate = new Date();
+      this.updateDate();
+      this.changeDetectorRef.detectChanges();
+    }, 1000);
     userService.me().subscribe({
-      next: (user) =>{
+      next: (user) => {
         this.me = user;
       }
     })
@@ -44,7 +44,7 @@ export class ToolbarComponent implements OnDestroy{
   }
 
 
-  private updateDate(){
+  private updateDate() {
     const hours = this.currentDate.getHours();
     this.hour = hours % 12;
     this.hour = this.hour ? this.hour : 12;

@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FhirPatientDto} from "../../dto/fhir.patient.dto";
 
 @Component({
   selector: 'app-account-settings',
-  host:{
+  host: {
     class: 'account-settings-host-wrapper'
   },
   standalone: true,

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-patients',
-  host:{
+  host: {
     class: 'patients-host-wrapper'
   },
   standalone: true,

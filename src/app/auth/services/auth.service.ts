@@ -14,8 +14,8 @@ export class AuthService {
 
   _http = inject(HttpClient)
   public errorResponse: Subject<any> = new Subject<any>();
-  private REQUEST_MAPPING: string = "/auth";
   public logInUserChanged: Subject<any> = new Subject<any>();
+  private REQUEST_MAPPING: string = "/auth";
 
   constructor(private router: Router, private _tokenService: TokenService) {
   }
@@ -28,7 +28,9 @@ export class AuthService {
           this.errorResponse.next(null);
           this.updateTokens(response)
           this.logInUserChanged.next(response);
-          this.router.navigate(['home']).then().catch(error => {console.log(error)});
+          this.router.navigate(['home']).then().catch(error => {
+            console.log(error)
+          });
         },
         error: (error: HttpErrorResponse) => {
           if (error.error.status == 400) {
@@ -39,7 +41,7 @@ export class AuthService {
       })
   }
 
-  updateTokens(tokens: TokensDto){
+  updateTokens(tokens: TokensDto) {
     this._tokenService.saveToken(tokens.accessToken);
     this._tokenService.saveRefreshToken(tokens.refreshToken)
   }
@@ -52,7 +54,7 @@ export class AuthService {
     return this._http.get(environment.apiUrl + '/auth/refresh', header);
   }
 
-  logout(){
+  logout() {
     this._tokenService.signOut();
     this.router.navigate(['/']).then();
   }

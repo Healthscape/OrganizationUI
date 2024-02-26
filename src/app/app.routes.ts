@@ -22,15 +22,15 @@ export const routes: Routes = [
     canActivate: [AccessGuard],
     data: {
       requiresLogin: true,
-      roles: ['ROLE_ADMIN','ROLE_PATIENT','ROLE_PRACTITIONER']
+      roles: ['ROLE_ADMIN', 'ROLE_PATIENT', 'ROLE_PRACTITIONER']
     },
-    children:[
+    children: [
       {
         path: 'patients',
         data: {
           breadcrumb: 'Patients'
         },
-        component:PatientsComponent
+        component: PatientsComponent
       },
       {
         path: 'users',

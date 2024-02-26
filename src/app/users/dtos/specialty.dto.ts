@@ -1,4 +1,4 @@
-export class SpecialtyDto{
+export class SpecialtyDto {
   code: string;
   name: string;
 

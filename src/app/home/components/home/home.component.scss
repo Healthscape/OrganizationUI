@@ -1,11 +1,11 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .home-host-wrapper{
+::ng-deep .home-host-wrapper {
   flex: 1;
   background-color: $background-light-blue;
 }
 
-.sidebar{
+.sidebar {
   grid-area: sidebar;
 }
 
@@ -18,7 +18,7 @@
   margin: 20px;
 }
 
-.home-container{
+.home-container {
   display: grid;
   grid-template-areas: 'sidebar toolbar toolbar toolbar toolbar toolbar'
     'sidebar main-window main-window main-window main-window main-window';

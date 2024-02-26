@@ -1,20 +1,20 @@
-<div class="update-info-wrapper" [formGroup]="form">
+<div [formGroup]="form" class="update-info-wrapper">
   <div class="title">
     <mat-form-field appearance="fill" class="update-info">
-      <input matInput [formControl]="nameCtrl">
+      <input [formControl]="nameCtrl" matInput>
     </mat-form-field>
     <mat-form-field appearance="fill" class="update-info">
-      <input matInput [formControl]="surnameCtrl">
+      <input [formControl]="surnameCtrl" matInput>
     </mat-form-field>
   </div>
   <div class="content">
     <div class="profile-image">
-      <input type="file" style="display: none;" #fileInput (change)="onChangePhoto($event, avatarPhoto)">
-      <div mat-card-avatar class="avatar-image"
-           [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}" #avatarPhoto>
+      <input #fileInput (change)="onChangePhoto($event, avatarPhoto)" style="display: none;" type="file">
+      <div #avatarPhoto [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}"
+           class="avatar-image" mat-card-avatar>
       </div>
       <div class="avatar-image-overlay">
-        <button mat-icon-button [matTooltip]="'Change photo'" (click)="onChangePhotoButton(fileInput)">
+        <button (click)="onChangePhotoButton(fileInput)" [matTooltip]="'Change photo'" mat-icon-button>
           <mat-icon>edit</mat-icon>
         </button>
       </div>
@@ -24,17 +24,17 @@
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Identifier</mat-label>
           <div class="material-symbols-outlined" matPrefix>fingerprint</div>
-          <input matInput [formControl]="idCtrl">
+          <input [formControl]="idCtrl" matInput>
         </mat-form-field>
       </div>
       <div class="info-cell">
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Address</mat-label>
           <div class="material-symbols-outlined" matPrefix>home</div>
-          <input matInput [showMaskTyped]="false" [dropSpecialCharacters]="false"
+          <input #addressInput [dropSpecialCharacters]="false" [formControl]="addressCtrl"
+                 [showMaskTyped]="false"
                  [specialCharacters]="[',', ' ']"
-                 shownMaskExpression="'A* 0*, A*, 0*, A*'"
-                 [formControl]="addressCtrl" mask="A* 0*, A*, 0*, A*" #addressInput>
+                 mask="A* 0*, A*, 0*, A*" matInput shownMaskExpression="'A* 0*, A*, 0*, A*'">
           <mat-hint *ngIf="isFocused(addressInput)">Street 00, City, Postal Code, Country</mat-hint>
         </mat-form-field>
       </div>
@@ -42,8 +42,8 @@
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Date of birth</mat-label>
           <div class="material-symbols-outlined" matPrefix>person</div>
-          <input matInput [matDatepicker]="picker" [formControl]="birthDateCtrl">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <input [formControl]="birthDateCtrl" [matDatepicker]="picker" matInput>
+          <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
@@ -51,7 +51,7 @@
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Phone</mat-label>
           <div class="material-symbols-outlined" matPrefix>call</div>
-          <input matInput [formControl]="phoneCtrl">
+          <input [formControl]="phoneCtrl" matInput>
         </mat-form-field>
       </div>
       <div class="info-cell">
@@ -77,8 +77,8 @@
     </div>
   </div>
   <div class="actions">
-    <button mat-flat-button color="warn" (click)="onCancel()">Cancel</button>
-    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+    <button (click)="onCancel()" color="warn" mat-flat-button>Cancel</button>
+    <button (click)="onSave()" color="primary" mat-flat-button>Save</button>
   </div>
 </div>
 

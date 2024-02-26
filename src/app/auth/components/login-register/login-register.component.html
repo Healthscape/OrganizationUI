@@ -13,7 +13,8 @@
         <mat-icon matPrefix>
           <span class="material-symbols-outlined">lock</span>
         </mat-icon>
-        <input [formControl]="loginPasswordCtrl" matInput autocomplete="current-password" [type]="loginPasswordVisible ? 'text' : 'password'" placeholder="Password">
+        <input [formControl]="loginPasswordCtrl" [type]="loginPasswordVisible ? 'text' : 'password'" autocomplete="current-password"
+               matInput placeholder="Password">
         <div class="form-field-icons" matSuffix>
           <button (click)="loginPasswordVisible = !loginPasswordVisible" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="!loginPasswordVisible"

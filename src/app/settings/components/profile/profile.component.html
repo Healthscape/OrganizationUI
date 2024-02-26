@@ -3,7 +3,8 @@
 </div>
 <div class="content">
   <div class="profile-image">
-  <div mat-card-avatar class="avatar-image" [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}">
+    <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}" class="avatar-image"
+         mat-card-avatar>
     </div>
   </div>
   <div class="profile-info">

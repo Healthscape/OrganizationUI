@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {UserService} from "../../../auth/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
@@ -8,7 +8,7 @@ import {MatTableModule} from "@angular/material/table";
 
 @Component({
   selector: 'app-users',
-  host:{
+  host: {
     class: 'users-host-wrapper'
   },
   standalone: true,

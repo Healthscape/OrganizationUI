@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {LogoComponent} from "../../../utils/logo/logo.component";
-import { MatSidenavModule} from "@angular/material/sidenav";
+import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
@@ -16,7 +16,7 @@ import {AuthService} from "../../../auth/services/auth.service";
 @Component({
   selector: 'app-sidebar',
   host: {
-    class:'sidebar-host-wrapper'
+    class: 'sidebar-host-wrapper'
   },
   standalone: true,
   imports: [CommonModule, LogoComponent, MatSidenavModule, MatButtonModule, MatIconModule, MatListModule, MainWindowComponent, ToolbarComponent],
@@ -24,30 +24,31 @@ import {AuthService} from "../../../auth/services/auth.service";
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  @Output('toggleMenuEvent') toggleMenuEvent: EventEmitter<boolean>= new EventEmitter();
-  isMobile= true;
+  @Output('toggleMenuEvent') toggleMenuEvent: EventEmitter<boolean> = new EventEmitter();
+  isMobile = true;
   isCollapsed = false;
   selected = 'dashboard';
   me: UserDto = new UserDto();
 
   constructor(private authService: AuthService, private userService: UserService, private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
     userService.me().subscribe({
-      next: (user) =>{
+      next: (user) => {
         this.me = user;
       }
     })
     this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd){
+      if (event instanceof NavigationEnd) {
         let currentlySelected = this.route.snapshot.children?.at(0)?.routeConfig?.path;
-        if(currentlySelected){
+        if (currentlySelected) {
           this.selected = currentlySelected
-        }else{
+        } else {
           this.selected = 'home'
         }
       }
     });
 
   }
+
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       this.isMobile = screenSize.matches;
@@ -63,7 +64,7 @@ export class SidebarComponent {
     this.selected = cardName;
     if (cardName != 'home') {
       this.router.navigate(['home', cardName]).then();
-    }else{
+    } else {
       this.router.navigate(['home']).then();
     }
   }

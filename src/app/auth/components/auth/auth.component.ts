@@ -9,7 +9,7 @@ import {LoginRegisterComponent} from "../login-register/login-register.component
 
 @Component({
   selector: 'app-auth',
-  host: {class:'auth-host-wrapper'},
+  host: {class: 'auth-host-wrapper'},
   standalone: true,
   imports: [CommonModule, MatCardModule, LogoComponent, MatInputModule, MatIconModule, MatButtonModule, NgOptimizedImage, LoginRegisterComponent],
   templateUrl: './auth.component.html',

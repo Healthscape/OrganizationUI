@@ -1,9 +1,9 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .patients-host-wrapper{
+::ng-deep .patients-host-wrapper {
 }
 
-.patient-card{
+.patient-card {
   display: flex;
   border: 1px solid lightgray;
   border-radius: 15px;

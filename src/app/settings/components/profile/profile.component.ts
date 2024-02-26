@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -9,7 +9,7 @@ import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
 
 @Component({
   selector: 'app-profile',
-  host:{
+  host: {
     class: 'profile-host-wrapper'
   },
   standalone: true,
@@ -17,7 +17,7 @@ import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
-export class ProfileComponent implements OnChanges{
+export class ProfileComponent implements OnChanges {
   @Input() me?: FhirPatientDto;
   genderEnum: GenderEnum;
   maritalStatusEnum: MaritalStatusEnum;
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnChanges{
     this.maritalStatusEnum = new MaritalStatusEnum();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.gender = this.genderEnum.getViewValue(this.me?.gender)
     this.maritalStatus = this.maritalStatusEnum.getViewValue(this.me?.maritalStatus)
   }

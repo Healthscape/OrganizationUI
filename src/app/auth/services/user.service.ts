@@ -29,15 +29,15 @@ export class UserService {
     return this._http.get<UserDto[]>(environment.apiUrl + this.REQUEST_MAPPING);
   }
 
-  changeEmail(email: string){
+  changeEmail(email: string) {
     return this._http.put<TokensDto>(environment.apiUrl + this.REQUEST_MAPPING + '/email', email);
   }
 
-  changePassword(passwordDto: PasswordDto){
+  changePassword(passwordDto: PasswordDto) {
     return this._http.put(environment.apiUrl + this.REQUEST_MAPPING + '/password', passwordDto);
   }
 
-  updateUserInfo(fhirPatientDto: FhirPatientDto){
+  updateUserInfo(fhirPatientDto: FhirPatientDto) {
     return this._http.put(environment.apiUrl + this.REQUEST_MAPPING, fhirPatientDto);
   }
 }

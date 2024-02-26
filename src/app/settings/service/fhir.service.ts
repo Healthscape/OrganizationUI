@@ -4,13 +4,13 @@ import {environment} from "../../../environment";
 import {FhirPatientDto} from "../dto/fhir.patient.dto";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class FhirService{
-    _http = inject(HttpClient)
-    private REQUEST_MAPPING: string = "/fhir";
+export class FhirService {
+  _http = inject(HttpClient)
+  private REQUEST_MAPPING: string = "/fhir";
 
-    me() {
-        return this._http.get<FhirPatientDto>(environment.apiUrl + this.REQUEST_MAPPING+ "/me");
-    }
+  me() {
+    return this._http.get<FhirPatientDto>(environment.apiUrl + this.REQUEST_MAPPING + "/me");
+  }
 }

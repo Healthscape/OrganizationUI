@@ -229,12 +229,13 @@ $warn-palette: map.get($color-config, 'warn');
   vertical-align: middle;
   display: inline;
 }
+
 @font-face {
   font-family: Roboto;
   src: url('/assets/Roboto-Regular.ttf');
 }
 
-button[color='blue-accent'].mat-mdc-unelevated-button:not( :disabled ){
+button[color='blue-accent'].mat-mdc-unelevated-button:not( :disabled ) {
   color: #fff;
   background-color: #103151;
 }

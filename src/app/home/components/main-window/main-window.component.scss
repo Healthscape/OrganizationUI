@@ -1,6 +1,6 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .main-window-host-wrapper{
+::ng-deep .main-window-host-wrapper {
   display: grid;
   width: 100%;
   height: 100%;
@@ -9,13 +9,13 @@
   grid-template-areas: 'breadcrumbs' 'main-window-router';
 }
 
-.main-window-router{
+.main-window-router {
   height: 0;
   grid-row: 1;
 }
 
 
-.breadcrumbs{
+.breadcrumbs {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -23,17 +23,17 @@
   grid-area: breadcrumbs;
   grid-row: 1;
 
-  span{
+  span {
     font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48 !important;
     color: $dark-dark-blue;
   }
 }
 
-p{
+p {
   margin: 0;
 }
 
-.navigation-label{
+.navigation-label {
   font-family: sans-serif;
   font-weight: bolder;
   display: flex;
@@ -41,20 +41,20 @@ p{
   margin: 0;
 }
 
-.navigation-label:hover{
+.navigation-label:hover {
   cursor: pointer;
 }
 
-.home-icon:hover{
+.home-icon:hover {
   cursor: pointer;
 }
 
-.action-button{
+.action-button {
   text-align: end;
   flex: 1;
   margin-right: 10px;
 
-  button{
+  button {
     background-color: $accent-light-blue;
   }
 }

@@ -1,11 +1,11 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .users-host-wrapper{
+::ng-deep .users-host-wrapper {
   margin: 10px;
   gap: 10px;
 }
 
-.user-card{
+.user-card {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -20,42 +20,42 @@
   height: 40px;
 }
 
-.user-info{
+.user-info {
   display: flex;
   flex: 1;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
 
-  .name{
+  .name {
     grid-column: 2;
   }
 
-  .email{
+  .email {
     grid-column: 3;
   }
 
-  .role{
+  .role {
     grid-column: 4;
   }
 
-  .date-created{
+  .date-created {
     grid-column: 5;
   }
 }
 
-.table-container{
+.table-container {
   display: flex;
   padding: 20px 10px 20px 55px;
   border-radius: 40px;
-  background-color: rgb(229,239,251);
+  background-color: rgb(229, 239, 251);
 }
 
-.table-label{
+.table-label {
   font-weight: 500;
 }
 
-.table-header{
+.table-header {
   grid-area: table-header;
 }
 
