@@ -11,6 +11,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {AuthService} from "../../../auth/services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {TokenService} from "../../../auth/services/token.service";
 
 @Component({
   selector: 'app-change-password',
@@ -23,7 +24,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrl: './change-password.component.scss'
 })
 export class ChangePasswordComponent {
-  me: UserDto = new UserDto();
+  email?: string;
   emailCtrl: FormControl = new FormControl<any>('');
   oldPasswordCtrl: FormControl = new FormControl<any>('');
   newPasswordCtrl: FormControl = new FormControl<any>('');
@@ -33,13 +34,11 @@ export class ChangePasswordComponent {
   confirmPasswordVisible: boolean = false;
   passwordForm: FormGroup = new FormGroup<any>({});
 
-  constructor(private userService: UserService, private authService: AuthService, private snackBar: MatSnackBar) {
-    this.userService.me().subscribe((response) => {
-      this.me = response;
-      this.emailCtrl = new FormControl<any>(this.me.email);
+  constructor(_tokenService: TokenService, private userService: UserService, private authService: AuthService, private snackBar: MatSnackBar) {
+      this.email = _tokenService.getSubjectFromToken();
+      this.emailCtrl = new FormControl<any>(this.email);
 
       this.initializeForm();
-    })
 
   }
 
@@ -50,7 +49,7 @@ export class ChangePasswordComponent {
         console.log(response);
         this.authService.updateTokens(response);
         this.snackBar.open("Your have successfully changed your email!");
-        this.me.email = this.emailCtrl.value
+        this.email = this.emailCtrl.value
       },
       error: (err) => {
         if (err.error.status == 400) {
@@ -64,7 +63,7 @@ export class ChangePasswordComponent {
   }
 
   onCancelEmail() {
-    this.emailCtrl = new FormControl<any>(this.me.email);
+    this.emailCtrl = new FormControl<any>(this.email);
   }
 
   onSavePassword() {

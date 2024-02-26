@@ -1,7 +1,7 @@
 <div class="breadcrumbs">
   <span (click)="navigate('home')" class="material-symbols-outlined home-icon">home</span>
   <div (click)="navigate(item.url)" *ngFor="let item of menuItems" class="navigation-label">
-    <span class="material-symbols-outlined">chevron_right</span>
+    <span class="material-symbols-outlined" *ngIf="item.label != ''">chevron_right</span>
     <span>{{item.label}}</span>
   </div>
   <span *ngIf="menuItems.length == 0" class="navigation-label">Home</span>

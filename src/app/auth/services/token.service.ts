@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 const TOKEN_KEY = 'access_token';
 const REFRESH_TOKEN_KEY = 'refresh_token';
@@ -8,7 +9,25 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class TokenService {
+  private _helper = new JwtHelperService();
+
   constructor() {
+  }
+
+  getSubjectFromToken(): string {
+    return this._helper.decodeToken(sessionStorage.getItem(TOKEN_KEY)!)['sub'];
+  }
+
+  isAdmin(): boolean {
+    return this._helper.decodeToken(sessionStorage.getItem(TOKEN_KEY)!)['roles'] == 'ROLE_ADMIN';
+  }
+
+  getRoleFromToken(): string {
+    return this._helper.decodeToken(sessionStorage.getItem(TOKEN_KEY)!)['roles'];
+  }
+
+  isTokenExpired() {
+    return this._helper.isTokenExpired(sessionStorage.getItem(TOKEN_KEY)!);
   }
 
   signOut(): void {

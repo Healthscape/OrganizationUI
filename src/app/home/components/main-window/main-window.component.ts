@@ -35,6 +35,7 @@ export class MainWindowComponent {
 
   ngOnInit(): void {
     this.menuItems = this.createBreadcrumbs(this.activatedRoute.root)
+    console.log(this.menuItems)
     this.subscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -62,7 +63,11 @@ export class MainWindowComponent {
   onNewDoctor() {
     const dialogRef = this.dialog.open(NewDoctorComponent);
 
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe({
+      next:(response) =>{
+        console.log(response)
+      }
+    });
   }
 
   private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: any = []): any {

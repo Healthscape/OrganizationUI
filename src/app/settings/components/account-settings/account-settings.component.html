@@ -1,4 +1,4 @@
-<div (click)="onUpdateInfo()" class="action">
+<div (click)="onUpdateInfo()" class="action" *ngIf="!isAdmin">
   <span class="material-symbols-outlined">chevron_right</span>
   <p>Update information</p>
 </div>

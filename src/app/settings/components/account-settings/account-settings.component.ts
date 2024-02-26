@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FhirPatientDto} from "../../dto/fhir.patient.dto";
+import {TokenService} from "../../../auth/services/token.service";
 
 @Component({
   selector: 'app-account-settings',
@@ -15,8 +16,10 @@ import {FhirPatientDto} from "../../dto/fhir.patient.dto";
 })
 export class AccountSettingsComponent {
   @Input() me?: FhirPatientDto;
+  isAdmin: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(_tokenService: TokenService, private router: Router, private route: ActivatedRoute) {
+    this.isAdmin = _tokenService.isAdmin();
   }
 
   onUpdateInfo() {

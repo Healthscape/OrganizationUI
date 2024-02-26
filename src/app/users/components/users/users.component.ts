@@ -18,7 +18,7 @@ import {MatTableModule} from "@angular/material/table";
 })
 export class UsersComponent {
   users: UserDto[] = []
-  displayedColumns: string[] = ['image', 'name', 'email', 'role', 'date-created'];
+  displayedColumns: string[] = ['role', 'name', 'email', 'date-created'];
 
   constructor(private userService: UserService) {
     userService.getUsers().subscribe({

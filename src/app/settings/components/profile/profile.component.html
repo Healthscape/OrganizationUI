@@ -1,13 +1,19 @@
 <div class="title">
-  <h1>{{me?.name}} {{me?.surname}}</h1>
+  <h1 *ngIf="!isAdmin">{{me?.name}} {{me?.surname}}</h1>
+  <h1 *ngIf="isAdmin">Admin Profile</h1>
 </div>
 <div class="content">
-  <div class="profile-image">
+  <div class="profile-image" *ngIf="!isAdmin">
     <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}" class="avatar-image"
          mat-card-avatar>
     </div>
   </div>
-  <div class="profile-info">
+  <div class="profile-image" *ngIf="isAdmin">
+    <div [ngStyle]="{'background-image': 'url(https://icons.veryicon.com/png/o/miscellaneous/yuanql/icon-admin.png)'}" class="avatar-image"
+         mat-card-avatar>
+    </div>
+  </div>
+  <div class="profile-info" *ngIf="!isAdmin">
     <div class="info-cell">
       <div class="material-symbols-outlined">fingerprint</div>
       <p><span>Identifier:</span> {{me?.identifier}}</p>
@@ -35,6 +41,12 @@
     <div class="info-cell">
       <div class="material-symbols-outlined">loyalty</div>
       <p><span>Marital status:</span> {{maritalStatus}}</p>
+    </div>
+  </div>
+  <div class="profile-info" *ngIf="isAdmin">
+    <div class="info-cell">
+      <div class="material-symbols-outlined">alternate_email</div>
+      <p><span>Email:</span> {{adminEmail}}</p>
     </div>
   </div>
 </div>

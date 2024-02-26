@@ -19,7 +19,6 @@ export class SettingsComponent {
     _fhirService.me().subscribe({
       next: (user) => {
         this.me = user;
-        console.log(user)
       }
     })
   }

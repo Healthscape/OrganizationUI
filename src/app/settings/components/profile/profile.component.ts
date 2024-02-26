@@ -6,6 +6,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {FhirPatientDto} from "../../dto/fhir.patient.dto";
 import {GenderEnum} from "../../../utils/enums/gender.enum";
 import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
+import {TokenService} from "../../../auth/services/token.service";
 
 @Component({
   selector: 'app-profile',
@@ -23,10 +24,20 @@ export class ProfileComponent implements OnChanges {
   maritalStatusEnum: MaritalStatusEnum;
   gender?: string = 'UNKNOWN';
   maritalStatus?: string = 'NULL';
+  adminEmail?: string;
+  isAdmin: boolean = false;
 
-  constructor() {
+  constructor(_tokenService: TokenService) {
     this.genderEnum = new GenderEnum();
     this.maritalStatusEnum = new MaritalStatusEnum();
+
+    if(_tokenService.isAdmin()){
+      this.adminEmail = _tokenService.getSubjectFromToken();
+      this.isAdmin = true;
+    }else{
+      this.adminEmail = undefined;
+      this.isAdmin = false;
+    }
   }
 
   ngOnChanges() {

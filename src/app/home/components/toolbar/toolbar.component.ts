@@ -21,9 +21,9 @@ export class ToolbarComponent implements OnDestroy {
   public hour: any;
   public currentDate: Date = new Date();
   me: UserDto = new UserDto();
-  timer: number;
+  timer: any;
 
-  constructor(private userService: UserService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(_userService: UserService, private changeDetectorRef: ChangeDetectorRef) {
     this.changeDetectorRef.detach();
     this.currentDate = new Date();
     this.updateDate();
@@ -32,7 +32,7 @@ export class ToolbarComponent implements OnDestroy {
       this.updateDate();
       this.changeDetectorRef.detectChanges();
     }, 1000);
-    userService.me().subscribe({
+    _userService.me().subscribe({
       next: (user) => {
         this.me = user;
       }

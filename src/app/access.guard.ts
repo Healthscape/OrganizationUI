@@ -3,15 +3,14 @@ import {ActivatedRouteSnapshot, CanActivateFn, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {AuthService} from "./auth/services/auth.service";
 import {UserService} from "./auth/services/user.service";
-import {JwtHelperService} from "@auth0/angular-jwt";
+import {TokenService} from "./auth/services/token.service";
 
 @Injectable()
 export class PermissionsService implements OnDestroy {
 
   subs: Subscription[] = []
-  private _helper = new JwtHelperService();
 
-  constructor(private router: Router, private _authService: AuthService, private _userService: UserService) {
+  constructor(private tokenService: TokenService, private router: Router, private _authService: AuthService, private _userService: UserService) {
   }
 
   ngOnDestroy() {
@@ -38,7 +37,7 @@ export class PermissionsService implements OnDestroy {
     if (!isTokenAvailable) {
       retValue = false;
     } else {
-      if (this._helper.isTokenExpired(sessionStorage.getItem('access_token')!)) {
+      if (this.tokenService.isTokenExpired()) {
         this.logOutUser();
         retValue = false;
       } else {
@@ -54,7 +53,7 @@ export class PermissionsService implements OnDestroy {
   }
 
   private isRequiredRole(roles: Array<string>) {
-    return roles.includes(this._helper.decodeToken(sessionStorage.getItem('access_token')!)['roles']);
+    return roles.includes(this.tokenService.getRoleFromToken());
   }
 }
 

@@ -1,10 +1,14 @@
 <table [dataSource]="users" class="mat-elevation-z8" mat-table>
 
-  <!-- Image Column -->
-  <ng-container matColumnDef="image">
-    <th *matHeaderCellDef mat-header-cell></th>
+  <!-- Role Column -->
+  <ng-container matColumnDef="role">
+    <th *matHeaderCellDef mat-header-cell> Role</th>
     <td *matCellDef="let user" mat-cell>
-      <div [ngStyle]="{'background-image': 'url( ' + user.image + ')'}" class="avatar-image" mat-card-avatar></div>
+      <span *ngIf="user.role == 'ROLE_PRACTITIONER'" class="material-symbols-outlined role"
+            matTooltip="Practitioner">stethoscope</span>
+      <span *ngIf="user.role == 'ROLE_PATIENT'" class="material-symbols-outlined role" matTooltip="Patient">personal_injury</span>
+      <span *ngIf="user.role == 'ROLE_ADMIN'" class="material-symbols-outlined role"
+            matTooltip="Admin">manage_accounts</span>
     </td>
   </ng-container>
 
@@ -20,18 +24,6 @@
     <td *matCellDef="let user" mat-cell> {{user.email}} </td>
   </ng-container>
 
-  <!-- Role Column -->
-  <ng-container matColumnDef="role">
-    <th *matHeaderCellDef mat-header-cell> Role</th>
-    <td *matCellDef="let user" mat-cell>
-      <span *ngIf="user.role == 'ROLE_DOCTOR'" class="material-symbols-outlined role"
-            matTooltip="Doctor">stethoscope</span>
-      <span *ngIf="user.role == 'ROLE_PATIENT'" class="material-symbols-outlined role" matTooltip="Patient">personal_injury</span>
-      <span *ngIf="user.role == 'ROLE_ADMIN'" class="material-symbols-outlined role"
-            matTooltip="Admin">manage_accounts</span>
-    </td>
-  </ng-container>
-
   <!-- Date Created Column -->
   <ng-container matColumnDef="date-created">
     <th *matHeaderCellDef mat-header-cell> Date Created</th>
@@ -41,25 +33,4 @@
   <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
-<!--<div class="table-header">-->
-<!--<div class="table-container">-->
-<!--  <div class="table-label">Name</div>-->
-<!--  <div class="table-label">Email</div>-->
-<!--  <div class="table-label">Role</div>-->
-<!--  <div class="table-label">Creation Date</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="table-content">-->
-<!--  <div class="user-card" *ngFor="let user of users">-->
-<!--    <div mat-card-avatar class="avatar-image"  [ngStyle]="{'background-image': 'url( ' + user.image + ')'}">-->
-<!--    </div>-->
-<!--    <div class="user-info">-->
-<!--      <div class="name">{{user.name}} {{user.surname}}</div>-->
-<!--      <div  class="email">{{user.email}}</div>-->
-<!--      <span class="material-symbols-outlined role" *ngIf="user.role == 'ROLE_DOCTOR'" matTooltip="Doctor">stethoscope</span>-->
-<!--      <span class="material-symbols-outlined role" *ngIf="user.role == 'ROLE_PATIENT'" matTooltip="Patient">personal_injury</span>-->
-<!--      <span class="material-symbols-outlined role" *ngIf="user.role == 'ROLE_ADMIN'" matTooltip="Admin">manage_accounts</span>-->
-<!--      <div  class="date-created">{{user.dateCreated | date}}</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+

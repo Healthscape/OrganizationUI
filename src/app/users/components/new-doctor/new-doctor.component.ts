@@ -1,6 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle
+} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
@@ -38,12 +44,11 @@ export class NewDoctorComponent {
   specialtyCtrl: FormControl = new FormControl<any>('');
   specialties: SpecialtyDto[] = [];
 
-  constructor(private _specialtyService: SpecialtyService, private _adminService: AdminService, private _snackBar: MatSnackBar) {
+  constructor(private dialogRef: MatDialogRef<NewDoctorComponent>, private _specialtyService: SpecialtyService, private _adminService: AdminService, private _snackBar: MatSnackBar) {
     this.initForm();
     this._specialtyService.getAllSpecialties().subscribe(
       {
         next: (response) => {
-          console.log(response)
           this.specialties = response;
         },
         error: (error: HttpErrorResponse) => {
@@ -60,7 +65,7 @@ export class NewDoctorComponent {
     this._adminService.registerPractitioner(this.newDoctorForm.value).subscribe({
       next: (response: UserDto) => {
         this.isLoading = false;
-        console.log(response);
+        this.dialogRef.close(response);
         this._snackBar.open("You have successfully registered a new doctor!");
       },
       error: (err: HttpErrorResponse) => {
