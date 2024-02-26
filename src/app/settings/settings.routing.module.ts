@@ -22,7 +22,7 @@ const routes: Routes = [
     {
       path: 'password',
       data:{
-        breadcrumb: 'Email & password'
+        breadcrumb: 'Email & Password'
       },
       component: ChangePasswordComponent
     },

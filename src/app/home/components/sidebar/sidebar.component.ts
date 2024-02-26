@@ -11,6 +11,7 @@ import {ToolbarComponent} from "../toolbar/toolbar.component";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {UserService} from "../../../auth/services/user.service";
+import {AuthService} from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -29,7 +30,7 @@ export class SidebarComponent {
   selected = 'dashboard';
   me: UserDto = new UserDto();
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
+  constructor(private authService: AuthService, private userService: UserService, private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
     userService.me().subscribe({
       next: (user) =>{
         this.me = user;
@@ -65,5 +66,9 @@ export class SidebarComponent {
     }else{
       this.router.navigate(['home']).then();
     }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

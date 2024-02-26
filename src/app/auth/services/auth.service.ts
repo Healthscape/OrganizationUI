@@ -25,10 +25,8 @@ export class AuthService {
     this._http.post<TokensDto>(environment.apiUrl + this.REQUEST_MAPPING + "/login", loginDto,).subscribe(
       {
         next: (response) => {
-          console.log(response)
           this.errorResponse.next(null);
-          this._tokenService.saveToken(response.accessToken);
-          this._tokenService.saveRefreshToken(response.refreshToken)
+          this.updateTokens(response)
           this.logInUserChanged.next(response);
           this.router.navigate(['home']).then().catch(error => {console.log(error)});
         },
@@ -41,11 +39,21 @@ export class AuthService {
       })
   }
 
+  updateTokens(tokens: TokensDto){
+    this._tokenService.saveToken(tokens.accessToken);
+    this._tokenService.saveRefreshToken(tokens.refreshToken)
+  }
+
   refreshToken(token: string) {
     const header = {
       headers: new HttpHeaders()
         .set('Authorization', 'Bearer ' + token)
     };
     return this._http.get(environment.apiUrl + '/auth/refresh', header);
+  }
+
+  logout(){
+    this._tokenService.signOut();
+    this.router.navigate(['/']).then();
   }
 }

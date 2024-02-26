@@ -7,9 +7,13 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptors
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./auth/auth.interceptor";
 import {PermissionsService} from "./access.guard";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {provideEnvironmentNgxMask} from "ngx-mask";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimations(), provideHttpClient(withInterceptorsFromDi()),
+  providers: [provideEnvironmentNgxMask(),
+    provideRouter(routes), provideAnimations(), provideHttpClient(withInterceptorsFromDi()),
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FhirPatientDto} from "../../dto/fhir.patient.dto";
 import {FhirService} from "../../service/fhir.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings',
@@ -11,12 +12,14 @@ import {FhirService} from "../../service/fhir.service";
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent {
-  me: FhirPatientDto = new FhirPatientDto();
+  me?: FhirPatientDto;
 
-  constructor(private _fhirService: FhirService) {
+  constructor(_fhirService: FhirService, private _router: Router) {
+    this.me = this._router.getCurrentNavigation()?.extras?.state?.['me'];
     _fhirService.me().subscribe({
       next: (user) =>{
         this.me = user;
+        console.log(user)
       }
     })
   }

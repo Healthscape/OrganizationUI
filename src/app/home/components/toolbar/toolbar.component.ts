@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
@@ -16,13 +16,22 @@ import {UserDto} from "../../../auth/dto/user.dto";
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnDestroy{
   public minute: string = '';
   public hour: any;
   public currentDate: Date = new Date();
   me: UserDto = new UserDto();
+  timer: number;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private changeDetectorRef: ChangeDetectorRef) {
+    this.changeDetectorRef.detach();
+    this.currentDate = new Date();
+    this.updateDate();
+    this.timer = setInterval(() => {
+        this.currentDate = new Date();
+        this.updateDate();
+        this.changeDetectorRef.detectChanges();
+      }, 1000);
     userService.me().subscribe({
       next: (user) =>{
         this.me = user;
@@ -30,14 +39,8 @@ export class ToolbarComponent {
     })
   }
 
-  ngOnInit() {
-    this.currentDate = new Date();
-    this.updateDate();
-    setInterval(() => {
-      this.currentDate = new Date();
-      this.updateDate();
-    }, 1000);
-
+  ngOnDestroy() {
+    clearInterval(this.timer)
   }
 
 

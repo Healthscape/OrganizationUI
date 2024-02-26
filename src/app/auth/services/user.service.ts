@@ -5,6 +5,7 @@ import {RegisterDto} from "../dto/register.dto";
 import {UserDto} from "../dto/user.dto";
 import {PasswordDto} from "../dto/password.dto";
 import {FhirPatientDto} from "../../settings/dto/fhir.patient.dto";
+import {TokensDto} from "../dto/tokes.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class UserService {
   }
 
   changeEmail(email: string){
-    return this._http.put(environment.apiUrl + this.REQUEST_MAPPING + '/email', email);
+    return this._http.put<TokensDto>(environment.apiUrl + this.REQUEST_MAPPING + '/email', email);
   }
 
   changePassword(passwordDto: PasswordDto){

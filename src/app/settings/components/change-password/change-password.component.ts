@@ -9,6 +9,8 @@ import {UserService} from "../../../auth/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {AuthService} from "../../../auth/services/auth.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-change-password',
@@ -31,7 +33,7 @@ export class ChangePasswordComponent {
   confirmPasswordVisible: boolean = false;
   passwordForm: FormGroup = new FormGroup<any>({});
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private authService: AuthService, private snackBar: MatSnackBar) {
     this.userService.me().subscribe((response) => {
       this.me = response;
       this.emailCtrl = new FormControl<any>(this.me.email);
@@ -43,8 +45,21 @@ export class ChangePasswordComponent {
 
   onSaveEmail() {
 
-    this.userService.changeEmail(this.emailCtrl.value).subscribe((response)=>{
-      console.log(response);
+    this.userService.changeEmail(this.emailCtrl.value).subscribe({
+      next:(response) =>  {
+        console.log(response);
+        this.authService.updateTokens(response);
+        this.snackBar.open("Your have successfully changed your email!");
+        this.me.email = this.emailCtrl.value
+      },
+      error: (err) => {
+        if(err.error.status == 400){
+          this.snackBar.open(err.error.message);
+        }else{
+          console.log(err)
+          this.snackBar.open("Something went wrong, please try again!");
+        }
+      }
     })
   }
 
@@ -54,8 +69,19 @@ export class ChangePasswordComponent {
 
   onSavePassword() {
 
-    this.userService.changePassword(this.passwordForm.value).subscribe((response)=>{
-      console.log(response);
+    this.userService.changePassword(this.passwordForm.value).subscribe({
+      next:(response) =>  {
+        this.snackBar.open("Your have successfully changed your password!");
+        this.initializeForm();
+      },
+      error: (err) => {
+        if(err.error.status == 400){
+          this.snackBar.open(err.error.message);
+        }else{
+          console.log(err)
+          this.snackBar.open("Something went wrong, please try again!");
+        }
+      }
     })
   }
 

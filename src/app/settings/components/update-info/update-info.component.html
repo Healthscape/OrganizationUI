@@ -10,7 +10,8 @@
   <div class="content">
     <div class="profile-image">
       <input type="file" style="display: none;" #fileInput (change)="onChangePhoto($event, avatarPhoto)">
-      <div mat-card-avatar class="avatar-image" [ngStyle]="{'background-image': 'url(data:image/png;base64, ' + me?.photo + ')'}" #avatarPhoto>
+      <div mat-card-avatar class="avatar-image"
+           [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}" #avatarPhoto>
       </div>
       <div class="avatar-image-overlay">
         <button mat-icon-button [matTooltip]="'Change photo'" (click)="onChangePhotoButton(fileInput)">
@@ -30,42 +31,54 @@
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Address</mat-label>
           <div class="material-symbols-outlined" matPrefix>home</div>
-          <input matInput  [formControl]="addressCtrl">
+          <input matInput [showMaskTyped]="false" [dropSpecialCharacters]="false"
+                 [specialCharacters]="[',', ' ']"
+                 shownMaskExpression="'A* 0*, A*, 0*, A*'"
+                 [formControl]="addressCtrl" mask="A* 0*, A*, 0*, A*" #addressInput>
+          <mat-hint *ngIf="isFocused(addressInput)">Street 00, City, Postal Code, Country</mat-hint>
         </mat-form-field>
       </div>
       <div class="info-cell">
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Date of birth</mat-label>
           <div class="material-symbols-outlined" matPrefix>person</div>
-          <input matInput  [formControl]="birthDateCtrl">
+          <input matInput [matDatepicker]="picker" [formControl]="birthDateCtrl">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
       <div class="info-cell">
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Phone</mat-label>
           <div class="material-symbols-outlined" matPrefix>call</div>
-          <input matInput  [formControl]="phoneCtrl">
+          <input matInput [formControl]="phoneCtrl">
         </mat-form-field>
       </div>
       <div class="info-cell">
+
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Gender</mat-label>
           <div class="material-symbols-outlined" matPrefix>transgender</div>
-          <input matInput  [formControl]="genderCtrl">
+          <mat-select [formControl]="genderCtrl">
+            <mat-option *ngFor="let gender of genders.genders" [value]="gender.code">{{gender.viewValue}}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="info-cell">
         <mat-form-field appearance="fill" class="update-info">
           <mat-label>Marital status</mat-label>
           <div class="material-symbols-outlined" matPrefix>loyalty</div>
-          <input matInput  [formControl]="maritalStatusCtrl">
+          <mat-select [formControl]="maritalStatusCtrl">
+            <mat-option *ngFor="let status of maritalStatuses.maritalStatuses"
+                        [value]="status.code">{{status.viewValue}}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
     </div>
   </div>
   <div class="actions">
-    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
     <button mat-flat-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
   </div>
 </div>
 

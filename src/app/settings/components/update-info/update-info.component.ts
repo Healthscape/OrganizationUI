@@ -7,8 +7,16 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatInputModule} from "@angular/material/input";
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {UserService} from "../../../auth/services/user.service";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {Enum} from "../../../utils/enums/enum";
+import {NgxMaskDirective} from "ngx-mask";
+import {FhirService} from "../../service/fhir.service";
+import {GenderEnum} from "../../../utils/enums/gender.enum";
+import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
 
 @Component({
   selector: 'app-update-info',
@@ -16,7 +24,7 @@ import {UserService} from "../../../auth/services/user.service";
     class: 'update-info-host-wrapper'
   },
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, ReactiveFormsModule],
+  imports: [MatDatepickerModule, MatNativeDateModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, ReactiveFormsModule, MatDatepickerModule, MatSelectModule, NgxMaskDirective],
   templateUrl: './update-info.component.html',
   styleUrl: './update-info.component.scss'
 })
@@ -36,8 +44,18 @@ export class UpdateInfoComponent {
   emailCtrl: FormControl = new FormControl<any>('');
   form: FormGroup = new FormGroup<any>({});
 
-  constructor(private router: Router, private userService: UserService) {
+  genders: GenderEnum = new GenderEnum();
+  maritalStatuses: MaritalStatusEnum = new MaritalStatusEnum();
+
+  constructor(private router: Router, private userService: UserService, _fhirService: FhirService) {
     this.me = this.router.getCurrentNavigation()?.extras?.state?.['me'];
+    if(!this.me){
+      _fhirService.me().subscribe({
+        next: (user) =>{
+          this.me = user;
+        }
+    })
+    }
     this.initializeForm();
   }
 
@@ -54,7 +72,6 @@ export class UpdateInfoComponent {
 
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
-      // this.message = "Only images are supported.";
       return;
     }
 
@@ -70,18 +87,25 @@ export class UpdateInfoComponent {
   }
 
   onSave() {
-    this.userService.updateUserInfo(this.form.value).subscribe((response)=>{
+    this.userService.updateUserInfo(this.form.getRawValue()).subscribe({
+    next:(response) =>  {
       console.log(response);
-    })
+      this.router.navigate(["home", "settings"], {state:{me:this.form.getRawValue()}}).then()
+    },
+      error: (err) => {
+      console.log(err)
+        this.router.navigate(["home", "settings"], {state:{me:this.form.getRawValue()}}).then()
+      }
+  })
   }
 
   onCancel() {
-    this.router.navigate(['home', 'settings']).then();
+    this.initializeForm();
   }
 
   private initializeForm() {
-    this.nameCtrl = new FormControl<any>(this.me?.name);
-    this.surnameCtrl = new FormControl<any>(this.me?.surname);
+    this.nameCtrl = new FormControl<any>(this.me?.name, {validators: [Validators.required]});
+    this.surnameCtrl = new FormControl<any>(this.me?.surname, {validators: [Validators.required]});
     this.idCtrl =  new FormControl<any>({value: this.me?.identifier,disabled: true});
     this.birthDateCtrl =  new FormControl<any>(this.me?.birthDate);
     this.addressCtrl =  new FormControl<any>(this.me?.address);
@@ -103,4 +127,9 @@ export class UpdateInfoComponent {
       'email': this.emailCtrl
     })
   }
+
+  public isFocused(element: HTMLInputElement){
+    return document.activeElement == element
+  }
+
 }

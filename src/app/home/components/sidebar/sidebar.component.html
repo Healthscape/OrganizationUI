@@ -43,7 +43,7 @@ sort
           <span class=" material-symbols-outlined right-align">settings</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'"  class="left-align"><p>Settings</p></span>
         </div>
-        <div class="card card-hover-container" (click)="select('logout')" [ngClass]="selected == 'logout' ? 'selected' : ''">
+        <div class="card card-hover-container" (click)="logout()" [ngClass]="selected == 'logout' ? 'selected' : ''">
           <span class=" material-symbols-outlined right-align">logout</span>
           <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
         </div>

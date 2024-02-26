@@ -38,8 +38,6 @@ export class MainWindowComponent {
     this.subscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        console.log("Navigation triggered")
-        console.log(this.activatedRoute.root)
         this.menuItems = this.createBreadcrumbs(this.activatedRoute.root)
       });
   }

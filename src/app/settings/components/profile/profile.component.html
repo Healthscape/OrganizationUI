@@ -3,7 +3,7 @@
 </div>
 <div class="content">
   <div class="profile-image">
-  <div mat-card-avatar class="avatar-image" [ngStyle]="{'background-image': 'url(data:image/png;base64, ' + me?.photo + ')'}">
+  <div mat-card-avatar class="avatar-image" [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}">
     </div>
   </div>
   <div class="profile-info">
@@ -17,7 +17,7 @@
     </div>
     <div class="info-cell">
       <div class="material-symbols-outlined">person</div>
-      <p><span>Date of birth:</span> {{me?.birthDate}}</p>
+      <p><span>Date of birth:</span> {{me?.birthDate | date}} </p>
     </div>
     <div class="info-cell">
       <div class="material-symbols-outlined">call</div>
@@ -25,7 +25,7 @@
     </div>
     <div class="info-cell">
       <div class="material-symbols-outlined">transgender</div>
-      <p><span>Gender:</span> {{me?.gender}}</p>
+      <p><span>Gender:</span> {{gender}}</p>
     </div>
     <div class="info-cell">
       <div class="material-symbols-outlined">alternate_email</div>
@@ -33,7 +33,7 @@
     </div>
     <div class="info-cell">
       <div class="material-symbols-outlined">loyalty</div>
-      <p><span>Marital status:</span> {{me?.maritalStatus}}</p>
+      <p><span>Marital status:</span> {{maritalStatus}}</p>
     </div>
   </div>
 </div>
