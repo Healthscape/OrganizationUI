@@ -1,5 +1,5 @@
 import {inject, Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environment";
 import {RegisterDto} from "../dto/register.dto";
 import {UserDto} from "../dto/user.dto";
@@ -37,7 +37,15 @@ export class UserService {
     return this._http.put(environment.apiUrl + this.REQUEST_MAPPING + '/password', passwordDto);
   }
 
-  updateUserInfo(fhirPatientDto: FhirPatientDto) {
-    return this._http.put(environment.apiUrl + this.REQUEST_MAPPING, fhirPatientDto);
+  updateUserInfo(formData: FormData) {
+    let header = new HttpHeaders();
+    header = header.set('Content-Type', 'multipart/form-data;charset=utf-8')
+    return this._http.put<any>(environment.apiUrl + this.REQUEST_MAPPING, formData, {
+      headers: header
+    });
+  }
+
+  saveImage(value: any) {
+    return this._http.post(environment.apiUrl + "/file", value);
   }
 }

@@ -1,0 +1,126 @@
+<div class="request-stats">
+  <div class="stat-card pending-requests" (click)="onStatClick('pending')"
+       [ngClass]="showing == 'pending'? 'selected' : ''">
+    <span class="material-symbols-outlined stats">pending_actions</span>
+    <div class="card-text">
+      <div class="stat-name">Pending</div>
+    </div>
+  </div>
+  <div class="stat-card approved-requests" (click)="onStatClick('unlimited')"
+       [ngClass]="showing == 'unlimited'? 'selected' : ''">
+    <span class="material-symbols-outlined stats">all_inclusive</span>
+    <div class="card-text">
+      <div class="stat-name">Unlimited</div>
+    </div>
+  </div>
+  <div class="stat-card denied-requests" (click)="onStatClick('one-time')"
+       [ngClass]="showing == 'one-time'? 'selected' : ''">
+    <span class="material-symbols-outlined stats">device_reset</span>
+    <div class="card-text">
+      <div class="stat-name">One time</div>
+    </div>
+  </div>
+  <div class="stat-card denied-requests" (click)="onStatClick('denied')"
+       [ngClass]="showing == 'denied'? 'selected' : ''">
+    <span class="material-symbols-outlined stats">do_not_disturb_on</span>
+    <div class="card-text">
+      <div class="stat-name">Denied</div>
+    </div>
+  </div>
+</div>
+
+<div class="recent-requests">
+  <h4 *ngIf="showing == 'recent'">Recent Request Actions</h4>
+  <h4 *ngIf="showing == 'approved'">Approved Requests</h4>
+  <h4 *ngIf="showing == 'denied'">Denied Requests</h4>
+  <h4 *ngIf="showing == 'pending'">Pending Requests</h4>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 no-color" [multiTemplateDataRows]="true"
+         *ngIf="role == 'ROLE_PATIENT'">
+
+    <!-- Decision Column -->
+    <ng-container matColumnDef="decision">
+      <th *matHeaderCellDef mat-header-cell>Decision</th>
+      <td *matCellDef="let request" mat-cell class="decision">
+        <span class="material-symbols-outlined"
+              *ngIf="request.decision == DecisionEnum.UNDEFINED">pending_actions</span>
+        <span class="material-symbols-outlined" *ngIf="request.decision == DecisionEnum.UNLIMITED">all_inclusive</span>
+        <span class="material-symbols-outlined" *ngIf="request.decision == DecisionEnum.ONE_TIME">device_reset</span>
+        <span class="material-symbols-outlined" *ngIf="request.decision == DecisionEnum.CUSTOM">check_circle</span>
+        <span class="material-symbols-outlined"
+              *ngIf="request.decision == DecisionEnum.NO_ACCESS">do_not_disturb_on</span>
+      </td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef mat-header-cell> Date</th>
+      <td *matCellDef="let request" mat-cell>{{request.lastUpdated | date: "MMM dd, yyyy"}}</td>
+    </ng-container>
+
+    <!-- Practitioner Column -->
+    <ng-container matColumnDef="practitioner">
+      <th *matHeaderCellDef mat-header-cell>Practitioner</th>
+      <td *matCellDef="let request" mat-cell>{{request.practitioner}}</td>
+    </ng-container>
+
+    <!-- Specialty Column -->
+    <ng-container matColumnDef="specialty">
+      <th *matHeaderCellDef mat-header-cell> Specialty</th>
+      <td *matCellDef="let request" mat-cell>{{request.specialty}}</td>
+    </ng-container>
+
+    <!-- More Column -->
+    <ng-container matColumnDef="more">
+      <th *matHeaderCellDef mat-header-cell> More</th>
+      <td *matCellDef="let request" mat-cell>
+        <button mat-raised-button (click)="openDialog(request)">More info</button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumnsPatient; sticky: true" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumnsPatient;" mat-row></tr>
+  </table>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 no-color" [multiTemplateDataRows]="true"
+         *ngIf="role == 'ROLE_PRACTITIONER'">
+
+    <!-- Decision Column -->
+    <ng-container matColumnDef="decision">
+      <th *matHeaderCellDef mat-header-cell>Decision</th>
+      <td *matCellDef="let request" mat-cell class="decision">
+        <span class="material-symbols-outlined"
+              *ngIf="request.decision == DecisionEnum.UNDEFINED">pending_actions</span>
+        <span class="material-symbols-outlined" *ngIf="request.decision == DecisionEnum.UNLIMITED">all_inclusive</span>
+        <span class="material-symbols-outlined" *ngIf="request.decision == DecisionEnum.ONE_TIME">device_reset</span>
+        <span class="material-symbols-outlined" *ngIf="request.decision == DecisionEnum.CUSTOM">check_circle</span>
+        <span class="material-symbols-outlined"
+              *ngIf="request.decision == DecisionEnum.NO_ACCESS">do_not_disturb_on</span>
+      </td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef mat-header-cell> Date</th>
+      <td *matCellDef="let request" mat-cell>{{request.lastUpdated | date: "MMM dd, yyyy"}}</td>
+    </ng-container>
+
+    <!-- Practitioner Column -->
+    <ng-container matColumnDef="patient">
+      <th *matHeaderCellDef mat-header-cell>Patient</th>
+      <td *matCellDef="let request" mat-cell>{{request.patient}}</td>
+    </ng-container>
+
+    <!-- More Column -->
+    <ng-container matColumnDef="more">
+      <th *matHeaderCellDef mat-header-cell> More</th>
+      <td *matCellDef="let request" mat-cell>
+        <button mat-raised-button (click)="openDialog(request)">More info</button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumnsPractitioner; sticky: true" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumnsPractitioner;" mat-row></tr>
+  </table>
+  <mat-progress-bar mode="buffer" *ngIf="loading" ></mat-progress-bar>
+  <div *ngIf="dataSource.data.length === 0 && !loading" class="no-requests">No access requests</div>
+</div>

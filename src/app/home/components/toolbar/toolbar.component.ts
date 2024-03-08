@@ -5,6 +5,14 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {UserService} from "../../../auth/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
+import {RecordService} from "../../../utils/services/record.service";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {RequestDialogComponent} from "../../../access-requests/components/request-dialog/request-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  RecordOverviewDialogComponent
+} from "../../../records/components/record-overview-dialog/record-overview-dialog.component";
 
 @Component({
   selector: 'app-toolbar',
@@ -12,7 +20,7 @@ import {UserDto} from "../../../auth/dto/user.dto";
     class: 'toolbar-host-wrapper'
   },
   standalone: true,
-  imports: [CommonModule, MatInputModule, MatCardModule, NgOptimizedImage, MatIconModule],
+  imports: [CommonModule, MatInputModule, MatCardModule, NgOptimizedImage, MatIconModule, ReactiveFormsModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
@@ -22,8 +30,12 @@ export class ToolbarComponent implements OnDestroy {
   public currentDate: Date = new Date();
   me: UserDto = new UserDto();
   timer: any;
+  searchCtrl: FormControl = new FormControl<string>('')
+  form: FormGroup = new FormGroup<any>({})
+  disabled: boolean = false;
 
-  constructor(_userService: UserService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private dialog: MatDialog,private recordService: RecordService, _userService: UserService, private changeDetectorRef: ChangeDetectorRef, private _snackBar: MatSnackBar) {
+    this.searchCtrl = new FormControl('', [Validators.pattern("[0-9]{13}")])
     this.changeDetectorRef.detach();
     this.currentDate = new Date();
     this.updateDate();
@@ -55,4 +67,28 @@ export class ToolbarComponent implements OnDestroy {
     this.minute = minutes < 10 ? '0' + minutes : minutes.toString();
   }
 
+  onSearch() {
+    if(this.searchCtrl.invalid){
+      this._snackBar.open("You can only search by personal identification number, that has 13 numbers!");
+    }else{
+      this.disabled = true;
+      this.recordService.findRecordWithPersonalId(this.searchCtrl.value).subscribe({
+        next: (response) =>{
+          this.disabled = false;
+          console.log(response)
+          this.searchCtrl.setValue('');
+          this.dialog.open(RecordOverviewDialogComponent, {
+            minWidth: "40vw",
+            data:{
+              record: response
+            }
+          });
+        },
+        error:(err) =>{
+          this.disabled = false;
+          console.log(err)
+        }
+      })
+    }
+  }
 }

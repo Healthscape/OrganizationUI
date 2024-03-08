@@ -18,6 +18,7 @@ export class SettingsComponent {
     this.me = this._router.getCurrentNavigation()?.extras?.state?.['me'];
     _fhirService.me().subscribe({
       next: (user) => {
+        console.log(user)
         this.me = user;
       }
     })

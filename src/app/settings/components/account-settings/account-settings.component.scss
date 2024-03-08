@@ -6,7 +6,7 @@
   gap: 5px;
 }
 
-.action {
+.action-line {
   color: $dark-gray;
   display: flex;
   align-self: end;
@@ -24,7 +24,7 @@
   }
 }
 
-.action:hover {
+.action-line:hover {
   font-weight: 500;
   width: 99%;
   cursor: pointer;

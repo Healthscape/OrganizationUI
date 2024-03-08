@@ -6,7 +6,8 @@ export class FhirPatientDto {
   gender?: string;
   address?: string;
   maritalStatus?: string;
-  photo?: string;
+  image?: string;
+  imagePath?: string;
   phone?: string;
   email?: string;
 

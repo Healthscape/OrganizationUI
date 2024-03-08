@@ -1,0 +1,118 @@
+<h2 mat-dialog-title>Access Request</h2>
+<mat-dialog-content>
+  <div class="practitioner-info">
+    <div class="avatar-image" *ngIf="role === 'ROLE_PRACTITIONER'"
+         [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.patientImage + '\')'}"
+         mat-card-avatar>
+    </div>
+    <div class="avatar-image" *ngIf="role === 'ROLE_PATIENT'"
+         [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.practitionerImage + '\')'}"
+         mat-card-avatar>
+    </div>
+    <div>
+      <div *ngIf="role === 'ROLE_PRACTITIONER'">{{request.patient}}</div>
+      <div *ngIf="role === 'ROLE_PATIENT'">{{request.practitioner}}</div>
+      <div *ngIf="role === 'ROLE_PATIENT'">{{request.specialty}}</div>
+    </div>
+    <div class="decision-symbol">
+      <span class="material-symbols-outlined stats"
+            *ngIf="request.decision == DecisionEnum.UNDEFINED">pending_actions</span>
+      <span class="material-symbols-outlined stats"
+            *ngIf="request.decision == DecisionEnum.UNLIMITED">check_circle</span>
+      <span class="material-symbols-outlined stats"
+            *ngIf="request.decision == DecisionEnum.ONE_TIME">check_circle</span>
+      <span class="material-symbols-outlined stats" *ngIf="request.decision == DecisionEnum.CUSTOM">check_circle</span>
+      <span class="material-symbols-outlined stats"
+            *ngIf="request.decision == DecisionEnum.NO_ACCESS">do_not_disturb_on</span>
+    </div>
+  </div>
+  <div class="request-info" *ngIf="role != 'ROLE_PATIENT'; else decisionForm">
+    <div class="item">Access: <span class="decision">{{decisionMapping[request.decision]}}</span></div>
+    <div class="item">Time: <span>{{request.lastUpdated | date: "MMM dd, yyyy HH:mm"}}</span></div>
+    <div class="item" *ngIf="request.decision == DecisionEnum.ONE_TIME || request.decision == DecisionEnum.CUSTOM">
+      Available Form: <span>{{request.availableFrom | date: "MMM dd, yyyy HH:mm"}}</span></div>
+    <div class="item" *ngIf="request.decision == DecisionEnum.ONE_TIME || request.decision == DecisionEnum.CUSTOM">
+      Available Until: <span>{{request.availableUntil | date: "MMM dd, yyyy HH:mm"}}</span></div>
+  </div>
+  <ng-template class="request-info" #decisionForm [formGroup]="decisionFormGroup">
+    <div class="item">Time: <span>{{request.lastUpdated | date: "MMM dd, yyyy HH:mm"}}</span></div>
+    <span *ngIf="role === 'ROLE_PATIENT'">
+      <div class="item">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Access decision</mat-label>
+          <span class="material-symbols-outlined" matPrefix>approval</span>
+          <mat-select [formControl]="decisionCtrl">
+            <mat-option *ngFor="let decision of decisionKeys" [id]="decision" [value]="decision">
+              {{decisionMapping[decision]}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="item" *ngIf="decisionCtrl.value == DecisionEnum.ONE_TIME || decisionCtrl.value == DecisionEnum.CUSTOM">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Available From</mat-label>
+          <span class="material-symbols-outlined" matPrefix>schedule</span>
+          <input [formControl]="availableFromCtrl" [matDatepicker]="availableFromPicker" matInput>
+          <mat-datepicker-toggle [for]="availableFromPicker" matIconSuffix></mat-datepicker-toggle>
+          <mat-datepicker #availableFromPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="item" *ngIf="decisionCtrl.value == DecisionEnum.ONE_TIME || decisionCtrl.value == DecisionEnum.CUSTOM">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Available Until</mat-label>
+          <span class="material-symbols-outlined" matPrefix>schedule</span>
+          <input [formControl]="availableUntilCtrl" [matDatepicker]="availableUntilPicker" matInput>
+          <mat-datepicker-toggle [for]="availableUntilPicker" matIconSuffix></mat-datepicker-toggle>
+          <mat-datepicker #availableUntilPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </span>
+  </ng-template>
+  <div class="request-history">
+    <h4>History</h4>
+    <div class="table-div">
+
+      <table mat-table [dataSource]="history" class="mat-elevation-z8 no-color" [multiTemplateDataRows]="true">
+
+        <!-- Decision Column -->
+        <ng-container matColumnDef="decision">
+          <th *matHeaderCellDef mat-header-cell>Decision</th>
+          <td *matCellDef="let historyReq" mat-cell class="decision">
+            <div class="history-decision-td">
+                <span class="material-symbols-outlined"
+                      *ngIf="historyReq.decision == DecisionEnum.UNDEFINED">pending_actions</span>
+              <span class="material-symbols-outlined" *ngIf="historyReq.decision == DecisionEnum.UNLIMITED">all_inclusive</span>
+              <span class="material-symbols-outlined" *ngIf="historyReq.decision == DecisionEnum.ONE_TIME">device_reset</span>
+              <span class="material-symbols-outlined" *ngIf="historyReq.decision == DecisionEnum.CUSTOM">check_circle</span>
+              <span class="material-symbols-outlined"
+                    *ngIf="historyReq.decision == DecisionEnum.NO_ACCESS">do_not_disturb_on</span>
+              <span>{{DecisionEnumLabelMapping[historyReq.decision]}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th *matHeaderCellDef mat-header-cell> Date</th>
+          <td *matCellDef="let historyReq" mat-cell>{{historyReq.lastUpdated | date: "MMM dd, yyyy"}}</td>
+        </ng-container>
+
+        <!-- Time Column -->
+        <ng-container matColumnDef="time">
+          <th *matHeaderCellDef mat-header-cell> Time</th>
+          <td *matCellDef="let historyReq" mat-cell>{{historyReq.lastUpdated | date: "HH:mm"}}</td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </table>
+    </div>
+    <mat-progress-bar mode="buffer" *ngIf="loadingHistory" ></mat-progress-bar>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close cdkFocusInitial *ngIf="!loading">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onResend()" *ngIf="role === 'ROLE_PRACTITIONER' && this.request.decision == DecisionEnum.NO_ACCESS && !loading">Resend request</button>
+  <button mat-raised-button color="primary" (click)="onSave()" *ngIf="role === 'ROLE_PATIENT' && !loading" >Save</button>
+  <mat-progress-bar mode="buffer" *ngIf="loading" ></mat-progress-bar>
+</mat-dialog-actions>

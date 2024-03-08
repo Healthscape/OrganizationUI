@@ -1,7 +1,7 @@
 <div class="search-container">
-  <mat-form-field appearance="outline" class="search">
-    <input matInput placeholder="Search...">
-    <span class="material-symbols-outlined" matSuffix>search</span>
+  <mat-form-field appearance="outline" class="search"  [ngClass]="disabled ? 'disabled' : ''">
+    <input matInput placeholder="Search..." [formControl]="searchCtrl">
+    <span class="material-symbols-outlined" matSuffix (click)="onSearch()">search</span>
   </mat-form-field>
 </div>
 <div class="date-container">

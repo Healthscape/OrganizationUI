@@ -23,13 +23,13 @@ import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
     class: 'update-info-host-wrapper'
   },
   standalone: true,
-  imports: [MatDatepickerModule, MatNativeDateModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, ReactiveFormsModule, MatDatepickerModule, MatSelectModule, NgxMaskDirective],
+  imports: [MatDatepickerModule, MatNativeDateModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, ReactiveFormsModule, MatSelectModule, NgxMaskDirective],
   templateUrl: './update-info.component.html',
   styleUrl: './update-info.component.scss'
 })
 export class UpdateInfoComponent {
   me?: FhirPatientDto;
-  file?: File;
+  file: File = new File([],'');
   url?: string | ArrayBuffer | null;
   genderCtrl: FormControl = new FormControl<any>('');
   maritalStatusCtrl: FormControl = new FormControl<any>('');
@@ -76,6 +76,7 @@ export class UpdateInfoComponent {
 
     const reader = new FileReader();
     reader.readAsDataURL(files[0]);
+    this.file = files[0];
     reader.onload = (_event) => {
       this.url = reader.result;
       if (typeof this.url === "string") {
@@ -86,7 +87,8 @@ export class UpdateInfoComponent {
   }
 
   onSave() {
-    this.userService.updateUserInfo(this.form.getRawValue()).subscribe({
+    let formData = this.prepareFormData();
+    this.userService.updateUserInfo(formData).subscribe({
       next: (response) => {
         console.log(response);
         this.router.navigate(["home", "settings"], {state: {me: this.form.getRawValue()}}).then()
@@ -96,6 +98,22 @@ export class UpdateInfoComponent {
         this.router.navigate(["home", "settings"], {state: {me: this.form.getRawValue()}}).then()
       }
     })
+  }
+
+  prepareFormData(): FormData{
+    const formData = new FormData();
+
+    formData.append(
+      'userDto',
+      new Blob([JSON.stringify(this.form.getRawValue())], {type:'application/json'})
+    )
+
+    formData.append(
+      'image',
+      this.file
+    )
+
+    return formData;
   }
 
   onCancel() {
@@ -115,7 +133,7 @@ export class UpdateInfoComponent {
     this.genderCtrl = new FormControl<any>(this.me?.gender);
     this.maritalStatusCtrl = new FormControl<any>(this.me?.maritalStatus);
     this.phoneCtrl = new FormControl<any>(this.me?.phone);
-    this.photoCtrl = new FormControl<any>(this.me?.photo);
+    this.photoCtrl = new FormControl<any>(this.me?.image);
     this.emailCtrl = new FormControl<any>(this.me?.email);
     this.form = new FormGroup<any>({
       'name': this.nameCtrl,

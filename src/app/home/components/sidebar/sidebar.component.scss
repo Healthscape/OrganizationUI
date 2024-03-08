@@ -32,9 +32,9 @@
 .sidebar-wrapper {
   box-sizing: border-box;
   height: 100%;
-  border: 2px solid $accent-light-blue;
+  border: 2px solid $sidepanel;
   border-left: 0;
-  background-color: #fff;
+  background-color: $sidepanel;
 }
 
 .nav-list {
@@ -78,7 +78,7 @@
   }
 
   p {
-    font-weight: 700;
+    font-weight: 500;
   }
 }
 
@@ -95,7 +95,7 @@
 }
 
 .card-hover-container:hover:before {
-  background-color: $accent-light-blue;
+  background-color: rgba(255, 255, 255, 0.31);
 }
 
 .selected {
@@ -105,17 +105,16 @@
     }
 
     p {
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 
   &.card-hover-container:before {
-    background-color: $accent-light-blue;
+    background-color: rgba(255, 255, 255, 0.31);
   }
 
 
 }
-
 
 .menu-icon {
   display: flex;

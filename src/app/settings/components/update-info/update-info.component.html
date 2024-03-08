@@ -10,7 +10,7 @@
   <div class="content">
     <div class="profile-image">
       <input #fileInput (change)="onChangePhoto($event, avatarPhoto)" style="display: none;" type="file">
-      <div #avatarPhoto [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.photo + '\')'}"
+      <div #avatarPhoto [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.image + '\')'}"
            class="avatar-image" mat-card-avatar>
       </div>
       <div class="avatar-image-overlay">

@@ -1,8 +1,61 @@
 @use 'variables' as *;
 
 table {
+  &.mat-mdc-table.no_align {
+    tr.mat-mdc-row {
+      text-align-last: auto;
+    }
+  }
+
+  &.mat-mdc-table.no-color {
+    thead {
+      background-color: white;
+
+      tr.mat-mdc-header-row {
+        text-align-last: center;
+        color: lightgray;
+        height: 50px;
+      }
+
+      th{
+        top: -20px!important;
+      }
+    }
+
+    tr.mdc-data-table__row:last-child .mat-mdc-cell {
+      border-bottom: none;
+    }
+    tr.mat-mdc-row {
+      text-align-last: center;
+      border: 1px solid #000;
+      border-radius: 35px;
+      background-color: transparent;
+
+      td.no-padding{
+        padding: 0;
+      }
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid lightgray;
+      }
+
+      td:first-child,
+      th:first-child {
+        border-left: none;
+      }
+
+      td:last-child,
+      th:last-child {
+        border-right: none;
+      }
+
+    }
+
+  }
+
   &.mat-mdc-table {
-    border-spacing: 0 8px!important;
+    //border-spacing: 0 8px!important;
     box-shadow: none;
     background: transparent;
 
@@ -14,12 +67,14 @@ table {
 
         td:first-child,
         th:first-child {
-          border-radius: 40px 0 0 40px;
+          //border-radius: 40px 0 0 40px;
+          border-radius: 10px 0 0;
         }
 
         td:last-child,
         th:last-child {
-          border-radius: 0 40px 40px 0;
+          //border-radius: 0 40px 40px 0;
+          border-radius: 0 10px 0 0;
         }
       }
     }
@@ -32,10 +87,14 @@ table {
 
       tr.mat-mdc-row {
         text-align-last: center;
-        box-shadow: 0 4px 12px lightgray;
+        //box-shadow: 0 4px 12px lightgray;
         border: 1px solid #000;
         border-radius: 35px;
         background-color: #fff;
+
+        td.no-padding{
+          padding: 0;
+        }
 
         td {
           padding: 10px;
@@ -46,20 +105,35 @@ table {
         td:first-child,
         th:first-child {
           border-left: 1px solid rgb(229, 239, 251);
-          border-radius: 40px 0 0 40px;
+          //border-radius: 40px 0 0 40px;
         }
 
         td:last-child,
         th:last-child {
           border-right: 1px solid rgb(229, 239, 251);
-          border-radius: 0 40px 40px 0;
+          //border-radius: 0 40px 40px 0;
         }
       }
 
-      tr.mat-mdc-row:hover {
-        box-shadow: 0 4px 15px rgba(128, 128, 128, 0.71);
-        transition: all 0.5s ease-in-out;
+
+      tr.mat-mdc-row:last-child{
+        td:first-child,
+        th:first-child {
+          //border-radius: 40px 0 0 40px;
+          border-radius: 0 0 0 10px;
+        }
+
+        td:last-child,
+        th:last-child {
+          //border-radius: 0 40px 40px 0;
+          border-radius: 0 0 10px;
+        }
       }
+
+      //tr.mat-mdc-row:hover {
+      //  box-shadow: 0 4px 15px rgba(128, 128, 128, 0.71);
+      //  transition: all 0.5s ease-in-out;
+      //}
     }
   }
 }
@@ -152,6 +226,17 @@ mat-form-field {
       background-color: $accent-light-blue;
     }
 
+    &.search {
+      &.disabled .mat-mdc-form-field-icon-suffix {
+        background-color: lightgray;
+      }
+    }
+
+    &.search .mat-mdc-form-field-icon-suffix:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.2);
+    }
+
     .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
       padding: 10px 0;
     }
@@ -179,6 +264,18 @@ mat-dialog-container {
       border-radius: 30px;
     }
   }
+
+  mat-dialog-actions{
+    &.mat-mdc-dialog-actions{
+      justify-content: flex-end;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+.cdk-overlay-backdrop{
+  backdrop-filter: blur(6px);
 }
 
 
@@ -202,4 +299,24 @@ h3 {
   font-weight: 500;
   color: $dark-dark-blue;
   margin-top: 0;
+}
+
+
+.material-symbols-outlined.stats{
+  font-size: 25px;
+  color: $dark-dark-blue;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: $background-gray;
+  font-variation-settings: 'FILL' 1;
+}
+
+mat-progress-bar{
+  &.mat-mdc-progress-bar {
+    margin: 20px 0;
+
+    .mdc-linear-progress__buffer-dots {
+      background-color: $dark-dark-blue;
+    }
+  }
 }

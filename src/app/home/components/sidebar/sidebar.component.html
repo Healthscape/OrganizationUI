@@ -18,15 +18,17 @@ sort
         <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Users</p></span>
       </div>
     </div>
-    <div *ngIf="me.role == 'ROLE_PATIENT'" class="sidebar-main">
+<!--    TODO: uncomment-->
+    <div *ngIf="me.role == 'ROLE_PATIENT' || me.role == 'ROLE_PRACTITIONER'" class="sidebar-main">
+<!--    <div class="sidebar-main">-->
       <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''" class="card card-hover-container">
         <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
         <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
       </div>
-      <div (click)="select('patients')" [ngClass]="selected == 'patients' ? 'selected' : ''"
+      <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
            class="card card-hover-container">
-        <span class=" material-symbols-outlined material-icons  right-align">group</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Patients</p></span>
+        <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access Requests</p></span>
       </div>
       <div (click)="select('calendar_month')" [ngClass]="selected == 'calendar_month' ? 'selected' : ''"
            class="card card-hover-container">

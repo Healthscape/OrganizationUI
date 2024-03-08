@@ -1,0 +1,42 @@
+@use '../../../../styles/variables' as *;
+
+.request-card{
+  border: 1px solid $accent-light-blue;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.avatar-image {
+  width: 60px;
+  height: 60px;
+}
+
+.practitioner-info{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+
+  .decision-symbol{
+    text-align: right;
+    flex: 1;
+  }
+}
+
+.request-info{
+  .item{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .decision{
+    color: $dark-dark-blue;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: $light-light-blue;
+  }
+}
+
+
