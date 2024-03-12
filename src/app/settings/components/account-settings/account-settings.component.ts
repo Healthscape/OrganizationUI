@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
-import {FhirPatientDto} from "../../dto/fhir.patient.dto";
+import {FhirUserDto} from "../../dto/fhirUserDto";
 import {TokenService} from "../../../auth/services/token.service";
 
 @Component({
@@ -15,7 +15,7 @@ import {TokenService} from "../../../auth/services/token.service";
   styleUrl: './account-settings.component.scss'
 })
 export class AccountSettingsComponent {
-  @Input() me?: FhirPatientDto;
+  @Input() me?: FhirUserDto;
   isAdmin: boolean = false;
 
   constructor(_tokenService: TokenService, private router: Router, private route: ActivatedRoute) {

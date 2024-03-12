@@ -5,14 +5,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {UserService} from "../../../auth/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
-import {RecordService} from "../../../utils/services/record.service";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {RequestDialogComponent} from "../../../access-requests/components/request-dialog/request-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {
-  RecordOverviewDialogComponent
-} from "../../../records/components/record-overview-dialog/record-overview-dialog.component";
+  RecordPreviewDialogComponent
+} from "../../../records/components/record-preview-dialog/record-preview-dialog.component";
+import {RecordsService} from "../../../records/service/records.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -34,7 +33,13 @@ export class ToolbarComponent implements OnDestroy {
   form: FormGroup = new FormGroup<any>({})
   disabled: boolean = false;
 
-  constructor(private dialog: MatDialog,private recordService: RecordService, _userService: UserService, private changeDetectorRef: ChangeDetectorRef, private _snackBar: MatSnackBar) {
+  constructor(private dialog: MatDialog,private recordsService: RecordsService, _userService: UserService, private changeDetectorRef: ChangeDetectorRef, private _snackBar: MatSnackBar) {
+
+    _userService.updateImage.subscribe((response) =>{
+      if(response) {
+        this.me.image = response;
+      }
+    })
     this.searchCtrl = new FormControl('', [Validators.pattern("[0-9]{13}")])
     this.changeDetectorRef.detach();
     this.currentDate = new Date();
@@ -72,12 +77,12 @@ export class ToolbarComponent implements OnDestroy {
       this._snackBar.open("You can only search by personal identification number, that has 13 numbers!");
     }else{
       this.disabled = true;
-      this.recordService.findRecordWithPersonalId(this.searchCtrl.value).subscribe({
+      this.recordsService.findRecordWithPersonalId(this.searchCtrl.value).subscribe({
         next: (response) =>{
           this.disabled = false;
           console.log(response)
           this.searchCtrl.setValue('');
-          this.dialog.open(RecordOverviewDialogComponent, {
+          this.dialog.open(RecordPreviewDialogComponent, {
             minWidth: "40vw",
             data:{
               record: response

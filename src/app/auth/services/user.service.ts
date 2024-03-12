@@ -4,8 +4,9 @@ import {environment} from "../../../environment";
 import {RegisterDto} from "../dto/register.dto";
 import {UserDto} from "../dto/user.dto";
 import {PasswordDto} from "../dto/password.dto";
-import {FhirPatientDto} from "../../settings/dto/fhir.patient.dto";
+import {FhirUserDto} from "../../settings/dto/fhirUserDto";
 import {TokensDto} from "../dto/tokes.dto";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import {TokensDto} from "../dto/tokes.dto";
 export class UserService {
   _http = inject(HttpClient)
   private REQUEST_MAPPING: string = "/users";
+  updateImage: Subject<string|undefined> = new BehaviorSubject<string|undefined>("");
 
   constructor() {
   }

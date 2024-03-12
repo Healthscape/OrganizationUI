@@ -30,10 +30,10 @@ sort
         <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
         <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access Requests</p></span>
       </div>
-      <div (click)="select('calendar_month')" [ngClass]="selected == 'calendar_month' ? 'selected' : ''"
+      <div (click)="select('records')" [ngClass]="selected == 'records' ? 'selected' : ''"
            class="card card-hover-container">
-        <span class=" material-symbols-outlined right-align">calendar_month</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Scheduling</p></span>
+        <span class="material-symbols-outlined right-align">switch_account</span>
+        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Patient Records</p></span>
       </div>
       <div (click)="select('signal_cellular_alt')" [ngClass]="selected == 'signal_cellular_alt' ? 'selected' : ''"
            class="card card-hover-container">

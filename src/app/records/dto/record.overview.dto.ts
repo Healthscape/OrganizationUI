@@ -3,6 +3,6 @@ export class RecordOverviewDto {
   surname: string = "";
   personalId: string = "";
   birthDate: string = "";
-  photo: string = "";
+  image: string = "";
   id: string = "";
 }

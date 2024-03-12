@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecordOverviewDialogComponent } from './record-overview-dialog.component';
+import { RecordPreviewDialogComponent } from './record-preview-dialog.component';
 
 describe('RecordOverviewComponent', () => {
-  let component: RecordOverviewDialogComponent;
-  let fixture: ComponentFixture<RecordOverviewDialogComponent>;
+  let component: RecordPreviewDialogComponent;
+  let fixture: ComponentFixture<RecordPreviewDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecordOverviewDialogComponent]
+      imports: [RecordPreviewDialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RecordOverviewDialogComponent);
+    fixture = TestBed.createComponent(RecordPreviewDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

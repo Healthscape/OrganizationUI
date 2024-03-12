@@ -23,20 +23,19 @@ import {AccessRequestDto} from "../../../access-requests/dtos/access.request.dto
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @Component({
-  selector: 'app-record-overview-dialog',
+  selector: 'app-record-preview-dialog',
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, ReactiveFormsModule, MatProgressBarModule],
-  templateUrl: './record-overview-dialog.component.html',
-  styleUrl: './record-overview-dialog.component.scss'
+  templateUrl: './record-preview-dialog.component.html',
+  styleUrl: './record-preview-dialog.component.scss'
 })
-export class RecordOverviewDialogComponent {
+export class RecordPreviewDialogComponent {
   recordOverview: RecordOverviewDto = new RecordOverviewDto();
   accessRequest?: AccessRequestDto;
   loading: boolean = true;
 
-  constructor(private accessRequestService: AccessRequestService, private _snackBar: MatSnackBar, private dialogRef: MatDialogRef<RecordOverviewDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {record: RecordOverviewDto}, private dialog: MatDialog) {
+  constructor(private accessRequestService: AccessRequestService, private _snackBar: MatSnackBar, private dialogRef: MatDialogRef<RecordPreviewDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {record: RecordOverviewDto}, private dialog: MatDialog) {
     this.recordOverview = data.record;
-
     this.accessRequestService.getAccessRequestForUser(this.recordOverview.id).subscribe({
       next: (response) =>{
         this.loading = false

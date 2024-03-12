@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {Router} from "@angular/router";
-import {FhirPatientDto} from "../../dto/fhir.patient.dto";
+import {FhirUserDto} from "../../dto/fhirUserDto";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -16,6 +16,11 @@ import {NgxMaskDirective} from "ngx-mask";
 import {FhirService} from "../../service/fhir.service";
 import {GenderEnum} from "../../../utils/enums/gender.enum";
 import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
+import {TokenService} from "../../../auth/services/token.service";
+import {SpecialtyDto} from "../../../users/dtos/specialty.dto";
+import {HttpErrorResponse} from "@angular/common/http";
+import {SpecialtyService} from "../../../users/services/specialty.service";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'app-update-info',
@@ -23,12 +28,12 @@ import {MaritalStatusEnum} from "../../../utils/enums/marital.status.enum";
     class: 'update-info-host-wrapper'
   },
   standalone: true,
-  imports: [MatDatepickerModule, MatNativeDateModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, ReactiveFormsModule, MatSelectModule, NgxMaskDirective],
+  imports: [MatDatepickerModule, MatNativeDateModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, ReactiveFormsModule, MatSelectModule, NgxMaskDirective, MatProgressBarModule],
   templateUrl: './update-info.component.html',
   styleUrl: './update-info.component.scss'
 })
 export class UpdateInfoComponent {
-  me?: FhirPatientDto;
+  me?: FhirUserDto;
   file: File = new File([],'');
   url?: string | ArrayBuffer | null;
   genderCtrl: FormControl = new FormControl<any>('');
@@ -42,12 +47,29 @@ export class UpdateInfoComponent {
   photoCtrl: FormControl = new FormControl<any>('');
   emailCtrl: FormControl = new FormControl<any>('');
   form: FormGroup = new FormGroup<any>({});
+  role: string = "";
 
   genders: GenderEnum = new GenderEnum();
   maritalStatuses: MaritalStatusEnum = new MaritalStatusEnum();
+  specialtyCtrl: FormControl = new FormControl<any>('');
+  specialties: SpecialtyDto[] = [];
+  isLoading: boolean = false;
 
-  constructor(private router: Router, private userService: UserService, _fhirService: FhirService) {
+  constructor(private specialtyService: SpecialtyService, _tokenService: TokenService, private router: Router, private userService: UserService, _fhirService: FhirService) {
     this.me = this.router.getCurrentNavigation()?.extras?.state?.['me'];
+    this.role = _tokenService.getRoleFromToken();
+    if(this.role == "ROLE_PRACTITIONER") {
+      this.specialtyService.getAllSpecialties().subscribe(
+        {
+          next: (response) => {
+            this.specialties = response;
+            this.initializeSpecialty();
+          },
+          error: (error: HttpErrorResponse) => {
+            console.log(error)
+          }
+        })
+    }
     if (!this.me) {
       _fhirService.me().subscribe({
         next: (user) => {
@@ -88,20 +110,23 @@ export class UpdateInfoComponent {
 
   onSave() {
     let formData = this.prepareFormData();
+    this.form.disable();
+    this.isLoading = true;
     this.userService.updateUserInfo(formData).subscribe({
       next: (response) => {
-        console.log(response);
-        this.router.navigate(["home", "settings"], {state: {me: this.form.getRawValue()}}).then()
+        this.isLoading = false;
+        this.router.navigate(["home", "settings"]).then()
       },
       error: (err) => {
+        this.isLoading = false;
         console.log(err)
-        this.router.navigate(["home", "settings"], {state: {me: this.form.getRawValue()}}).then()
+        this.router.navigate(["home", "settings"]).then()
       }
     })
   }
 
   prepareFormData(): FormData{
-    const formData = new FormData();
+    let formData = new FormData();
 
     formData.append(
       'userDto',
@@ -109,7 +134,7 @@ export class UpdateInfoComponent {
     )
 
     formData.append(
-      'image',
+      'newImage',
       this.file
     )
 
@@ -121,6 +146,7 @@ export class UpdateInfoComponent {
   }
 
   public isFocused(element: HTMLInputElement) {
+
     return document.activeElement == element
   }
 
@@ -144,9 +170,17 @@ export class UpdateInfoComponent {
       'gender': this.genderCtrl,
       'maritalStatus': this.maritalStatusCtrl,
       'phone': this.phoneCtrl,
-      'photo': this.photoCtrl,
       'email': this.emailCtrl
     })
   }
 
+  private initializeSpecialty() {
+    this.specialties.forEach((specialty) =>{
+      if(specialty.name === this.me?.specialty){
+        this.specialtyCtrl = new FormControl<any>(specialty.code);
+        return;
+      }
+    })
+    this.form.addControl('specialty',this.specialtyCtrl);
+  }
 }

@@ -6,6 +6,7 @@ import {PatientsComponent} from "./patients/components/patients/patients.compone
 import {UsersComponent} from "./users/components/users/users.component";
 import {RequestsOverviewComponent} from "./access-requests/components/requests-overview/requests-overview.component";
 import {AccessGuard} from "./access.guard";
+import {RecordsComponent} from "./records/components/records/records.component";
 
 export const routes: Routes = [
   {
@@ -83,7 +84,13 @@ export const routes: Routes = [
           breadcrumb: 'Settings',
         },
         loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
-
+      },
+      {
+        path: 'records',
+        data: {
+          breadcrumb: 'Records',
+        },
+        component: RecordsComponent
       }
     ]
   },

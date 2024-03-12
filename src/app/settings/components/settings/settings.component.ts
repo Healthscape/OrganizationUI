@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {FhirPatientDto} from "../../dto/fhir.patient.dto";
+import {FhirUserDto} from "../../dto/fhirUserDto";
 import {FhirService} from "../../service/fhir.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../../auth/services/user.service";
 
 @Component({
   selector: 'app-settings',
@@ -12,14 +13,16 @@ import {Router} from "@angular/router";
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent {
-  me?: FhirPatientDto;
+  me?: FhirUserDto;
+  isLoading: boolean = true;
 
-  constructor(_fhirService: FhirService, private _router: Router) {
-    this.me = this._router.getCurrentNavigation()?.extras?.state?.['me'];
+  constructor(private userService: UserService, _fhirService: FhirService) {
     _fhirService.me().subscribe({
       next: (user) => {
         console.log(user)
         this.me = user;
+        this.isLoading = false;
+        this.userService.updateImage.next(user.image);
       }
     })
   }

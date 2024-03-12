@@ -1,61 +1,7 @@
 @use 'variables' as *;
 
 table {
-  &.mat-mdc-table.no_align {
-    tr.mat-mdc-row {
-      text-align-last: auto;
-    }
-  }
-
-  &.mat-mdc-table.no-color {
-    thead {
-      background-color: white;
-
-      tr.mat-mdc-header-row {
-        text-align-last: center;
-        color: lightgray;
-        height: 50px;
-      }
-
-      th{
-        top: -20px!important;
-      }
-    }
-
-    tr.mdc-data-table__row:last-child .mat-mdc-cell {
-      border-bottom: none;
-    }
-    tr.mat-mdc-row {
-      text-align-last: center;
-      border: 1px solid #000;
-      border-radius: 35px;
-      background-color: transparent;
-
-      td.no-padding{
-        padding: 0;
-      }
-
-      td {
-        padding: 10px;
-        border-bottom: 1px solid lightgray;
-      }
-
-      td:first-child,
-      th:first-child {
-        border-left: none;
-      }
-
-      td:last-child,
-      th:last-child {
-        border-right: none;
-      }
-
-    }
-
-  }
-
   &.mat-mdc-table {
-    //border-spacing: 0 8px!important;
     box-shadow: none;
     background: transparent;
 
@@ -67,13 +13,11 @@ table {
 
         td:first-child,
         th:first-child {
-          //border-radius: 40px 0 0 40px;
           border-radius: 10px 0 0;
         }
 
         td:last-child,
         th:last-child {
-          //border-radius: 0 40px 40px 0;
           border-radius: 0 10px 0 0;
         }
       }
@@ -136,6 +80,67 @@ table {
       //}
     }
   }
+
+  &.mat-mdc-table {
+    &.no-align {
+      tr.mat-mdc-row {
+        text-align-last: auto;
+      }
+
+      thead {
+        tr.mat-mdc-header-row {
+          text-align-last: auto;
+        }
+      }
+    }
+
+    &.no-color {
+      thead {
+        background-color: white;
+
+        tr.mat-mdc-header-row {
+          color: lightgray;
+          height: 50px;
+        }
+
+        th{
+          top: -20px!important;
+        }
+      }
+
+      tr.mdc-data-table__row:last-child .mat-mdc-cell {
+        border-bottom: none;
+      }
+
+      tr.mat-mdc-row {
+        border: 1px solid #000;
+        border-radius: 35px;
+        background-color: transparent;
+
+        td.no-padding{
+          padding: 0;
+        }
+
+        td {
+          padding: 10px;
+          border-bottom: 1px solid lightgray;
+        }
+
+        td:first-child,
+        th:first-child {
+          border-left: none;
+        }
+
+        td:last-child,
+        th:last-child {
+          border-right: none;
+        }
+
+      }
+
+    }
+  }
+
 }
 
 mat-form-field {
@@ -233,8 +238,8 @@ mat-form-field {
     }
 
     &.search .mat-mdc-form-field-icon-suffix:hover {
-      cursor: pointer;
       box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
 
     .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
@@ -268,8 +273,8 @@ mat-dialog-container {
   mat-dialog-actions{
     &.mat-mdc-dialog-actions{
       justify-content: flex-end;
-      padding-left: 20px;
       padding-right: 20px;
+      padding-left: 20px;
     }
   }
 }
@@ -319,4 +324,30 @@ mat-progress-bar{
       background-color: $dark-dark-blue;
     }
   }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0;
+  }
+
+  100% {
+    background-position: 800px 0;
+  }
+}
+
+.loading {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  animation-name: placeHolderShimmer;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  border: 2px solid rgb(200 219 244);
+  border-radius: 30px;
+  background: #f3f6f8 linear-gradient(to right, rgba(238, 238, 238, 0) 8%, rgb(171 186 194 / 24%) 18%, rgba(238, 238, 238, 0) 33%);
+  background-size: 800px 104px;
+  animation-fill-mode: forwards;
 }

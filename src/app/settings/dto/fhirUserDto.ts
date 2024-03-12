@@ -1,4 +1,4 @@
-export class FhirPatientDto {
+export class FhirUserDto {
   identifier?: string;
   name?: string;
   surname?: string;
@@ -10,6 +10,7 @@ export class FhirPatientDto {
   imagePath?: string;
   phone?: string;
   email?: string;
+  specialty?: string;
 
   constructor() {
   }

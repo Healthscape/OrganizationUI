@@ -1,4 +1,4 @@
-<div [formGroup]="form" class="update-info-wrapper">
+<div [formGroup]="form" *ngIf="role == 'ROLE_PATIENT'" class="update-info-wrapper">
   <div class="title">
     <mat-form-field appearance="fill" class="update-info">
       <input [formControl]="nameCtrl" matInput>
@@ -79,6 +79,72 @@
   <div class="actions">
     <button (click)="onCancel()" color="warn" mat-flat-button>Cancel</button>
     <button (click)="onSave()" color="primary" mat-flat-button>Save</button>
+  </div>
+</div>
+<div [formGroup]="form" *ngIf="role == 'ROLE_PRACTITIONER'" class="update-info-wrapper">
+  <div class="title">
+    <div class="title">
+      <mat-form-field appearance="fill" class="update-info">
+        <input [formControl]="nameCtrl" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="update-info">
+        <input [formControl]="surnameCtrl" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="content">
+    <div class="profile-image">
+      <input #fileInput (change)="onChangePhoto($event, avatarPhoto)" style="display: none;" type="file">
+      <div #avatarPhoto [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.image + '\')'}"
+           class="avatar-image" mat-card-avatar>
+      </div>
+      <div class="avatar-image-overlay">
+        <button (click)="onChangePhotoButton(fileInput)" [matTooltip]="'Change photo'" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Phone</mat-label>
+          <div class="material-symbols-outlined" matPrefix>call</div>
+          <input [formControl]="phoneCtrl" matInput>
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Date of birth</mat-label>
+          <div class="material-symbols-outlined" matPrefix>person</div>
+          <input [formControl]="birthDateCtrl" [matDatepicker]="picker" matInput>
+          <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+        <mat-form-field appearance="fill" class="update-info">
+          <mat-label>Gender</mat-label>
+          <div class="material-symbols-outlined" matPrefix>transgender</div>
+          <mat-select [formControl]="genderCtrl">
+            <mat-option *ngFor="let gender of genders.genders" [value]="gender.code">{{gender.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="info-cell">
+      <mat-form-field>
+        <mat-select [formControl]="specialtyCtrl" placeholder="Specialty">
+          <mat-option *ngFor="let specialty of specialties" [id]="specialty.code" [value]="specialty.code">
+            {{specialty.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <mat-progress-bar *ngIf="isLoading" color="primary" mode="indeterminate"></mat-progress-bar>
+    <button *ngIf="!isLoading"(click)="onCancel()" color="warn" mat-flat-button>Cancel</button>
+    <button *ngIf="!isLoading"(click)="onSave()" color="primary" mat-flat-button>Save</button>
   </div>
 </div>
 
