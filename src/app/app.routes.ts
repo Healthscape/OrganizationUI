@@ -7,6 +7,8 @@ import {UsersComponent} from "./users/components/users/users.component";
 import {RequestsOverviewComponent} from "./access-requests/components/requests-overview/requests-overview.component";
 import {AccessGuard} from "./access.guard";
 import {RecordsComponent} from "./records/components/records/records.component";
+import {RecordOverviewComponent} from "./records/components/record-overview/record-overview.component";
+import {PatientRecordComponent} from "./records/components/patient-record/patient-record.component";
 
 export const routes: Routes = [
   {
@@ -21,11 +23,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AccessGuard],
-    data: {
-      requiresLogin: true,
-      roles: ['ROLE_ADMIN', 'ROLE_PATIENT', 'ROLE_PRACTITIONER']
-    },
+    // canActivate: [AccessGuard],
+    // data: {
+    //   requiresLogin: true,
+    //   roles: ['ROLE_ADMIN', 'ROLE_PATIENT', 'ROLE_PRACTITIONER']
+    // },
     children: [
       {
         path: 'patients',
@@ -91,6 +93,13 @@ export const routes: Routes = [
           breadcrumb: 'Records',
         },
         component: RecordsComponent
+      },
+      {
+        path: 'record-overview',
+        data: {
+          breadcrumb: 'Record Overview',
+        },
+        component: PatientRecordComponent
       }
     ]
   },

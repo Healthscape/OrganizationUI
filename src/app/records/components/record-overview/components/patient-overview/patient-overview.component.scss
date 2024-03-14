@@ -1,0 +1,33 @@
+@use '../../../../../../styles/variables' as *;
+
+::ng-deep .patient-overview-host-wrapper {
+  display: flex;
+  overflow: auto;
+  gap: 1rem;
+  flex: 1;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+
+.patient-info {
+  flex: 1;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  h2 {
+    color: $dark-dark-blue;
+    margin-top: 0;
+  }
+
+  span {
+    color: $dark-gray;
+  }
+}

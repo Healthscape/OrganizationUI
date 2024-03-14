@@ -10,7 +10,8 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
-
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
 @font-face {
   font-family: 'Material Symbols Outlined';
   src: url('./styles/material-symbols-outlined.woff2') format('woff2');

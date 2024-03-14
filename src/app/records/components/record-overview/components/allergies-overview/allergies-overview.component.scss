@@ -1,0 +1,45 @@
+@use '../../../../../../styles/variables' as *;
+
+
+::ng-deep .allergies-overview-host-wrapper {
+  display: flex;
+  overflow: auto;
+  flex: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.material-symbols-outlined{
+  color: $light-blue;
+  font-variation-settings: 'FILL' 1;
+}
+
+.allergies-list{
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.allergy-container{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.allergy-to{
+  font-weight: 500;
+  color: $dark-dark-blue;
+}
+
+.allergy-name{
+  color: $dark-gray;
+}
+
+.allergy-right-container{
+  display: flex;
+  flex-direction: column;
+}

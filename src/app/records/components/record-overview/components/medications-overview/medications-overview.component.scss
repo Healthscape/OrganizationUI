@@ -1,0 +1,39 @@
+@use '../../../../../../styles/variables' as *;
+
+::ng-deep .medications-overview-host-wrapper {
+  display: flex;
+  overflow: auto;
+  flex: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+
+.medications-list {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.medication-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.medication-name {
+  font-weight: 500;
+  color: $dark-dark-blue;
+}
+
+.medication-instructions {
+  color: $dark-gray;
+}
+
+.medication-date {
+  color: $light-blue;
+  margin-top: 1rem;
+}

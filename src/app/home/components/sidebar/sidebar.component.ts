@@ -12,6 +12,8 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {UserService} from "../../../auth/services/user.service";
 import {AuthService} from "../../../auth/services/auth.service";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {SubjectService} from "../../../utils/events/subject.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -30,29 +32,29 @@ export class SidebarComponent {
   selected = 'dashboard';
   me: UserDto = new UserDto();
 
-  constructor(private authService: AuthService, private userService: UserService, private router: Router, private route: ActivatedRoute, private observer: BreakpointObserver) {
-    userService.me().subscribe({
+  constructor(private authService: AuthService, userService: UserService, private router: Router, private route: ActivatedRoute, private subjectService: SubjectService) {
+    userService.me().pipe(takeUntilDestroyed()).subscribe({
       next: (user) => {
         this.me = user;
       }
     })
-    this.router.events.subscribe((event) => {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       if (event instanceof NavigationEnd) {
         let currentlySelected = this.route.snapshot.children?.at(0)?.routeConfig?.path;
         if (currentlySelected) {
           this.selected = currentlySelected
+          if(currentlySelected == 'record-overview'){
+            this.isCollapsed = true;
+          }
         } else {
           this.selected = 'home'
         }
       }
     });
-
-  }
-
-  ngOnInit() {
-    this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-      this.isMobile = screenSize.matches;
-    });
+    this.subjectService.collapseSidebar.pipe(takeUntilDestroyed()).subscribe(() =>{
+      this.isCollapsed = true;
+      this.toggleMenuEvent.emit(this.isCollapsed);
+    })
   }
 
   toggleMenu() {

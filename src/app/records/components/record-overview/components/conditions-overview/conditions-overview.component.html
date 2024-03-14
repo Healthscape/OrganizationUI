@@ -1,0 +1,14 @@
+<h3>Conditions</h3>
+<div class="conditions-list">
+  <div class="list-item" *ngFor="let condition of conditions">
+    <div class="condition-container">
+      <span class="material-symbols-outlined" *ngIf="condition.type == 'VIRUS'">coronavirus</span>
+      <span class="material-symbols-outlined" *ngIf="condition.type == 'HEART'">ecg_heart</span>
+      <span class="material-symbols-outlined" *ngIf="condition.type == 'LUNGS'">pulmonology</span>
+      <div class="allergy-right-container">
+        <div class="condition-name">{{condition.name}}</div>
+        <div class="condition-date">{{condition.date | date}}</div>
+      </div>
+    </div>
+  </div>
+</div>

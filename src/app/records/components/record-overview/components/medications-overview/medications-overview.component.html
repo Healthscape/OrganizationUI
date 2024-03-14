@@ -1,0 +1,10 @@
+<h3>Medications</h3>
+<div class="medications-list">
+  <div class="list-item" *ngFor="let medication of medications">
+    <div class="medication-container">
+      <div class="medication-name">{{medication.name}}</div>
+      <div class="medication-instructions">{{medication.instructions}}</div>
+      <div class="medication-date">{{medication.date | date}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<h3>Recent Encounters</h3>
+<div class="encounters-timeline">
+  <app-timeline [events]="encounters">
+    <ng-template let-event>
+      <div class="timeline-container">
+        <div class="specialty">{{event.specialty}}</div>
+        <div class="ago">{{event.ago}}</div>
+      </div>
+    </ng-template>
+  </app-timeline>
+</div>

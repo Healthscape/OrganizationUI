@@ -1,0 +1,14 @@
+<h3>Allergies</h3>
+<div class="allergies-list">
+  <div class="list-item" *ngFor="let allergy of allergies">
+    <div class="allergy-container">
+      <span class="material-symbols-outlined" *ngIf="allergy.type == 'MEDICINE'">pill</span>
+      <span class="material-symbols-outlined" *ngIf="allergy.type == 'FOOD'">fastfood</span>
+      <span class="material-symbols-outlined" *ngIf="allergy.type == 'OTHER'">block</span>
+      <div class="allergy-right-container">
+        <div class="allergy-to">Allergy to {{allergy.type.toLowerCase()}}</div>
+        <div class="allergy-name">{{allergy.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>
