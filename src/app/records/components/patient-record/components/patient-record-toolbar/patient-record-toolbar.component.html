@@ -1,14 +1,13 @@
 <div class="tab-component">
 
-  <div class="tab-group">
+  <span class="tab-group">
     <div class="tab" (click)="onTabChange('overview')" [ngClass]="selected == 'overview' ? 'selected' : ''" >Overview</div>
     <div class="tab" (click)="onTabChange('demographics')" [ngClass]="selected == 'demographics' ? 'selected' : ''" >Demographics</div>
     <div class="tab" (click)="onTabChange('encounters')" [ngClass]="selected == 'encounters' ? 'selected' : ''" >Encounters</div>
-    <div class="tab" (click)="onTabChange('diagnostics')" [ngClass]="selected == 'diagnostics' ? 'selected' : ''" >Diagnostics</div>
     <div class="tab" (click)="onTabChange('medications')" [ngClass]="selected == 'medications' ? 'selected' : ''" >Medications</div>
     <div class="tab" (click)="onTabChange('documents')" [ngClass]="selected == 'documents' ? 'selected' : ''" >Documents</div>
-  </div>
-  <div class="tab-group current-encounter">
-    <div class="tab " (click)="onTabChange('ongoing')" [ngClass]="selected == 'ongoing' ? 'selected' : ''" >Ongoing</div>
-  </div>
+  </span>
+  <span class="tab-group current-encounter">
+    <div class="tab " (click)="onTabChange('current-encounter')" [ngClass]="selected == 'current-encounter' ? 'selected' : ''" >{{encounterStarted ? 'Ongoing' : 'New encounter'}}</div>
+  </span>
 </div>

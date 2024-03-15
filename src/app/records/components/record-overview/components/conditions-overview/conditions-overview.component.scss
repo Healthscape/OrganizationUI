@@ -23,6 +23,15 @@
   flex-direction: row;
   gap: 1rem;
   align-items: center;
+
+  .condition-type{
+    color: $dark-dark-blue;
+    box-sizing: border-box;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: oklch(0.62 0.05 253.74 / 0.24);
+    font-variation-settings: 'FILL' 1;
+  }
 }
 
 .condition-name{
@@ -35,11 +44,15 @@
   color: $dark-gray;
 }
 
-.material-symbols-outlined{
-  color: $dark-dark-blue;
-  box-sizing: border-box;
-  padding: 2px;
-  border-radius: 5px;
-  background-color: oklch(0.62 0.05 253.74 / 0.24);
-  font-variation-settings: 'FILL' 1;
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  h3{
+    margin: 0;
+  }
 }
+

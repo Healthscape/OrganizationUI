@@ -31,21 +31,4 @@ import {QuestionDialogComponent} from "../../../utils/custom-components/question
   styleUrl: './record-overview.component.scss'
 })
 export class RecordOverviewComponent {
-
-  constructor(private subjectService: SubjectService, private dialog: MatDialog,) {
-    this.subjectService.collapseSidebar.next('');
-
-    let dialogRef = this.dialog.open(QuestionDialogComponent, {
-      minWidth: "40vw",
-      data:{
-        question: "Do you want to start an encounter?"
-      }
-    });
-
-    dialogRef.afterClosed().subscribe({
-      next:(response) =>{
-        console.log(response)
-      }
-    });
-  }
 }

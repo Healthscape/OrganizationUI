@@ -37,3 +37,29 @@
   color: $light-blue;
   margin-top: 1rem;
 }
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.medication-status{
+  white-space: nowrap;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: $light-light-blue;
+}
+
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  h3{
+    margin: 0;
+  }
+}

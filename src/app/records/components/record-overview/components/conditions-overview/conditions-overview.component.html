@@ -1,14 +1,18 @@
-<h3>Conditions</h3>
+<div class="header">
+  <span><h3>Conditions</h3></span>
+  <span *ngIf="edit"><button mat-icon-button class="small"><span class="material-symbols-outlined">add</span></button></span>
+</div>
 <div class="conditions-list">
   <div class="list-item" *ngFor="let condition of conditions">
     <div class="condition-container">
-      <span class="material-symbols-outlined" *ngIf="condition.type == 'VIRUS'">coronavirus</span>
-      <span class="material-symbols-outlined" *ngIf="condition.type == 'HEART'">ecg_heart</span>
-      <span class="material-symbols-outlined" *ngIf="condition.type == 'LUNGS'">pulmonology</span>
+      <span class="material-symbols-outlined condition-type" *ngIf="condition.type == 'VIRUS'">coronavirus</span>
+      <span class="material-symbols-outlined condition-type" *ngIf="condition.type == 'HEART'">ecg_heart</span>
+      <span class="material-symbols-outlined condition-type" *ngIf="condition.type == 'LUNGS'">pulmonology</span>
       <div class="allergy-right-container">
         <div class="condition-name">{{condition.name}}</div>
-        <div class="condition-date">{{condition.date | date}}</div>
+        <div class="condition-date">{{condition.recordedDate | date}}</div>
       </div>
+      <span><button mat-icon-button class="small" *ngIf="edit"><span class="material-symbols-outlined">delete</span></button></span>
     </div>
   </div>
 </div>

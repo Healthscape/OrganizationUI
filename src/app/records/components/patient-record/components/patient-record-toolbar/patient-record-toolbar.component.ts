@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './patient-record-toolbar.component.scss'
 })
 export class PatientRecordToolbarComponent {
+  @Input() encounterStarted: boolean = false;
   @Output() tabChanged: EventEmitter<string> = new EventEmitter<string>();
   selected = "overview";
 
