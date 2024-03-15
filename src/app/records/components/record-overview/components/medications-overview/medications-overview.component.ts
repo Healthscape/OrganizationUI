@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MedicationDto} from "../../../../dto/medication.dto";
+import {MedicationAdministrationDto} from "../../../../dto/medicationAdministrationDto";
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
@@ -14,6 +14,6 @@ import {MatButtonModule} from "@angular/material/button";
   styleUrl: './medications-overview.component.scss'
 })
 export class MedicationsOverviewComponent {
-  medications = [new MedicationDto(), new MedicationDto(), new MedicationDto(),new MedicationDto(), new MedicationDto(), new MedicationDto()];
+  medications = [new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto(),new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto()];
   @Input() edit: boolean = false;
 }

@@ -1,4 +1,8 @@
 <app-patient-record-toolbar class="toolbar" (tabChanged)="onTabChanged($event)" [encounterStarted]="encounterStarted"></app-patient-record-toolbar>
 
 <app-record-overview class="content" *ngIf="currentTab == 'overview'"></app-record-overview>
+<app-demographics class="content" *ngIf="currentTab == 'demographics'"></app-demographics>
+<app-medications class="content" *ngIf="currentTab == 'medications'"></app-medications>
+<app-documents class="content" *ngIf="currentTab == 'documents'"></app-documents>
+<app-encounters class="content" *ngIf="currentTab == 'encounters'"></app-encounters>
 <app-current-encounter class="content" *ngIf="currentTab == 'current-encounter'" [startedAt]="startedAt" [encounterStarted]="encounterStarted"></app-current-encounter>

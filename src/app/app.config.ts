@@ -9,10 +9,23 @@ import {AuthInterceptor} from "./auth/auth.interceptor";
 import {PermissionsService} from "./access.guard";
 import {provideEnvironmentNgxMask} from "ngx-mask";
 import {MatNativeDateModule} from "@angular/material/core";
+import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 export const appConfig: ApplicationConfig = {
   providers: [provideEnvironmentNgxMask(),
-    provideRouter(routes), provideAnimations(), provideHttpClient(withInterceptorsFromDi()),importProvidersFrom(MatNativeDateModule),
+    provideRouter(routes), provideAnimations(), provideHttpClient(withInterceptorsFromDi()),importProvidersFrom(MatNativeDateModule),provideMomentDateAdapter(MY_FORMATS),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

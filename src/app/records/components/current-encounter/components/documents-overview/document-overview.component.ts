@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
-  selector: 'app-documents',
+  selector: 'app-documents-overview',
   standalone: true,
   host:{
-    class: 'documents-host-wrapper'
+    class: 'documents-overview-host-wrapper'
   },
   imports: [CommonModule, MatButtonModule],
-  templateUrl: './documents.component.html',
-  styleUrl: './documents.component.scss'
+  templateUrl: './document-overview.component.html',
+  styleUrl: './document-overview.component.scss'
 })
-export class DocumentsComponent {
+export class DocumentOverviewComponent {
 
 }

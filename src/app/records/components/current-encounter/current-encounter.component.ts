@@ -6,10 +6,11 @@ import {
   ConditionsOverviewComponent
 } from "../record-overview/components/conditions-overview/conditions-overview.component";
 import {ClinicalImpressionComponent} from "./components/clinical-impression/clinical-impression.component";
-import {DocumentsComponent} from "./components/documents/documents.component";
+import {DocumentOverviewComponent} from "./components/documents-overview/document-overview.component";
 import {
   MedicationsOverviewComponent
 } from "../record-overview/components/medications-overview/medications-overview.component";
+import {DocumentsComponent} from "../patient-record/components/documents/documents.component";
 
 @Component({
   selector: 'app-current-encounter',
@@ -17,7 +18,7 @@ import {
   host:{
     class: "current-encounter-host-wrapper"
   },
-  imports: [CommonModule, MatButtonModule, MatInputModule, ConditionsOverviewComponent, ClinicalImpressionComponent, DocumentsComponent, MedicationsOverviewComponent],
+  imports: [CommonModule, MatButtonModule, MatInputModule, ConditionsOverviewComponent, ClinicalImpressionComponent, DocumentOverviewComponent, MedicationsOverviewComponent, DocumentsComponent],
   templateUrl: './current-encounter.component.html',
   styleUrl: './current-encounter.component.scss'
 })

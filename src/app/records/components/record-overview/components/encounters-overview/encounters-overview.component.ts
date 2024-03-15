@@ -24,7 +24,7 @@ export class EncountersOverviewComponent {
 
   private calculateMonthsAgo() {
     this.encounters.forEach((encounter) => {
-      encounter.ago = this.getMonthsAgo(encounter.dateTime);
+      encounter.ago = this.getMonthsAgo(encounter.actualPeriod.start);
     })
   }
 

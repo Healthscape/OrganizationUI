@@ -7,6 +7,13 @@ import {SubjectService} from "../../../utils/events/subject.service";
 import {MatDialog} from "@angular/material/dialog";
 import {QuestionDialogComponent} from "../../../utils/custom-components/question-dialog/question-dialog.component";
 import {CurrentEncounterComponent} from "../current-encounter/current-encounter.component";
+import {DocumentsComponent} from "./components/documents/documents.component";
+import {
+  MedicationsOverviewComponent
+} from "../record-overview/components/medications-overview/medications-overview.component";
+import {MedicationsComponent} from "./components/medications/medications.component";
+import {EncountersComponent} from "./components/encounters/encounters.component";
+import {DemographicsComponent} from "./components/demographics/demographics.component";
 
 @Component({
   selector: 'app-patient-record',
@@ -14,7 +21,7 @@ import {CurrentEncounterComponent} from "../current-encounter/current-encounter.
   host:{
     class: "patient-record-host-wrapper"
   },
-  imports: [CommonModule, PatientOverviewComponent, PatientRecordToolbarComponent, RecordOverviewComponent, CurrentEncounterComponent],
+  imports: [CommonModule, PatientOverviewComponent, PatientRecordToolbarComponent, RecordOverviewComponent, CurrentEncounterComponent, DocumentsComponent, MedicationsOverviewComponent, MedicationsComponent, EncountersComponent, DemographicsComponent],
   templateUrl: './patient-record.component.html',
   styleUrl: './patient-record.component.scss'
 })

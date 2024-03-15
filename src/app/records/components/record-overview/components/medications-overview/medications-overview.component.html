@@ -5,10 +5,10 @@
 <div class="medications-list">
   <div class="list-item" *ngFor="let medication of medications">
     <div class="medication-container">
-        <div class="medication-name">{{medication.name}}</div>
+        <div class="medication-name">{{medication.medication}}</div>
         <div class="medication-instructions">{{medication.instructions}}</div>
       <div class="footer">
-        <div class="medication-date">{{medication.date | date}}</div>
+        <div class="medication-date">{{medication.occurrence.start | date}}</div>
         <div class="medication-status" *ngIf="edit">In progress</div>
       </div>
     </div>
