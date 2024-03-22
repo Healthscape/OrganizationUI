@@ -1,6 +1,6 @@
-<app-profile [me]="me" *ngIf="!isLoading"></app-profile>
-<div class="loading" *ngIf="isLoading" style="height: 200px"></div>
+<app-account-info *ngIf="!isLoading" [me]="me"></app-account-info>
+<div *ngIf="isLoading" class="loading" style="height: 200px"></div>
 <app-account-settings *ngIf="!isLoading" [me]="me"></app-account-settings>
-<div class="loading" *ngIf="isLoading" style="height: 50px; border-radius: 10px"></div>
-<div class="loading" *ngIf="isLoading" style="height: 50px; border-radius: 10px"></div>
+<div *ngIf="isLoading" class="loading" style="height: 50px; border-radius: 10px"></div>
+<div *ngIf="isLoading" class="loading" style="height: 50px; border-radius: 10px"></div>
 

@@ -1,6 +1,5 @@
 
-
-::ng-deep .patient-record-host-wrapper{
+::ng-deep .patient-record-host-wrapper {
   display: grid;
   overflow: auto;
   width: 100%;
@@ -16,6 +15,6 @@
   grid-area: toolbar;
 }
 
-.content{
+.content {
   grid-area: content;
 }

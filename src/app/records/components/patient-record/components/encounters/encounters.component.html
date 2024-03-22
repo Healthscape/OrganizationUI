@@ -7,14 +7,14 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="update-info range">
             <mat-date-range-input [rangePicker]="rangePicker">
-                <input matStartDate placeholder="Start date" [formControl]="startDateCtrl" >
-                <input matEndDate placeholder="End date" [formControl]="endDateCtrl" >
+                <input [formControl]="startDateCtrl" matStartDate placeholder="Start date">
+                <input [formControl]="endDateCtrl" matEndDate placeholder="End date">
             </mat-date-range-input>
-            <mat-datepicker-toggle matIconSuffix [for]="rangePicker" class="small"></mat-datepicker-toggle>
+            <mat-datepicker-toggle [for]="rangePicker" class="small" matIconSuffix></mat-datepicker-toggle>
             <mat-date-range-picker #rangePicker>
                 <mat-date-range-picker-actions>
                     <button mat-button matDateRangePickerCancel>Cancel</button>
-                    <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                    <button color="primary" mat-raised-button matDateRangePickerApply>Apply</button>
                 </mat-date-range-picker-actions>
             </mat-date-range-picker>
         </mat-form-field>
@@ -23,24 +23,24 @@
 <div class="documents-container">
 
     <div class="documents">
-        <table mat-table [dataSource]="encounters" class="mat-elevation-z8 no-color" [multiTemplateDataRows]="true">
+        <table [dataSource]="encounters" [multiTemplateDataRows]="true" class="mat-elevation-z8 no-color" mat-table>
 
             <!-- Start Column -->
             <ng-container matColumnDef="start">
                 <th *matHeaderCellDef mat-header-cell>Start</th>
-                <td *matCellDef="let encounter" mat-cell>{{encounter.actualPeriod.start | date}}</td>
+                <td *matCellDef="let encounter" mat-cell>{{ encounter.actualPeriod.start | date }}</td>
             </ng-container>
 
             <!-- Specialty Column -->
             <ng-container matColumnDef="specialty">
                 <th *matHeaderCellDef mat-header-cell>Specialty</th>
-                <td *matCellDef="let encounter" mat-cell>{{encounter.specialty}}</td>
+                <td *matCellDef="let encounter" mat-cell>{{ encounter.specialty }}</td>
             </ng-container>
 
             <!-- Service Provider Column -->
             <ng-container matColumnDef="serviceProvider">
                 <th *matHeaderCellDef mat-header-cell>Service Provider</th>
-                <td *matCellDef="let encounter" mat-cell>{{encounter.serviceProvider}}</td>
+                <td *matCellDef="let encounter" mat-cell>{{ encounter.serviceProvider }}</td>
             </ng-container>
 
             <!-- More Column -->

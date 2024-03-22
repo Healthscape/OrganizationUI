@@ -7,14 +7,14 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="update-info range">
             <mat-date-range-input [rangePicker]="rangePicker">
-                <input matStartDate placeholder="Start date" [formControl]="startDateCtrl" >
-                <input matEndDate placeholder="End date" [formControl]="endDateCtrl" >
+                <input [formControl]="startDateCtrl" matStartDate placeholder="Start date">
+                <input [formControl]="endDateCtrl" matEndDate placeholder="End date">
             </mat-date-range-input>
-            <mat-datepicker-toggle matIconSuffix [for]="rangePicker" class="small"></mat-datepicker-toggle>
+            <mat-datepicker-toggle [for]="rangePicker" class="small" matIconSuffix></mat-datepicker-toggle>
             <mat-date-range-picker #rangePicker>
                 <mat-date-range-picker-actions>
                     <button mat-button matDateRangePickerCancel>Cancel</button>
-                    <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                    <button color="primary" mat-raised-button matDateRangePickerApply>Apply</button>
                 </mat-date-range-picker-actions>
             </mat-date-range-picker>
         </mat-form-field>
@@ -23,30 +23,30 @@
 <div class="documents-container">
 
     <div class="documents">
-        <table mat-table [dataSource]="medications" class="mat-elevation-z8 no-color" [multiTemplateDataRows]="true">
+        <table [dataSource]="medications" [multiTemplateDataRows]="true" class="mat-elevation-z8 no-color" mat-table>
 
             <!-- Status Column -->
             <ng-container matColumnDef="status">
                 <th *matHeaderCellDef mat-header-cell>Status</th>
-                <td *matCellDef="let medication" mat-cell>{{medication.status}}</td>
+                <td *matCellDef="let medication" mat-cell>{{ medication.status }}</td>
             </ng-container>
 
             <!-- Medication Column -->
             <ng-container matColumnDef="medication">
                 <th *matHeaderCellDef mat-header-cell>Medication</th>
-                <td *matCellDef="let medication" mat-cell>{{medication.medication}}</td>
+                <td *matCellDef="let medication" mat-cell>{{ medication.medication }}</td>
             </ng-container>
 
             <!-- Start Column -->
             <ng-container matColumnDef="start">
                 <th *matHeaderCellDef mat-header-cell>Start</th>
-                <td *matCellDef="let medication" mat-cell>{{medication.occurrence.start | date}}</td>
+                <td *matCellDef="let medication" mat-cell>{{ medication.occurrence.start | date }}</td>
             </ng-container>
 
             <!-- End Column -->
             <ng-container matColumnDef="end">
                 <th *matHeaderCellDef mat-header-cell>End</th>
-                <td *matCellDef="let medication" mat-cell>{{medication.occurrence.end | date}}</td>
+                <td *matCellDef="let medication" mat-cell>{{ medication.occurrence.end | date }}</td>
             </ng-container>
 
             <!-- More Column -->

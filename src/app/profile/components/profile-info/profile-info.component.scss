@@ -1,0 +1,54 @@
+@use '../../../../styles/variables' as *;
+
+::ng-deep .profile-info-host-wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  border: 2px solid $accent-light-blue;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.avatar-image {
+  width: 150px;
+  height: 150px;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.profile-info {
+  display: grid;
+  flex: 1;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.info-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  div {
+    color: $light-blue;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    background-color: $accent-light-blue;
+  }
+
+  p span {
+    font-weight: 400;
+    color: $dark-gray;
+  }
+
+  p {
+    font-weight: bolder;
+    color: $dark-dark-blue;
+  }
+}

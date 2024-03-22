@@ -1,11 +1,17 @@
 <h3>Recent Encounters</h3>
 <div class="encounters-timeline">
-  <app-timeline [events]="encounters">
-    <ng-template let-event>
-      <div class="timeline-container">
-        <div class="specialty">{{event.specialty}}</div>
-        <div class="ago">{{event.ago}}</div>
-      </div>
-    </ng-template>
-  </app-timeline>
+    <div class="list-item no-items" *ngIf="!encounters.length">
+        <div class="medication-container">
+            <div class="medication-name">No encounters yet.</div>
+        </div>
+
+    </div>
+    <app-timeline [events]="encounters" *ngIf="encounters.length">
+        <ng-template let-event>
+            <div class="timeline-container">
+                <div class="specialty">{{ event.specialty }}</div>
+                <div class="ago">{{ event.ago }}</div>
+            </div>
+        </ng-template>
+    </app-timeline>
 </div>

@@ -1,0 +1,23 @@
+::ng-deep .clinical-impression-host-wrapper {
+  display: flex;
+  overflow: auto;
+  flex: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.description {
+  flex: 1;
+}
+
+.summary {
+  margin-top: 1rem;
+}
+.summary textarea {
+  resize: none;
+}
+
+/*# sourceMappingURL=clinical-impression.component.css.map */

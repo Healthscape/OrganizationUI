@@ -6,106 +6,111 @@ import {PatientsComponent} from "./patients/components/patients/patients.compone
 import {UsersComponent} from "./users/components/users/users.component";
 import {RequestsOverviewComponent} from "./access-requests/components/requests-overview/requests-overview.component";
 import {AccessGuard} from "./access.guard";
-import {RecordsComponent} from "./records/components/records/records.component";
-import {RecordOverviewComponent} from "./records/components/record-overview/record-overview.component";
 import {PatientRecordComponent} from "./records/components/patient-record/patient-record.component";
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: AuthComponent,
-    canActivate: [AccessGuard],
-    data: {
-      breadcrumb: null,
-      requiresLogin: false
+    {
+        path: '',
+        component: AuthComponent,
+        canActivate: [AccessGuard],
+        data: {
+            breadcrumb: null,
+            requiresLogin: false
+        },
     },
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-    // canActivate: [AccessGuard],
-    // data: {
-    //   requiresLogin: true,
-    //   roles: ['ROLE_ADMIN', 'ROLE_PATIENT', 'ROLE_PRACTITIONER']
-    // },
-    children: [
-      {
-        path: 'patients',
+    {
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AccessGuard],
         data: {
-          breadcrumb: 'Patients'
+            requiresLogin: true,
+            roles: ['ROLE_ADMIN', 'ROLE_PATIENT', 'ROLE_PRACTITIONER']
         },
-        component: PatientsComponent
-      },
-      {
-        path: 'users',
-        data: {
-          breadcrumb: 'Users'
-        },
-        component: UsersComponent
-      },
-      {
-        path: 'requests',
-        data: {
-          breadcrumb: 'Access Requests'
-        },
-        component: RequestsOverviewComponent,
         children: [
-          {
-            path: 'pending',
-            data: {
-              breadcrumb: 'Pending'
+            {
+                path: 'patients',
+                data: {
+                    breadcrumb: 'Patients'
+                },
+                component: PatientsComponent
             },
-            component: RequestsOverviewComponent,
-          },
-          {
-            path: 'denied',
-            data: {
-              breadcrumb: 'Denied'
+            {
+                path: 'users',
+                data: {
+                    breadcrumb: 'Users'
+                },
+                component: UsersComponent
             },
-            component: RequestsOverviewComponent,
-          },
-          {
-            path: 'one-time',
-            data: {
-              breadcrumb: 'One time'
+            {
+                path: 'requests',
+                data: {
+                    breadcrumb: 'Access Requests'
+                },
+                component: RequestsOverviewComponent,
+                children: [
+                    {
+                        path: 'pending',
+                        data: {
+                            breadcrumb: 'Pending'
+                        },
+                        component: RequestsOverviewComponent,
+                    },
+                    {
+                        path: 'denied',
+                        data: {
+                            breadcrumb: 'Denied'
+                        },
+                        component: RequestsOverviewComponent,
+                    },
+                    {
+                        path: 'one-time',
+                        data: {
+                            breadcrumb: 'One time'
+                        },
+                        component: RequestsOverviewComponent,
+                    },
+                    {
+                        path: 'unlimited',
+                        data: {
+                            breadcrumb: 'Unlimited'
+                        },
+                        component: RequestsOverviewComponent,
+                    },
+                ]
             },
-            component: RequestsOverviewComponent,
-          },
-          {
-            path: 'unlimited',
-            data: {
-              breadcrumb: 'Unlimited'
+            {
+                path: 'settings',
+                data: {
+                    breadcrumb: 'Settings',
+                },
+                loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
             },
-            component: RequestsOverviewComponent,
-          },
+            {
+                path: 'profile',
+                data: {
+                    breadcrumb: 'Profile',
+                },
+                loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+            },
+            {
+                path: 'records',
+                data: {
+                    breadcrumb: 'Records',
+                },
+                loadChildren: () => import('./records/records.module').then(m => m.RecordsModule),
+            },
+            {
+                path: 'record-overview',
+                data: {
+                    breadcrumb: 'Record Overview',
+                },
+                component: PatientRecordComponent
+            }
         ]
-      },
-      {
-        path: 'settings',
-        data: {
-          breadcrumb: 'Settings',
-        },
-        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
-      },
-      {
-        path: 'records',
-        data: {
-          breadcrumb: 'Records',
-        },
-        component: RecordsComponent
-      },
-      {
-        path: 'record-overview',
-        data: {
-          breadcrumb: 'Record Overview',
-        },
-        component: PatientRecordComponent
-      }
-    ]
-  },
-  {
-    path: 'blank-page',
-    component: BlankPageComponent,
-    canActivate: []
-  },
+    },
+    {
+        path: 'blank-page',
+        component: BlankPageComponent,
+        canActivate: []
+    },
 ];

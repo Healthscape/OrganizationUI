@@ -1,6 +1,6 @@
 @use '../../../../styles/variables' as *;
 
-::ng-deep .record-overview-host-wrapper{
+::ng-deep .record-overview-host-wrapper {
   display: grid;
   overflow: auto;
   grid-template-areas: 'patient encounters allergies'
@@ -14,23 +14,23 @@
   grid-template-columns: 1fr 0.7fr 0.7fr;
 }
 
-.conditions-overview{
+.conditions-overview {
   grid-area: conditions;
 }
 
-.patient-overview{
+.patient-overview {
   grid-area: patient;
 }
 
-.medications-overview{
+.medications-overview {
   grid-area: medications;
 }
 
-.encounters-overview{
+.encounters-overview {
   grid-area: encounters;
 }
 
 
-.allergies-overview{
+.allergies-overview {
   grid-area: allergies;
 }

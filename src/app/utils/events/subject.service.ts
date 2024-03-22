@@ -7,6 +7,7 @@ import {UserDto} from "../../auth/dto/user.dto";
 })
 export class SubjectService {
     newDoctorSubject = new Subject<UserDto>();
-    collapseSidebar =  new Subject();
+    collapseSidebar = new Subject();
     encounterStarted = new Subject();
+    reloadBreadcrumbs = new Subject();
 }

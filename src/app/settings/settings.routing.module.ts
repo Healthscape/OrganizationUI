@@ -1,38 +1,38 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {SettingsComponent} from "./components/settings/settings.component";
-import {UpdateInfoComponent} from "./components/update-info/update-info.component";
 import {ChangePasswordComponent} from "./components/change-password/change-password.component";
+import {UpdateAccountInfoComponent} from "./components/update-account-info/update-account-info.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    data: {
-      breadcrumb: '',
+    {
+        path: '',
+        data: {
+            breadcrumb: '',
+        },
+        component: SettingsComponent
     },
-    component: SettingsComponent
-  },
-  {
-    path: 'profile',
-    data: {
-      breadcrumb: 'Information'
+    {
+        path: 'edit',
+        data: {
+            breadcrumb: 'Information'
+        },
+        component: UpdateAccountInfoComponent
     },
-    component: UpdateInfoComponent
-  },
-  {
-    path: 'password',
-    data: {
-      breadcrumb: 'Email & Password'
+    {
+        path: 'password',
+        data: {
+            breadcrumb: 'Email & Password'
+        },
+        component: ChangePasswordComponent
     },
-    component: ChangePasswordComponent
-  },
 ]
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forChild(routes)
+    ],
+    exports: [RouterModule]
 })
 export class SettingsRoutingModule {
 }

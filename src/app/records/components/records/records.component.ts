@@ -1,42 +1,42 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {MatButtonModule} from "@angular/material/button";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatTableDataSource, MatTableModule} from "@angular/material/table";
+import {Component} from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
 import {AccessRequestDto} from "../../../access-requests/dtos/access.request.dto";
 import {TokenService} from "../../../auth/services/token.service";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {RecordsService} from "../../service/records.service";
-import {MatCardModule} from "@angular/material/card";
+import {AccessRequestService} from "../../../access-requests/service/access.request.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import { Buffer } from "buffer";
 
 @Component({
-  selector: 'app-records',
-  standalone: true,
-  host:{
-    class: 'records-host-wrapper'
-  },
-  imports: [CommonModule, MatButtonModule, MatProgressBarModule, MatTableModule, MatCardModule],
-  templateUrl: './records.component.html',
-  styleUrl: './records.component.scss'
+    selector: 'app-records',
+    host: {
+        class: 'records-host-wrapper'
+    },
+    templateUrl: './records.component.html',
+    styleUrl: './records.component.scss'
 })
 export class RecordsComponent {
-  requests: AccessRequestDto[] = [];
-  dataSource = new MatTableDataSource(this.requests);
-  loading: boolean = true;
-  displayedColumns: string[] = ['avatar', 'name', 'more'];
+    requests: AccessRequestDto[] = [];
+    dataSource = new MatTableDataSource(this.requests);
+    loading: boolean = true;
+    displayedColumns: string[] = ['avatar', 'name', 'more'];
 
-  constructor(_tokenService: TokenService, public recordsService: RecordsService) {
-    this.recordsService.getAllAvailablePatientRecords().pipe(takeUntilDestroyed()).subscribe((response) => {
-      this.requests = response;
-      this.dataSource.data = this.requests
-      this.loading = false;
-    })
-  }
+    constructor(private router: Router, private route: ActivatedRoute, _tokenService: TokenService, public accessRequestService: AccessRequestService, public recordsService: RecordsService) {
+        this.accessRequestService.getAllAvailableRequests().subscribe((response) => {
+            this.requests = response;
+            this.dataSource.data = this.requests
+            this.loading = false;
+        })
+
+    }
 
 
-  onViewRecord(patientId: string) {
-    this.recordsService.getPatientRecord(patientId).pipe(takeUntilDestroyed()).subscribe((response) => {
-      console.log(response)
-    })
-  }
+    onViewRecord(patientId: string) {
+        this.recordsService.getPatientRecord(patientId).subscribe((response) => {
+            const id = crypto.randomUUID();
+            sessionStorage.setItem(id, JSON.stringify(response));
+            this.router.navigate(['./' + id], {relativeTo: this.route}).then();
+
+        })
+    }
 }

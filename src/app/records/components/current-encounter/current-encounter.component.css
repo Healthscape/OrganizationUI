@@ -1,0 +1,48 @@
+::ng-deep .current-encounter-host-wrapper {
+  display: grid;
+  grid-template-areas: "clinical-impression conditions encounter-manager" "clinical-impression conditions medications" "clinical-impression conditions medications" "clinical-impression documents medications" "clinical-impression documents medications";
+  grid-template-columns: 1fr 0.7fr 0.7fr;
+  grid-template-rows: 0.5fr 1fr 0.75fr 1.75fr 1fr;
+  gap: 0.5rem;
+  overflow: auto;
+}
+
+.encounter-manager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #fff;
+  grid-area: encounter-manager;
+}
+.encounter-manager .timer {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+.encounter-manager .timer h3 {
+  margin-bottom: 0;
+}
+
+.clinical-impression {
+  grid-area: clinical-impression;
+  display: flex;
+}
+
+.conditions {
+  grid-area: conditions;
+  display: flex;
+}
+
+.documents {
+  grid-area: documents;
+  display: flex;
+}
+
+.medications {
+  grid-area: medications;
+  display: flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=current-encounter.component.css.map */

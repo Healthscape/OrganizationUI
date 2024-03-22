@@ -1,16 +1,22 @@
 <div class="header">
-  <span><h3>Medications</h3></span>
-  <span *ngIf="edit"><button mat-icon-button class="small"><span class="material-symbols-outlined">add</span></button></span>
+    <span><h3>Medications</h3></span>
+    <span *ngIf="edit"><button class="small" mat-icon-button><span class="material-symbols-outlined">add</span></button></span>
 </div>
 <div class="medications-list">
-  <div class="list-item" *ngFor="let medication of medications">
-    <div class="medication-container">
-        <div class="medication-name">{{medication.medication}}</div>
-        <div class="medication-instructions">{{medication.instructions}}</div>
-      <div class="footer">
-        <div class="medication-date">{{medication.occurrence.start | date}}</div>
-        <div class="medication-status" *ngIf="edit">In progress</div>
-      </div>
+    <div *ngFor="let medication of medications" class="list-item">
+        <div class="medication-container">
+            <div class="medication-name">{{ medication.medication }}</div>
+            <div class="medication-instructions">{{ medication.instructions }}</div>
+            <div class="footer">
+                <div class="medication-date">{{ medication.occurrence.start | date }}</div>
+                <div *ngIf="edit" class="medication-status">In progress</div>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="list-item no-items" *ngIf="!medications.length">
+        <div class="medication-container">
+            <div class="medication-name">No medication administrations right now.</div>
+        </div>
+
+    </div>
 </div>

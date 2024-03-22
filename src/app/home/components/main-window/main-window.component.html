@@ -1,14 +1,15 @@
 <div class="breadcrumbs">
-  <span (click)="navigate('home')" class="material-symbols-outlined home-icon">home</span>
-  <div (click)="navigate(item.url)" *ngFor="let item of menuItems" class="navigation-label">
-    <span class="material-symbols-outlined" *ngIf="item.label != ''">chevron_right</span>
-    <span>{{item.label}}</span>
-  </div>
-  <span *ngIf="menuItems.length == 0" class="navigation-label">Home</span>
-  <div class="action-button">
-    <button (click)="onNewDoctor()" *ngIf="me.role == 'ROLE_ADMIN' && router.url.includes('users')" mat-raised-button>
-      New doctor
-    </button>
-  </div>
+    <span (click)="navigate('home')" class="material-symbols-outlined home-icon">home</span>
+    <div (click)="navigate(item.url)" *ngFor="let item of menuItems" class="navigation-label">
+        <span *ngIf="item.label != ''" class="material-symbols-outlined">chevron_right</span>
+        <span>{{ item.label }}</span>
+    </div>
+    <span *ngIf="menuItems.length == 0" class="navigation-label">Home</span>
+    <div class="action-button">
+        <button (click)="onNewDoctor()" *ngIf="me.role == 'ROLE_ADMIN' && router.url.includes('users')"
+                mat-raised-button>
+            New doctor
+        </button>
+    </div>
 </div>
 <router-outlet class="main-window-router"></router-outlet>

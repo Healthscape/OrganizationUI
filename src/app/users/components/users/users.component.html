@@ -1,36 +1,36 @@
 <table [dataSource]="users" class="mat-elevation-z8" mat-table>
 
-  <!-- Role Column -->
-  <ng-container matColumnDef="role">
-    <th *matHeaderCellDef mat-header-cell> Role</th>
-    <td *matCellDef="let user" mat-cell>
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+        <th *matHeaderCellDef mat-header-cell> Role</th>
+        <td *matCellDef="let user" mat-cell>
       <span *ngIf="user.role == 'ROLE_PRACTITIONER'" class="material-symbols-outlined role"
             matTooltip="Practitioner">stethoscope</span>
-      <span *ngIf="user.role == 'ROLE_PATIENT'" class="material-symbols-outlined role" matTooltip="Patient">personal_injury</span>
-      <span *ngIf="user.role == 'ROLE_ADMIN'" class="material-symbols-outlined role"
-            matTooltip="Admin">manage_accounts</span>
-    </td>
-  </ng-container>
+            <span *ngIf="user.role == 'ROLE_PATIENT'" class="material-symbols-outlined role" matTooltip="Patient">personal_injury</span>
+            <span *ngIf="user.role == 'ROLE_ADMIN'" class="material-symbols-outlined role"
+                  matTooltip="Admin">manage_accounts</span>
+        </td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th *matHeaderCellDef mat-header-cell> Name</th>
-    <td *matCellDef="let user" mat-cell> {{user.name}} </td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let user" mat-cell> {{ user.name }}</td>
+    </ng-container>
 
-  <!-- Email Column -->
-  <ng-container matColumnDef="email">
-    <th *matHeaderCellDef mat-header-cell> Email</th>
-    <td *matCellDef="let user" mat-cell> {{user.email}} </td>
-  </ng-container>
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+        <th *matHeaderCellDef mat-header-cell> Email</th>
+        <td *matCellDef="let user" mat-cell> {{ user.email }}</td>
+    </ng-container>
 
-  <!-- Date Created Column -->
-  <ng-container matColumnDef="date-created">
-    <th *matHeaderCellDef mat-header-cell> Date Created</th>
-    <td *matCellDef="let user" mat-cell> {{user.dateCreated | date}} </td>
-  </ng-container>
+    <!-- Date Created Column -->
+    <ng-container matColumnDef="date-created">
+        <th *matHeaderCellDef mat-header-cell> Date Created</th>
+        <td *matCellDef="let user" mat-cell> {{ user.dateCreated | date }}</td>
+    </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
-  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
 

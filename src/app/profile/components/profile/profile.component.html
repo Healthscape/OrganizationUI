@@ -1,0 +1,8 @@
+<app-profile-info *ngIf="!isLoading" [me]="me"></app-profile-info>
+<div *ngIf="isLoading" class="loading" style="height: 200px"></div>
+<div (click)="onUpdateInfo()" *ngIf="!isAdmin && !isLoading" class="action-line">
+    <span class="material-symbols-outlined">chevron_right</span>
+    <p>Update information</p>
+</div>
+<div *ngIf="isLoading" class="loading" style="height: 50px; border-radius: 10px"></div>
+

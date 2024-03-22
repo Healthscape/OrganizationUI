@@ -1,6 +1,6 @@
 @use '../../../../../../styles/variables' as *;
 
-::ng-deep .documents-overview-host-wrapper{
+::ng-deep .documents-overview-host-wrapper {
   display: flex;
   overflow: auto;
   flex: 1;
@@ -11,31 +11,31 @@
   background-color: #fff;
 }
 
-.document-container{
+.document-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  .document-name{
+  .document-name {
     text-overflow: ellipsis;
     overflow: hidden;
     max-width: 150px;
   }
 }
 
-.footer{
+.footer {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
 
-  h3{
+  h3 {
     margin: 0;
   }
 }

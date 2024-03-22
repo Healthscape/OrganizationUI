@@ -9,31 +9,31 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
-  selector: 'app-auth',
-  host: {
-    class: 'home-host-wrapper'
-  },
-  standalone: true,
-  imports: [CommonModule, ToolbarComponent, MainWindowComponent, SidebarComponent, MatSidenavModule, MatListModule, MatIconModule, MatButtonModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-auth',
+    host: {
+        class: 'home-host-wrapper'
+    },
+    standalone: true,
+    imports: [CommonModule, ToolbarComponent, MainWindowComponent, SidebarComponent, MatSidenavModule, MatListModule, MatIconModule, MatButtonModule],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  isCollapsed: boolean = false;
+    isCollapsed: boolean = false;
 
-  toggleMenu(event: boolean) {
-    this.isCollapsed = event;
-  }
-
-  getStyles() {
-    if (this.isCollapsed) {
-      return {
-        'grid-template-columns': `90px auto`,
-      };
-    } else {
-      return {
-        'grid-template-columns': `250px auto`,
-      };
+    toggleMenu(event: boolean) {
+        this.isCollapsed = event;
     }
-  }
+
+    getStyles() {
+        if (this.isCollapsed) {
+            return {
+                'grid-template-columns': `90px auto`,
+            };
+        } else {
+            return {
+                'grid-template-columns': `250px auto`,
+            };
+        }
+    }
 }

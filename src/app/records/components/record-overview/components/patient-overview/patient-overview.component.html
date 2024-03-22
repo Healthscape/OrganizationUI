@@ -1,9 +1,9 @@
-<div class="avatar-image" style="height: 100px; width: 100px"
-     mat-card-avatar>
+<div class="avatar-image" mat-card-avatar
+     style="height: 100px; width: 100px">
 </div>
 <div class="patient-info">
-  <h2>{{patient.name}} {{patient.surname}}</h2>
-  <div><span>DOB: </span>{{patient.birthDate | date}}</div>
-  <div><span>Gender: </span>{{patient.gender}}</div>
-  <div><span>Blood type: </span>A+</div>
+    <h2>{{ patient.name }} {{ patient.surname }}</h2>
+    <div><span>DOB: </span>{{ patient.birthDate ? (patient.birthDate | date) : "/" }}</div>
+    <div><span>Gender: </span>{{ patient.gender }}</div>
+    <div><span>Blood type: </span>A+</div>
 </div>

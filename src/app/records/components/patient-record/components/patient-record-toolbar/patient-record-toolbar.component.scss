@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 
-.tab-component{
+.tab-component {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -15,12 +15,12 @@
   background-color: $sidepanel;
 }
 
-.tab-group{
+.tab-group {
   display: flex;
   flex: 1;
 }
 
-.tab{
+.tab {
   color: $dark-dark-blue;
   display: flex;
   flex: 1;
@@ -33,13 +33,13 @@
   background-color: transparent;
 }
 
-.tab:hover, .selected{
+.tab:hover, .selected {
   font-weight: 500;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.31);
 }
 
-.current-encounter{
+.current-encounter {
   flex: 0.2;
 
   .tab {
@@ -48,7 +48,7 @@
     background-color: rgba(81, 59, 36, 0.76);
   }
 
-  .tab:hover{
+  .tab:hover {
     background-color: $complementary-light;
   }
 

@@ -12,34 +12,34 @@
   background-color: #fff;
 }
 
-.material-symbols-outlined{
+.material-symbols-outlined {
   color: $light-blue;
   font-variation-settings: 'FILL' 1;
 }
 
-.allergies-list{
+.allergies-list {
   display: flex;
   overflow: auto;
   flex-direction: column;
   gap: 1rem;
 }
 
-.allergy-container{
+.allergy-container {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.allergy-to{
+.allergy-to {
   font-weight: 500;
   color: $dark-dark-blue;
 }
 
-.allergy-name{
+.allergy-name {
   color: $dark-gray;
 }
 
-.allergy-right-container{
+.allergy-right-container {
   display: flex;
   flex-direction: column;
 }

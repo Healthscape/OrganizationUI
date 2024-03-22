@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
-import {UserService} from "../../../auth/services/user.service";
+import {UserService} from "../../services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatTable, MatTableModule} from "@angular/material/table";
@@ -22,7 +22,7 @@ export class UsersComponent {
     @ViewChild(MatTable) table?: MatTable<UserDto>;
     displayedColumns: string[] = ['role', 'name', 'email', 'date-created'];
 
-    constructor(_subjectService: SubjectService, private userService: UserService) {
+    constructor(_subjectService: SubjectService, _userService: UserService) {
         _subjectService.newDoctorSubject.subscribe({
             next: (response) => {
                 console.log(response)
@@ -30,12 +30,12 @@ export class UsersComponent {
                 console.log(this.users)
                 this.table?.renderRows();
             },
-            error: (err) =>{
+            error: (err) => {
                 console.log(err)
             }
 
         })
-        userService.getUsers().subscribe({
+        _userService.getUsers().subscribe({
             next: (users) => {
                 this.users = users
             },

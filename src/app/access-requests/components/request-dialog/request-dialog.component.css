@@ -1,0 +1,52 @@
+.request-card {
+  border: 1px solid rgb(200, 219, 244);
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.avatar-image {
+  width: 60px;
+  height: 60px;
+}
+
+.practitioner-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.practitioner-info .decision-symbol {
+  text-align: right;
+  flex: 1;
+}
+
+.request-info .item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+.request-info .decision {
+  color: rgb(16, 49, 81);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: oklch(0.876 0.035 260.388/0.88);
+}
+
+.history-decision-td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.request-history h4 {
+  margin-bottom: 0;
+}
+
+.table-div {
+  overflow: auto;
+  max-height: 155px;
+}
+
+/*# sourceMappingURL=request-dialog.component.css.map */

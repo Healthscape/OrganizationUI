@@ -1,7 +1,7 @@
 export class ResponseJson {
-  status?: number;
-  message?: string;
+    status?: number;
+    message?: string;
 
-  constructor() {
-  }
+    constructor() {
+    }
 }

@@ -1,0 +1,8 @@
+::ng-deep .settings-host-wrapper {
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/*# sourceMappingURL=settings.component.css.map */

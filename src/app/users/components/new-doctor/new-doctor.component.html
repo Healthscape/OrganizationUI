@@ -1,95 +1,95 @@
 <h2 mat-dialog-title>New Doctor</h2>
 <mat-dialog-content class="mat-typography">
-  <form>
-    <div class="name-surname-container">
-      <mat-form-field>
-        <input [formControl]="nameCtrl" matInput placeholder="Name">
-        <mat-icon *ngIf="nameCtrl.touched && nameCtrl.invalid" [matTooltipClass]="'error-tooltip'"
-                  class="material-symbols-outlined"
-                  color="warn" matSuffix
-                  matTooltip="Please enter your name.">error
-        </mat-icon>
-      </mat-form-field>
+    <form>
+        <div class="name-surname-container">
+            <mat-form-field>
+                <input [formControl]="nameCtrl" matInput placeholder="Name">
+                <mat-icon *ngIf="nameCtrl.touched && nameCtrl.invalid" [matTooltipClass]="'error-tooltip'"
+                          class="material-symbols-outlined"
+                          color="warn" matSuffix
+                          matTooltip="Please enter your name.">error
+                </mat-icon>
+            </mat-form-field>
 
-      <mat-form-field>
-        <input [formControl]="surnameCtrl" matInput placeholder="Surname">
-        <mat-icon *ngIf="surnameCtrl.touched && surnameCtrl.invalid"
-                  [matTooltipClass]="'error-tooltip'" class="material-symbols-outlined"
-                  color="warn"
-                  matSuffix
-                  matTooltip="Please enter your surname.">error
-        </mat-icon>
-      </mat-form-field>
-    </div>
+            <mat-form-field>
+                <input [formControl]="surnameCtrl" matInput placeholder="Surname">
+                <mat-icon *ngIf="surnameCtrl.touched && surnameCtrl.invalid"
+                          [matTooltipClass]="'error-tooltip'" class="material-symbols-outlined"
+                          color="warn"
+                          matSuffix
+                          matTooltip="Please enter your surname.">error
+                </mat-icon>
+            </mat-form-field>
+        </div>
 
-    <mat-form-field>
-      <input [formControl]="emailCtrl" matInput placeholder="Email">
-      <mat-icon
-        *ngIf="(emailCtrl.touched && emailCtrl.invalid) || emailCtrl.hasError('email')"
-        [matTooltipClass]="'error-tooltip'" class="material-symbols-outlined"
-        color="warn"
-        matSuffix
-        matTooltip="Please enter your email address in format: yourname@example.com.">error
-      </mat-icon>
-    </mat-form-field>
+        <mat-form-field>
+            <input [formControl]="emailCtrl" matInput placeholder="Email">
+            <mat-icon
+                    *ngIf="(emailCtrl.touched && emailCtrl.invalid) || emailCtrl.hasError('email')"
+                    [matTooltipClass]="'error-tooltip'" class="material-symbols-outlined"
+                    color="warn"
+                    matSuffix
+                    matTooltip="Please enter your email address in format: yourname@example.com.">error
+            </mat-icon>
+        </mat-form-field>
 
-    <mat-form-field>
-      <input [formControl]="passwordCtrl" [type]="passwordVisible ? 'text' : 'password'"
-             autocomplete="new-password"
-             matInput placeholder="Password">
-      <div class="form-field-icons" matSuffix>
-        <mat-icon
-          *ngIf="(passwordCtrl.touched && passwordCtrl.invalid) || passwordCtrl.hasError('password')"
-          [matTooltipClass]="'error-tooltip'"
-          class="material-symbols-outlined"
-          color="warn"
-          matTooltip="Please enter your email address in format: yourname@example.com.">error
-        </mat-icon>
-        <button (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="!passwordVisible"
-                mat-icon-button
-                type="button">
-          <mat-icon>{{passwordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
-        </button>
-      </div>
-    </mat-form-field>
+        <mat-form-field>
+            <input [formControl]="passwordCtrl" [type]="passwordVisible ? 'text' : 'password'"
+                   autocomplete="new-password"
+                   matInput placeholder="Password">
+            <div class="form-field-icons" matSuffix>
+                <mat-icon
+                        *ngIf="(passwordCtrl.touched && passwordCtrl.invalid) || passwordCtrl.hasError('password')"
+                        [matTooltipClass]="'error-tooltip'"
+                        class="material-symbols-outlined"
+                        color="warn"
+                        matTooltip="Please enter your email address in format: yourname@example.com.">error
+                </mat-icon>
+                <button (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="!passwordVisible"
+                        mat-icon-button
+                        type="button">
+                    <mat-icon>{{ passwordVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+                </button>
+            </div>
+        </mat-form-field>
 
-    <mat-form-field>
-      <input [formControl]="confirmPasswordCtrl" [type]="confirmPasswordVisible ? 'text' : 'password'"
-             matInput
-             placeholder="Confirm Password">
-      <div class="form-field-icons" matSuffix>
-        <mat-icon
-          *ngIf="(confirmPasswordCtrl.touched && confirmPasswordCtrl.invalid) || confirmPasswordCtrl.hasError('matching')"
-          [matTooltipClass]="'error-tooltip'"
-          class="material-symbols-outlined" color="warn"
-          matTooltip="Passwords does not match!">error
-        </mat-icon>
-        <button (click)="confirmPasswordVisible = !confirmPasswordVisible" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="!confirmPasswordVisible" mat-icon-button
-                matSuffix
-                type="button">
-          <mat-icon>{{confirmPasswordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
-        </button>
-      </div>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select [formControl]="specialtyCtrl" placeholder="Specialty">
-        <mat-option *ngFor="let specialty of specialties" [id]="specialty.code" [value]="specialty.code">
-          {{specialty.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+        <mat-form-field>
+            <input [formControl]="confirmPasswordCtrl" [type]="confirmPasswordVisible ? 'text' : 'password'"
+                   matInput
+                   placeholder="Confirm Password">
+            <div class="form-field-icons" matSuffix>
+                <mat-icon
+                        *ngIf="(confirmPasswordCtrl.touched && confirmPasswordCtrl.invalid) || confirmPasswordCtrl.hasError('matching')"
+                        [matTooltipClass]="'error-tooltip'"
+                        class="material-symbols-outlined" color="warn"
+                        matTooltip="Passwords does not match!">error
+                </mat-icon>
+                <button (click)="confirmPasswordVisible = !confirmPasswordVisible" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="!confirmPasswordVisible" mat-icon-button
+                        matSuffix
+                        type="button">
+                    <mat-icon>{{ confirmPasswordVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+                </button>
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select [formControl]="specialtyCtrl" placeholder="Specialty">
+                <mat-option *ngFor="let specialty of specialties" [id]="specialty.code" [value]="specialty.code">
+                    {{ specialty.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-  </form>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
 
-  <mat-progress-bar *ngIf="isLoading" color="accent" mode="indeterminate"></mat-progress-bar>
-  <button (click)="onRegister()" *ngIf="!isLoading" [disabled]="!newDoctorForm.valid" color="accent"
-          mat-raised-button
-          type="button">
-    Register
-  </button>
-  <button mat-button mat-dialog-close>Cancel</button>
+    <mat-progress-bar *ngIf="isLoading" color="accent" mode="indeterminate"></mat-progress-bar>
+    <button (click)="onRegister()" *ngIf="!isLoading" [disabled]="!newDoctorForm.valid" color="accent"
+            mat-raised-button
+            type="button">
+        Register
+    </button>
+    <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

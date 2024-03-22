@@ -1,14 +1,15 @@
 <div class="timeline">
-  <div class="timeline-event" *ngFor="let event of events">
-    <div class="timeline-event-separator">
+    <div *ngFor="let event of events" class="timeline-event">
+        <div class="timeline-event-separator">
 
-      <div class="start-line"></div>
-      <div class="event-marker"></div>
-      <div class="end-line"></div>
+            <div class="start-line"></div>
+            <div class="event-marker"></div>
+            <div class="end-line"></div>
+        </div>
+        <div class="timeline-content">
+            <ng-container [ngTemplateOutletContext]="{ $implicit: event }"
+                          [ngTemplateOutlet]="customTemplate"></ng-container>
+        </div>
     </div>
-    <div class="timeline-content">
-      <ng-container [ngTemplateOutlet]="customTemplate" [ngTemplateOutletContext]="{ $implicit: event }"></ng-container>
-    </div>
-  </div>
 </div>
 

@@ -1,35 +1,36 @@
 <div class="available-requests">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 no-color no-align" [multiTemplateDataRows]="true">
+    <table [dataSource]="dataSource" [multiTemplateDataRows]="true" class="mat-elevation-z8 no-color no-align"
+           mat-table>
 
-    <!-- Image Column -->
-    <ng-container matColumnDef="avatar">
-      <th *matHeaderCellDef mat-header-cell>Image</th>
-      <td *matCellDef="let request" mat-cell>
-        <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.patientImage + '\')'}"
-             class="avatar-image"
-             mat-card-avatar>
-        </div>
-      </td>
-    </ng-container>
+        <!-- Image Column -->
+        <ng-container matColumnDef="avatar">
+            <th *matHeaderCellDef mat-header-cell>Image</th>
+            <td *matCellDef="let request" mat-cell>
+                <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.patientImage + '\')'}"
+                     class="avatar-image"
+                     mat-card-avatar>
+                </div>
+            </td>
+        </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th *matHeaderCellDef mat-header-cell> Name & Surname</th>
-      <td *matCellDef="let request" mat-cell>{{request.patient}}</td>
-    </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th *matHeaderCellDef mat-header-cell> Name & Surname</th>
+            <td *matCellDef="let request" mat-cell>{{ request.patient }}</td>
+        </ng-container>
 
-    <!-- More Column -->
-    <ng-container matColumnDef="more">
-      <th *matHeaderCellDef mat-header-cell> More</th>
-      <td *matCellDef="let request" mat-cell>
-        <button mat-raised-button (click)="onViewRecord(request.patientId)">View Record</button>
-      </td>
-    </ng-container>
+        <!-- More Column -->
+        <ng-container matColumnDef="more">
+            <th *matHeaderCellDef mat-header-cell> More</th>
+            <td *matCellDef="let request" mat-cell>
+                <button (click)="onViewRecord(request.patientId)" mat-raised-button>View Record</button>
+            </td>
+        </ng-container>
 
-    <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-  </table>
+        <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
 
-  <mat-progress-bar mode="buffer" *ngIf="loading"></mat-progress-bar>
-  <div *ngIf="dataSource.data.length === 0 && !loading" class="no-requests">No access requests</div>
+    <mat-progress-bar *ngIf="loading" mode="buffer"></mat-progress-bar>
+    <div *ngIf="dataSource.data.length === 0 && !loading" class="no-requests">No access requests</div>
 </div>

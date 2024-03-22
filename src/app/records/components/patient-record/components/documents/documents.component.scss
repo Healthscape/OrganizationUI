@@ -1,6 +1,6 @@
 @use '../../../../../../styles/variables' as *;
 
-::ng-deep .documents-host-wrapper{
+::ng-deep .documents-host-wrapper {
   display: grid;
   overflow: auto;
   grid-template-areas: 'search-container'
@@ -9,10 +9,10 @@
   grid-template-rows: 0.1fr 1fr;
 }
 
-.search-container{
+.search-container {
   grid-area: search-container;
 
-  .form{
+  .form {
     display: flex;
     overflow: auto;
     flex: 1;
@@ -23,26 +23,26 @@
     background-color: #fff;
     gap: 1rem;
 
-    h3{
+    h3 {
       margin: 0;
     }
 
-    .material-symbols-outlined{
+    .material-symbols-outlined {
       padding: 6px;
       font-variation-settings: 'FILL' 1;
     }
 
-    .flex-1{
+    .flex-1 {
       flex: 1;
     }
   }
 }
 
-.documents-container{
+.documents-container {
   grid-area: documents-container;
   overflow: auto;
 
-  .documents{
+  .documents {
     overflow: auto;
     flex: 1;
     align-items: baseline;
@@ -56,11 +56,11 @@
   }
 }
 
-.range{
+.range {
   width: 300px;
 }
 
-.more{
+.more {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;

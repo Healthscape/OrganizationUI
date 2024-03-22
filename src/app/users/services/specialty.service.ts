@@ -4,14 +4,14 @@ import {HttpClient} from "@angular/common/http";
 import {SpecialtyDto} from "../dtos/specialty.dto";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class SpecialtyService {
-  _http = inject(HttpClient)
-  private REQUEST_MAPPING: string = "/specialty";
+    _http = inject(HttpClient)
+    private REQUEST_MAPPING: string = "/specialty";
 
-  getAllSpecialties() {
-    return this._http.get<SpecialtyDto[]>(environment.apiUrl + this.REQUEST_MAPPING);
-  }
+    getAllSpecialties() {
+        return this._http.get<SpecialtyDto[]>(environment.apiUrl + this.REQUEST_MAPPING);
+    }
 
 }

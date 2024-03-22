@@ -1,0 +1,61 @@
+<!--<div [formGroup]="form" class="update-info-wrapper">-->
+<!--    <div class="content-wrapper">-->
+<!--        <div class="content">-->
+<!--            <div class="profile-image">-->
+<!--                <input #fileInput (change)="onChangePhoto($event, avatarPhoto)" style="display: none;" type="file">-->
+<!--                <div #avatarPhoto [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.image + '\')'}"-->
+<!--                     class="avatar-image" mat-card-avatar>-->
+<!--                </div>-->
+<!--                <div class="avatar-image-overlay">-->
+<!--                    <button (click)="onChangePhotoButton(fileInput)" [matTooltip]="'Change photo'" mat-icon-button>-->
+<!--                        <mat-icon>edit</mat-icon>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="name">-->
+<!--            <mat-form-field appearance="fill" class="update-info">-->
+<!--                <input [formControl]="nameCtrl" matInput>-->
+<!--            </mat-form-field>-->
+<!--            <mat-form-field appearance="fill" class="update-info">-->
+<!--                <input [formControl]="surnameCtrl" matInput>-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div [formGroup]="form" class="update-info-wrapper">
+    <div class="content">
+        <div class="profile-image">
+            <input #fileInput (change)="onChangePhoto($event, avatarPhoto)" style="display: none;" type="file">
+            <div #avatarPhoto [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me?.image + '\')'}"
+                 class="avatar-image" mat-card-avatar>
+            </div>
+            <div class="avatar-image-overlay">
+                <button (click)="onChangePhotoButton(fileInput)" [matTooltip]="'Change photo'" mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="info-cell">
+                <mat-form-field appearance="fill" class="update-info">
+                    <mat-label>Name</mat-label>
+                    <div class="material-symbols-outlined" matPrefix>person</div>
+                    <input [formControl]="nameCtrl" matInput>
+                </mat-form-field>
+            </div>
+            <div class="info-cell">
+                <mat-form-field appearance="fill" class="update-info">
+                    <mat-label>Surname</mat-label>
+                    <div class="material-symbols-outlined" matPrefix>person</div>
+                    <input [formControl]="surnameCtrl" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <button (click)="onCancel()" color="warn" mat-flat-button>Cancel</button>
+        <button (click)="onSave()" color="primary" mat-flat-button>Save</button>
+    </div>
+</div>
+

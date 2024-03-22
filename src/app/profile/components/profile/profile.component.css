@@ -1,0 +1,37 @@
+::ng-deep .profile-host-wrapper {
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-line {
+    color: rgba(42, 56, 71, 0.88);
+    display: flex;
+    align-self: end;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    transition: all 0.5s ease-in-out;
+    border: 2px solid rgb(200, 219, 244);
+    border-radius: 10px;
+    background-color: rgba(200, 219, 244, 0.2);
+    gap: 10px;
+}
+
+.action-line p {
+    margin: 0;
+}
+
+.action-line:hover {
+    font-weight: 500;
+    width: 99%;
+    cursor: pointer;
+    background-color: rgb(200, 219, 244);
+}
+
+.action-line:hover span {
+    font-variation-settings: "wght" 700;
+}
+
+/*# sourceMappingURL=profile.component.css.map */

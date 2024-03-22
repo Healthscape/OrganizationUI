@@ -1,0 +1,50 @@
+::ng-deep .profile-info-host-wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  border: 2px solid rgb(200, 219, 244);
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.avatar-image {
+  width: 150px;
+  height: 150px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.profile-info {
+  display: grid;
+  flex: 1;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.info-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.info-cell div {
+  color: oklch(0.623 0.048 253.741/0.88);
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  background-color: rgb(200, 219, 244);
+}
+.info-cell p span {
+  font-weight: 400;
+  color: rgba(42, 56, 71, 0.88);
+}
+.info-cell p {
+  font-weight: bolder;
+  color: rgb(16, 49, 81);
+}
+
+/*# sourceMappingURL=profile-info.component.css.map */

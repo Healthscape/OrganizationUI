@@ -1,23 +1,23 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 @Component({
-  selector: 'app-patient-record-toolbar',
-  standalone: true,
-  host:{
-    class: "patient-record-toolbar-host-wrapper"
-  },
-  imports: [CommonModule],
-  templateUrl: './patient-record-toolbar.component.html',
-  styleUrl: './patient-record-toolbar.component.scss'
+    selector: 'app-patient-record-toolbar',
+    standalone: true,
+    host: {
+        class: "patient-record-toolbar-host-wrapper"
+    },
+    imports: [CommonModule],
+    templateUrl: './patient-record-toolbar.component.html',
+    styleUrl: './patient-record-toolbar.component.scss'
 })
 export class PatientRecordToolbarComponent {
-  @Input() encounterStarted: boolean = false;
-  @Output() tabChanged: EventEmitter<string> = new EventEmitter<string>();
-  selected = "overview";
+    @Input() encounterStarted: boolean = false;
+    @Output() tabChanged: EventEmitter<string> = new EventEmitter<string>();
+    selected = "overview";
 
-  onTabChange(tabName: string) {
-    this.selected = tabName;
-    this.tabChanged.emit(tabName);
-  }
+    onTabChange(tabName: string) {
+        this.selected = tabName;
+        this.tabChanged.emit(tabName);
+    }
 }

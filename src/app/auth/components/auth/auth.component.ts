@@ -8,29 +8,29 @@ import {MatButtonModule} from "@angular/material/button";
 import {LoginRegisterComponent} from "../login-register/login-register.component";
 
 @Component({
-  selector: 'app-auth',
-  host: {class: 'auth-host-wrapper'},
-  standalone: true,
-  imports: [CommonModule, MatCardModule, LogoComponent, MatInputModule, MatIconModule, MatButtonModule, NgOptimizedImage, LoginRegisterComponent],
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+    selector: 'app-auth',
+    host: {class: 'auth-host-wrapper'},
+    standalone: true,
+    imports: [CommonModule, MatCardModule, LogoComponent, MatInputModule, MatIconModule, MatButtonModule, NgOptimizedImage, LoginRegisterComponent],
+    templateUrl: './auth.component.html',
+    styleUrl: './auth.component.scss'
 })
 export class AuthComponent {
 
-  activeSignUp: boolean = false;
+    activeSignUp: boolean = false;
 
-  constructor(private renderer: Renderer2, private elem: ElementRef) {
-  }
-
-  onChange() {
-    let elements = this.elem.nativeElement.querySelector('.background-container');
-    let element = <HTMLElement>elements
-    if (element.classList.length > 1) {
-      element.classList.remove('active-sign-up')
-      this.activeSignUp = false
-    } else {
-      element.classList.add('active-sign-up')
-      this.activeSignUp = true
+    constructor(private renderer: Renderer2, private elem: ElementRef) {
     }
-  }
+
+    onChange() {
+        let elements = this.elem.nativeElement.querySelector('.background-container');
+        let element = <HTMLElement>elements
+        if (element.classList.length > 1) {
+            element.classList.remove('active-sign-up')
+            this.activeSignUp = false
+        } else {
+            element.classList.add('active-sign-up')
+            this.activeSignUp = true
+        }
+    }
 }

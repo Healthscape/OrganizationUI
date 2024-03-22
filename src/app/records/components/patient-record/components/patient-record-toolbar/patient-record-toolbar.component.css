@@ -1,0 +1,51 @@
+::ng-deep .patient-record-toolbar-host-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.tab-component {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #abbac2;
+}
+
+.tab-group {
+  display: flex;
+  flex: 1;
+}
+
+.tab {
+  color: rgb(16, 49, 81);
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 0 5px;
+  transition: all 0.1s ease-in-out;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.tab:hover, .selected {
+  font-weight: 500;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.31);
+}
+
+.current-encounter {
+  flex: 0.2;
+}
+.current-encounter .tab {
+  color: #fff;
+  width: 150px;
+  background-color: rgba(81, 59, 36, 0.76);
+}
+.current-encounter .tab:hover {
+  background-color: rgb(103, 89, 73);
+}
+
+/*# sourceMappingURL=patient-record-toolbar.component.css.map */

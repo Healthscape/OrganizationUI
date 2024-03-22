@@ -1,21 +1,21 @@
 <div class="search-container">
-  <mat-form-field appearance="outline" class="search"  [ngClass]="disabled ? 'disabled' : ''">
-    <input matInput placeholder="Search..." [formControl]="searchCtrl">
-    <span class="material-symbols-outlined" matSuffix (click)="onSearch()">search</span>
-  </mat-form-field>
+    <mat-form-field [ngClass]="disabled ? 'disabled' : ''" appearance="outline" class="search">
+        <input [formControl]="searchCtrl" matInput placeholder="Search...">
+        <span (click)="onSearch()" class="material-symbols-outlined" matSuffix>search</span>
+    </mat-form-field>
 </div>
 <div class="date-container">
-  <div class="date-outline__leading">
-  </div>
-  <div class="date-outline">
-    <img alt="" src="favicon.ico">
-    <p>{{hour}}:{{minute}}, {{currentDate | date : 'EEEE, MMM d'}}</p>
-  </div>
-  <div class="date-outline__trailing">
-  </div>
+    <div class="date-outline__leading">
+    </div>
+    <div class="date-outline">
+        <img alt="" src="favicon.ico">
+        <p>{{ hour }}:{{ minute }}, {{ currentDate | date : 'EEEE, MMM d' }}</p>
+    </div>
+    <div class="date-outline__trailing">
+    </div>
 </div>
 <div class="notifications-container">
-  <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me.image + '\')'}" class="avatar-image"
-       mat-card-avatar>
-  </div>
+    <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + me.image + '\')'}" class="avatar-image"
+         mat-card-avatar>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 @use '../../../../../../styles/variables' as *;
 
-::ng-deep .encounters-overview-host-wrapper{
+::ng-deep .encounters-overview-host-wrapper {
   display: flex;
   overflow: auto;
   flex: 1;
@@ -12,12 +12,12 @@
 }
 
 
-.encounters-timeline{
+.encounters-timeline {
   overflow: auto;
   box-sizing: border-box;
   height: 100%;
 
-  .timeline-container{
+  .timeline-container {
     color: $dark-gray;
     display: flex;
     flex: 1;
@@ -40,7 +40,7 @@
     }
   }
 
-  .timeline-container:hover{
+  .timeline-container:hover {
     border-color: $light-blue;
   }
 }

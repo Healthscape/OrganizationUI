@@ -1,24 +1,24 @@
 <div class="encounter-manager">
-  <div class="timer">
-    <h3>Timer</h3>
-    <h3>{{display}}</h3>
-  </div>
-  <button mat-flat-button color="warn" (click)="stopTimer()" *ngIf="encounterStarted">Stop</button>
-  <button mat-flat-button color="primary" (click)="startNow()" *ngIf="!encounterStarted">Start</button>
+    <div class="timer">
+        <h3>Timer</h3>
+        <h3>{{ display }}</h3>
+    </div>
+    <button (click)="stopTimer()" *ngIf="encounterStarted" color="warn" mat-flat-button>Stop</button>
+    <button (click)="startNow()" *ngIf="!encounterStarted" color="primary" mat-flat-button>Start</button>
 </div>
 
 <div class="clinical-impression">
-  <app-clinical-impression></app-clinical-impression>
+    <app-clinical-impression></app-clinical-impression>
 </div>
 
 <div class="documents">
-  <app-documents-overview></app-documents-overview>
+    <app-documents-overview></app-documents-overview>
 </div>
 
 <div class="conditions">
-  <app-conditions-overview [edit]="true"></app-conditions-overview>
+    <app-conditions-overview [edit]="true"></app-conditions-overview>
 </div>
 
 <div class="medications">
-  <app-medications-overview [edit]="true"></app-medications-overview>
+    <app-medications-overview [edit]="true"></app-medications-overview>
 </div>

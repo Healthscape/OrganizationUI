@@ -1,20 +1,24 @@
 <h2 mat-dialog-title>Record overview</h2>
 <mat-dialog-content>
-  <div class="practitioner-info">
-    <div class="avatar-image" [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + recordOverview.image + '\')'}"
-         mat-card-avatar>
+    <div class="practitioner-info">
+        <div [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + recordOverview.image + '\')'}"
+             class="avatar-image"
+             mat-card-avatar>
+        </div>
+        <div>
+            <div>{{ recordOverview.name }} {{ recordOverview.surname }}</div>
+        </div>
     </div>
-    <div>
-      <div>{{recordOverview.name}} {{recordOverview.surname}}</div>
-    </div>
-  </div>
-    <div class="item">Personal ID: <span>{{recordOverview.personalId}}</span></div>
-    <div class="item">Birth Date: <span>{{recordOverview.birthDate | date: "MMM dd, yyyy"}}</span></div>
+    <div class="item">Personal ID: <span>{{ recordOverview.personalId }}</span></div>
+    <div class="item">Birth Date: <span>{{ recordOverview.birthDate | date: "MMM dd, yyyy" }}</span></div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close cdkFocusInitial *ngIf="!loading">Cancel</button>
-  <button mat-raised-button color="primary" (click)="onSend()" *ngIf="!accessRequest && !loading">Send access request</button>
-  <button mat-raised-button color="primary" (click)="onOpen()" *ngIf="accessRequest && !loading">Open access request</button>
-  <mat-progress-bar mode="buffer" *ngIf="loading" ></mat-progress-bar>
+    <button *ngIf="!loading" cdkFocusInitial mat-dialog-close mat-raised-button>Cancel</button>
+    <button (click)="onSend()" *ngIf="!accessRequest && !loading" color="primary" mat-raised-button>Send access
+        request
+    </button>
+    <button (click)="onOpen()" *ngIf="accessRequest && !loading" color="primary" mat-raised-button>Open access request
+    </button>
+    <mat-progress-bar *ngIf="loading" mode="buffer"></mat-progress-bar>
 </mat-dialog-actions>

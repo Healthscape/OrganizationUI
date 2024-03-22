@@ -1,6 +1,6 @@
 @use '../../../../styles/variables' as *;
 
-.request-card{
+.request-card {
   border: 1px solid $accent-light-blue;
   border-radius: 20px;
   background-color: #fff;
@@ -11,27 +11,27 @@
   height: 60px;
 }
 
-.practitioner-info{
+.practitioner-info {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
   gap: 10px;
 
-  .decision-symbol{
+  .decision-symbol {
     text-align: right;
     flex: 1;
   }
 }
 
-.request-info{
-  .item{
+.request-info {
+  .item {
     display: flex;
     justify-content: space-between;
     gap: 10px;
     align-items: center;
   }
 
-  .decision{
+  .decision {
     color: $dark-dark-blue;
     padding: 5px;
     border-radius: 5px;
@@ -39,20 +39,20 @@
   }
 }
 
-.history-decision-td{
+.history-decision-td {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.request-history{
-  h4{
+.request-history {
+  h4 {
     margin-bottom: 0;
   }
 }
 
-.table-div{
+.table-div {
   overflow: auto;
   max-height: 155px;
 }

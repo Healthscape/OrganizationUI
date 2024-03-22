@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RequestDialogComponent } from './request-dialog.component';
+import {RequestDialogComponent} from './request-dialog.component';
 
 describe('RequestComponent', () => {
-  let component: RequestDialogComponent;
-  let fixture: ComponentFixture<RequestDialogComponent>;
+    let component: RequestDialogComponent;
+    let fixture: ComponentFixture<RequestDialogComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RequestDialogComponent]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [RequestDialogComponent]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(RequestDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(RequestDialogComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

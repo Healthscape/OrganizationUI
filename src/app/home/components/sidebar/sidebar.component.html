@@ -1,61 +1,109 @@
 <div [ngClass]="isCollapsed ? 'no-show-border' : 'show-border'" class="sidebar-wrapper">
-  <div class="nav-list">
-    <div [ngClass]="isCollapsed ? 'no-show-grid' : 'show-grid'" class="sidebar-header card">
-      <app-logo [animation]="false" [ngClass]="isCollapsed ? 'no-show' : 'show'"
-                class="sidebar-logo left-align"></app-logo>
-      <span (click)="toggleMenu()" class="material-symbols-outlined menu-icon right-align">
-sort
-</span>
+    <div class="nav-list">
+        <div [ngClass]="isCollapsed ? 'no-show-grid' : 'show-grid'" class="sidebar-header card">
+            <app-logo [animation]="false" [ngClass]="isCollapsed ? 'no-show' : 'show'"
+                      class="sidebar-logo left-align"></app-logo>
+            <span (click)="toggleMenu()" class="material-symbols-outlined menu-icon right-align">sort</span>
+        </div>
+        <div *ngIf="me.role == 'ROLE_ADMIN'" class="sidebar-main">
+            <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
+            </div>
+            <div (click)="select('users')" [ngClass]="selected == 'users' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">group</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Users</p></span>
+            </div>
+        </div>
+        <div *ngIf="me.role == 'ROLE_PATIENT'" class="sidebar-main">
+            <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
+            </div>
+            <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access Requests</p></span>
+            </div>
+            <div (click)="select('profile')" [ngClass]="selected == 'profile' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">person</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Profile</p></span>
+            </div>
+            <div (click)="select('encounters')" [ngClass]="selected == 'encounters' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class="material-symbols-outlined right-align">meeting_room</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Encounters</p></span>
+            </div>
+            <div (click)="select('clinical-impressions')"
+                 [ngClass]="selected == 'clinical-impressions' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">diagnosis</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Clinical Impressions</p></span>
+            </div>
+            <div (click)="select('documents')" [ngClass]="selected == 'documents' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">content_copy</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Documents</p></span>
+            </div>
+            <div (click)="select('medications')" [ngClass]="selected == 'medications' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">pill</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Medications</p></span>
+            </div>
+            <div (click)="select('conditions')" [ngClass]="selected == 'conditions' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">pulse_alert</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Conditions</p></span>
+            </div>
+            <div (click)="select('allergies')" [ngClass]="selected == 'allergies' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">allergy</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Allergies</p></span>
+            </div>
+        </div>
+        <div *ngIf="me.role == 'ROLE_PRACTITIONER'" class="sidebar-main">
+            <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
+            </div>
+            <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access Requests</p></span>
+            </div>
+            <div (click)="select('records')" [ngClass]="selected == 'records' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class="material-symbols-outlined right-align">switch_account</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Patient Records</p></span>
+            </div>
+            <div (click)="select('signal_cellular_alt')" [ngClass]="selected == 'signal_cellular_alt' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">signal_cellular_alt</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Reports</p></span>
+            </div>
+            <div (click)="select('profile')" [ngClass]="selected == 'profile' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">person</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Profile</p></span>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div (click)="select('settings')" [ngClass]="selected == 'settings' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">settings</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Settings</p></span>
+            </div>
+            <div (click)="logout()" [ngClass]="selected == 'logout' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined right-align">logout</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
+            </div>
+        </div>
     </div>
-    <div *ngIf="me.role == 'ROLE_ADMIN'" class="sidebar-main">
-      <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''" class="card card-hover-container">
-        <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
-      </div>
-      <div (click)="select('users')" [ngClass]="selected == 'users' ? 'selected' : ''"
-           class="card card-hover-container">
-        <span class=" material-symbols-outlined material-icons  right-align">group</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Users</p></span>
-      </div>
-    </div>
-<!--    TODO: uncomment-->
-    <div *ngIf="me.role == 'ROLE_PATIENT' || me.role == 'ROLE_PRACTITIONER'" class="sidebar-main">
-<!--    <div class="sidebar-main">-->
-      <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''" class="card card-hover-container">
-        <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
-      </div>
-      <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
-           class="card card-hover-container">
-        <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access Requests</p></span>
-      </div>
-      <div (click)="select('records')" [ngClass]="selected == 'records' ? 'selected' : ''"
-           class="card card-hover-container">
-        <span class="material-symbols-outlined right-align">switch_account</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Patient Records</p></span>
-      </div>
-      <div (click)="select('signal_cellular_alt')" [ngClass]="selected == 'signal_cellular_alt' ? 'selected' : ''"
-           class="card card-hover-container">
-        <span class=" material-symbols-outlined right-align">signal_cellular_alt</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Reports</p></span>
-      </div>
-      <div (click)="select('chat')" [ngClass]="selected == 'chat' ? 'selected' : ''" class="card card-hover-container">
-        <span class=" material-symbols-outlined right-align">chat</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Messages</p></span>
-      </div>
-    </div>
-    <div class="sidebar-footer">
-      <div (click)="select('settings')" [ngClass]="selected == 'settings' ? 'selected' : ''"
-           class="card card-hover-container">
-        <span class=" material-symbols-outlined right-align">settings</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Settings</p></span>
-      </div>
-      <div (click)="logout()" [ngClass]="selected == 'logout' ? 'selected' : ''" class="card card-hover-container">
-        <span class=" material-symbols-outlined right-align">logout</span>
-        <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Log out</p></span>
-      </div>
-    </div>
-  </div>
 </div>
 
