@@ -5,7 +5,6 @@ import {TokenService} from "../../../auth/services/token.service";
 import {RecordsService} from "../../service/records.service";
 import {AccessRequestService} from "../../../access-requests/service/access.request.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import { Buffer } from "buffer";
 
 @Component({
     selector: 'app-records',
@@ -31,10 +30,11 @@ export class RecordsComponent {
     }
 
 
-    onViewRecord(patientId: string) {
-        this.recordsService.getPatientRecord(patientId).subscribe((response) => {
+    onViewRecord(requestId: string) {
+        this.recordsService.getPatientRecord(requestId).subscribe((response) => {
             const id = crypto.randomUUID();
             sessionStorage.setItem(id, JSON.stringify(response));
+            sessionStorage.setItem("request", requestId);
             this.router.navigate(['./' + id], {relativeTo: this.route}).then();
 
         })

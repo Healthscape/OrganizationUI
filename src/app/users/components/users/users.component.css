@@ -1,66 +1,70 @@
 ::ng-deep .users-host-wrapper {
-  overflow: auto;
-  margin: 10px;
-  gap: 10px;
+    overflow: auto;
+    margin: 10px;
+    gap: 10px;
 }
 
 .user-card {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  box-shadow: 0 4px 5px lightgray;
-  border: 1px solid lightgray;
-  border-radius: 15px;
-  background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 5px lightgray;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    background-color: #fff;
 }
 
 .material-symbols-outlined.role {
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 48;
+    font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 48;
 }
 
 .avatar-image {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 .user-info {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
 .user-info .name {
-  grid-column: 2;
+    grid-column: 2;
 }
+
 .user-info .email {
-  grid-column: 3;
+    grid-column: 3;
 }
+
 .user-info .role {
-  grid-column: 4;
+    grid-column: 4;
 }
+
 .user-info .date-created {
-  grid-column: 5;
+    grid-column: 5;
 }
 
 .table-container {
-  display: flex;
-  padding: 20px 10px 20px 55px;
-  border-radius: 40px;
-  background-color: rgb(229, 239, 251);
-  gap: 10px;
+    display: flex;
+    padding: 20px 10px 20px 55px;
+    border-radius: 40px;
+    background-color: rgb(229, 239, 251);
+    gap: 10px;
 }
 
 .table-label {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .table-header {
-  grid-area: table-header;
+    grid-area: table-header;
 }
 
 .table-content {
-  grid-area: table-content;
+    grid-area: table-content;
 }
 
 /*# sourceMappingURL=users.component.css.map */

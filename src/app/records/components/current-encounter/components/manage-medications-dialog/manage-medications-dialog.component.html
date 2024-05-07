@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Manage medications</h2>
+<mat-dialog-content>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="tabs">
+        <mat-tab label="Active">
+            <div class="active-medications">
+                <app-medications-overview [type]="'EDIT'" [id]="id"></app-medications-overview>
+            </div></mat-tab>
+        <mat-tab label="History">
+            <div class="medication-history">
+                <app-medications-overview [type]="'HISTORY'"></app-medications-overview>
+            </div></mat-tab>
+    </mat-tab-group>
+    <div class="new-medication-form" [formGroup]="form">
+        <h3>New Medication</h3>
+        <mat-form-field  appearance="fill" >
+            <mat-label>Medication</mat-label>
+            <input type="text" [formControl]="medicationNameCtrl" matInput>
+        </mat-form-field>
+        <mat-form-field  appearance="fill" >
+            <mat-label>Instructions</mat-label>
+            <textarea rows="3" [cdkTextareaAutosize]="false" [formControl]="dosageCtrl" matInput></textarea>
+        </mat-form-field>
+        <button (click)="onAdd()" mat-raised-button>Add</button>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button cdkFocusInitial mat-dialog-close mat-raised-button >Cancel</button>
+</mat-dialog-actions>

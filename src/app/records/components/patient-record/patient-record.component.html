@@ -6,5 +6,6 @@
 <app-medications *ngIf="currentTab == 'medications'" class="content"></app-medications>
 <app-documents *ngIf="currentTab == 'documents'" class="content"></app-documents>
 <app-encounters *ngIf="currentTab == 'encounters'" class="content"></app-encounters>
-<app-current-encounter *ngIf="currentTab == 'current-encounter'" [encounterStarted]="encounterStarted" [startedAt]="startedAt"
+<app-current-encounter *ngIf="currentTab == 'current-encounter'" [encounterStarted]="encounterStarted"
+                       [startedAt]="startedAt"
                        class="content"></app-current-encounter>

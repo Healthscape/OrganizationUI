@@ -1,19 +1,28 @@
 <div class="header">
-    <span><h3>Medications</h3></span>
-    <span *ngIf="edit"><button class="small" mat-icon-button><span class="material-symbols-outlined">add</span></button></span>
+    <span *ngIf="type == 'NO_EDIT'"><h3>Active Medications</h3></span>
 </div>
 <div class="medications-list">
-    <div *ngFor="let medication of medications" class="list-item">
-        <div class="medication-container">
+    <mat-progress-bar mode="buffer" *ngIf="loading"></mat-progress-bar>
+    <div *ngFor="let medication of showingMedications" class="list-item">
+        <div class="medication-container" [ngClass]="medication.updated ? 'updated': ''">
             <div class="medication-name">{{ medication.medication }}</div>
-            <div class="medication-instructions">{{ medication.instructions }}</div>
+            <div class="medication-instructions">{{ medication.dosage }}</div>
             <div class="footer">
-                <div class="medication-date">{{ medication.occurrence.start | date }}</div>
-                <div *ngIf="edit" class="medication-status">In progress</div>
+                <div class="medication-date">{{ medication.start | date }}</div>
+                <div *ngIf="type == 'EDIT' && !medication.id" class="">
+                    <button mat-flat-button color="primary" (click)="onDelete(medication)">Remove</button>
+                </div>
+                <div *ngIf="type == 'EDIT' && medication.id" class="medication-status">
+                    <mat-select [value]="medication.status" (valueChange)="onStatusChange($event, medication)">
+                        <mat-option *ngFor="let status of [{code:'in-progress', name: 'In progress'}, {code: 'stopped', name: 'Stopped'},{code:'completed', name:'Completed'}]" [id]="status.code" [value]="status.code" >
+                            {{ status.name }}
+                        </mat-option>
+                    </mat-select>
+                </div>
             </div>
         </div>
     </div>
-    <div class="list-item no-items" *ngIf="!medications.length">
+    <div *ngIf="!showingMedications.length && !loading" class="list-item no-items">
         <div class="medication-container">
             <div class="medication-name">No medication administrations right now.</div>
         </div>

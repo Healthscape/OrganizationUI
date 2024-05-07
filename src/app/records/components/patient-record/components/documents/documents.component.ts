@@ -31,7 +31,7 @@ export class DocumentsComponent {
 
     constructor(private route: ActivatedRoute) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.documents = patientRecord.documentReferences;
         }
@@ -39,9 +39,8 @@ export class DocumentsComponent {
 
     openDocument(document: DocumentReferenceDto) {
         const newTab = window.open();
-
         newTab?.document.write(
-            `<!DOCTYPE html><head><title>Document preview</title></head><body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);"><img src="${document.data}" style="display: block; -webkit-user-select: none; margin: auto; background-color: hsl(0, 0%, 90%); transition: background-color 300ms;" ></body></html>`);
+            `<!DOCTYPE html><head><title>Document preview</title></head><body style="margin: 0; height: 100%; background-color: rgb(14, 14, 14);"><img src="data:image/jpeg;base64,${document.data}" style="display: block; -webkit-user-select: none; margin: auto; background-color: hsl(0, 0%, 90%); transition: background-color 300ms;"  alt="${document.title}"></body></html>`);
 
         newTab?.document.close();
     }
@@ -50,7 +49,7 @@ export class DocumentsComponent {
         const downloadLink = document.createElement('a');
         const fileName = documentDto.title;
 
-        downloadLink.href = documentDto.data;
+        downloadLink.href = 'data:image/jpeg;base64,' + documentDto.data;
         downloadLink.download = fileName;
         downloadLink.click();
     }

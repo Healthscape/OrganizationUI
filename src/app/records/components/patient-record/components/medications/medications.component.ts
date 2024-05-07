@@ -43,14 +43,14 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
 })
 export class MedicationsComponent {
     displayedColumns: string[] = ['status', 'medication', 'start', 'end', 'more'];
-    medications = [new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto(), new MedicationAdministrationDto()];
+    medications: MedicationAdministrationDto[] = [];
     startDateCtrl: FormControl = new FormControl('');
     endDateCtrl: FormControl = new FormControl('');
 
 
     constructor(private route: ActivatedRoute) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.medications = patientRecord.medications;
         }

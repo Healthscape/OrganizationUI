@@ -1,0 +1,29 @@
+@use '../../../../../../styles/variables' as *;
+
+mat-dialog-content{
+  display: grid;
+  grid-template-areas: 'tabs new'
+    'tabs new';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.medication-history{
+  overflow: auto;
+  grid-area: history;
+}
+
+.active-medications{
+  overflow: auto;
+  grid-area: active;
+}
+.tabs{
+  grid-area: tabs;
+}
+.new-medication-form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-area: new;
+  padding: 25px;
+}

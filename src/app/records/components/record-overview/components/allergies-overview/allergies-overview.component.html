@@ -7,11 +7,11 @@
             <span *ngIf="allergy.type == 'OTHER'" class="material-symbols-outlined">block</span>
             <div class="allergy-right-container">
                 <div class="allergy-to">Allergy to {{ allergy.type.toLowerCase() }}</div>
-                <div class="allergy-name">{{ allergy.name }}</div>
+                <div class="allergy-name">{{ allergy.code }}</div>
             </div>
         </div>
     </div>
-    <div class="list-item no-items" *ngIf="!allergies.length">
+    <div *ngIf="!allergies.length" class="list-item no-items">
         <div class="medication-container">
             <div class="medication-name">No allergies right now.</div>
         </div>

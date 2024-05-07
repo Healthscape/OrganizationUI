@@ -17,7 +17,7 @@ export class DemographicsComponent {
 
     constructor(private route: ActivatedRoute) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.patient = patientRecord.userDto;
         }

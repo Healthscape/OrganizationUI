@@ -1,6 +1,9 @@
 export class EncounterDto {
-    actualPeriod: { start: Date, end: Date } = {start: new Date(), end: new Date()};
-    serviceProvider: string = "John Doe";
-    specialty: string = "Neurologist";
+    id: string = '';
+    practitioner: string = "";
+    specialty: string = "";
     ago: string = "";
+    start: Date = new Date();
+    end: Date = new Date();
+    status: string = '';
 }

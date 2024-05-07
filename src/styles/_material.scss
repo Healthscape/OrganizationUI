@@ -274,7 +274,7 @@ mat-error {
 
 mat-dialog-container {
   &.mat-mdc-dialog-container {
-    max-width: 40vw;
+    max-width: fit-content;
 
     .mdc-dialog__title {
       font-weight: 500;
@@ -411,4 +411,10 @@ mat-progress-bar {
 
 button.mat-mdc-fab {
   height: 32px;
+}
+
+mat-tab-body{
+  &.mat-mdc-tab-body{
+    width: 25vw;
+  }
 }

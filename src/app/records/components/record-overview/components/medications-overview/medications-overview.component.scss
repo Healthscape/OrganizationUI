@@ -9,6 +9,7 @@
   padding: 25px;
   border-radius: 10px;
   background-color: #fff;
+  height: 100%;
 }
 
 
@@ -22,6 +23,12 @@
 .medication-container {
   display: flex;
   flex-direction: column;
+  border-radius: 7px;
+  padding: 5px;
+}
+
+.updated{
+  background-color: #ffedd8;
 }
 
 .medication-name {
@@ -50,6 +57,7 @@
   padding: 5px;
   border-radius: 5px;
   background-color: $light-light-blue;
+  flex: 0.8;
 }
 
 

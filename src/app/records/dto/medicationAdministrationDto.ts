@@ -1,7 +1,16 @@
 export class MedicationAdministrationDto {
-    status: string = 'In Progress';
-    medication: string = 'Fenofibrate (48mg)';
-    instructions: string = 'Take with food every morning';
-    occurrence: { start: Date, end: Date } = {start: new Date(), end: new Date()};
-    encounter: string = '';
+    id: string|null = null;
+    status: string = '';
+    patient: string = '';
+    medication: string = '';
+    dosage: string = '';
+    encounterId: string = '';
+    start: Date = new Date();
+    end: Date = new Date();
+    updated: boolean = false;
+
+    constructor(medication: string, dosage: string) {
+        this.medication = medication;
+        this.dosage = dosage;
+    }
 }

@@ -15,11 +15,11 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
     styleUrl: './allergies-overview.component.scss'
 })
 export class AllergiesOverviewComponent {
-    allergies = [new AllergyDto(), new AllergyDto(), new AllergyDto(), new AllergyDto(), new AllergyDto(), new AllergyDto()];
+    allergies: AllergyDto[] = [];
 
     constructor(private route: ActivatedRoute) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.allergies = patientRecord.allergies;
         }

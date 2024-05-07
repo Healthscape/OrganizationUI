@@ -2,11 +2,11 @@
 
 ::ng-deep .current-encounter-host-wrapper {
   display: grid;
-  grid-template-areas: 'clinical-impression conditions encounter-manager'
-    'clinical-impression conditions medications'
-    'clinical-impression conditions medications'
-    'clinical-impression documents medications'
-    'clinical-impression documents medications';
+  grid-template-areas: 'clinical-impression clinical-impression encounter-manager'
+    'clinical-impression clinical-impression documents'
+    'clinical-impression clinical-impression documents'
+    'clinical-impression clinical-impression documents'
+    'clinical-impression clinical-impression options';
   grid-template-columns: 1fr 0.7fr 0.7fr;
   grid-template-rows: 0.5fr 1fr 0.75fr 1.75fr 1fr;
   gap: 0.5rem;
@@ -20,6 +20,7 @@
   border-radius: 5px;
   background-color: #fff;
   grid-area: encounter-manager;
+  padding: 5px;
 
   .timer {
     h3 {
@@ -37,9 +38,11 @@
   display: flex;
 }
 
-.conditions {
-  grid-area: conditions;
+.options {
+  grid-area: options;
   display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .documents {
@@ -53,3 +56,50 @@
   flex-direction: column;
 }
 
+.action-line {
+  color: $dark-gray;
+  display: flex;
+  align-self: end;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+  border: 2px solid $accent-light-blue;
+  border-radius: 10px;
+  background-color: rgba(200, 219, 244, 0.2);
+  gap: 10px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.action-line.disabled{
+  color: rgb(42 56 71 / 39%);
+  display: flex;
+  align-self: end;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-color: #d3d3d354;
+  gap: 10px;
+
+  p {
+    margin: 0;
+  }
+
+}
+
+.action-line:not( .disabled ):hover {
+  font-weight: 500;
+  width: 99%;
+  cursor: pointer;
+  background-color: rgba(200, 219, 244, 1);
+
+  span {
+    font-variation-settings: 'wght' 700;
+  }
+}

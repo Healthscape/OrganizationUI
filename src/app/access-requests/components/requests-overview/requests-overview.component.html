@@ -35,7 +35,8 @@
     <h4 *ngIf="showing == 'denied'">Denied Requests</h4>
     <h4 *ngIf="showing == 'pending'">Pending Requests</h4>
 
-    <table *ngIf="role == 'ROLE_PATIENT'" [dataSource]="dataSource" [multiTemplateDataRows]="true" class="mat-elevation-z8 no-color"
+    <table *ngIf="role == 'ROLE_PATIENT'" [dataSource]="dataSource" [multiTemplateDataRows]="true"
+           class="mat-elevation-z8 no-color"
            mat-table>
 
         <!-- Decision Column -->
@@ -84,7 +85,8 @@
         <tr *matHeaderRowDef="displayedColumnsPatient; sticky: true" mat-header-row></tr>
         <tr *matRowDef="let row; columns: displayedColumnsPatient;" mat-row></tr>
     </table>
-    <table *ngIf="role == 'ROLE_PRACTITIONER'" [dataSource]="dataSource" [multiTemplateDataRows]="true" class="mat-elevation-z8 no-color"
+    <table *ngIf="role == 'ROLE_PRACTITIONER'" [dataSource]="dataSource" [multiTemplateDataRows]="true"
+           class="mat-elevation-z8 no-color"
            mat-table>
 
         <!-- Decision Column -->

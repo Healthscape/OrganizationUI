@@ -9,7 +9,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {
-  RecordPreviewDialogComponent
+    RecordPreviewDialogComponent
 } from "../../../records/components/record-preview-dialog/record-preview-dialog.component";
 import {RecordsService} from "../../../records/service/records.service";
 

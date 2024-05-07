@@ -1,79 +1,85 @@
 ::ng-deep .requests-overview-host-wrapper {
-  display: flex;
-  overflow: auto;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
 }
 
 .request-stats {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
 }
 
 .stat-card {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  width: 30%;
-  padding: 20px;
-  box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease-in-out;
-  border-radius: 20px;
-  background-color: #fff;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    width: 30%;
+    padding: 20px;
+    box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    border-radius: 20px;
+    background-color: #fff;
 }
+
 .stat-card .card-text {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
 }
+
 .stat-card .card-text h3 {
-  margin: 0;
+    margin: 0;
 }
+
 .stat-card .card-text .stat-name {
-  font-size: 16px;
-  color: rgb(16, 49, 81);
+    font-size: 16px;
+    color: rgb(16, 49, 81);
 }
 
 .stat-card:hover {
-  cursor: pointer;
-  background-color: #abbac2;
+    cursor: pointer;
+    background-color: #abbac2;
 }
+
 .stat-card:hover .card-text .stat-name {
-  color: white;
+    color: white;
 }
 
 .stat-card.selected {
-  cursor: pointer;
-  background-color: #abbac2;
+    cursor: pointer;
+    background-color: #abbac2;
 }
+
 .stat-card.selected .card-text .stat-name {
-  color: white;
+    color: white;
 }
 
 .recent-requests {
-  overflow: auto;
-  padding: 20px;
-  box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  background-color: #fff;
+    overflow: auto;
+    padding: 20px;
+    box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #fff;
 }
+
 .recent-requests h4 {
-  font-weight: 500;
-  margin: 0;
-  margin-bottom: 10px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .decision .material-symbols-outlined {
-  color: rgb(16, 49, 81);
-  font-variation-settings: "FILL" 1;
+    color: rgb(16, 49, 81);
+    font-variation-settings: "FILL" 1;
 }
 
 .no-requests {
-  color: lightgray;
-  margin: 20px 0;
+    color: lightgray;
+    margin: 20px 0;
 }
 
 /*# sourceMappingURL=requests-overview.component.css.map */

@@ -17,11 +17,11 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
 })
 export class ConditionsOverviewComponent {
     @Input() edit: boolean = false;
-    conditions = [new ConditionDto(), new ConditionDto()];
+    conditions: ConditionDto[] = [];
 
     constructor(private route: ActivatedRoute) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.conditions = patientRecord.conditions;
         }

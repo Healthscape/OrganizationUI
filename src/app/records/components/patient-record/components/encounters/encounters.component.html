@@ -28,7 +28,7 @@
             <!-- Start Column -->
             <ng-container matColumnDef="start">
                 <th *matHeaderCellDef mat-header-cell>Start</th>
-                <td *matCellDef="let encounter" mat-cell>{{ encounter.actualPeriod.start | date }}</td>
+                <td *matCellDef="let encounter" mat-cell>{{ encounter.start | date }}</td>
             </ng-container>
 
             <!-- Specialty Column -->
@@ -40,7 +40,7 @@
             <!-- Service Provider Column -->
             <ng-container matColumnDef="serviceProvider">
                 <th *matHeaderCellDef mat-header-cell>Service Provider</th>
-                <td *matCellDef="let encounter" mat-cell>{{ encounter.serviceProvider }}</td>
+                <td *matCellDef="let encounter" mat-cell>{{ encounter.practitioner }}</td>
             </ng-container>
 
             <!-- More Column -->

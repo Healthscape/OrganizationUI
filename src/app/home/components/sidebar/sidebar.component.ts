@@ -12,7 +12,7 @@ import {UserDto} from "../../../auth/dto/user.dto";
 import {UserService} from "../../../users/services/user.service";
 import {AuthService} from "../../../auth/services/auth.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {SubjectService} from "../../../utils/events/subject.service";
+import {SubjectService} from "../../../utils/services/subject.service";
 
 @Component({
     selector: 'app-sidebar',
@@ -31,7 +31,7 @@ export class SidebarComponent {
     selected = 'dashboard';
     me: UserDto = new UserDto();
 
-    constructor(private authService: AuthService, userService: UserService, private router: Router, private route: ActivatedRoute, private subjectService: SubjectService,private cdr: ChangeDetectorRef) {
+    constructor(private authService: AuthService, userService: UserService, private router: Router, private route: ActivatedRoute, private subjectService: SubjectService, private cdr: ChangeDetectorRef) {
         userService.me().pipe(takeUntilDestroyed()).subscribe({
             next: (user) => {
                 this.me = user;

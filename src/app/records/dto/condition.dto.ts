@@ -1,8 +1,17 @@
 export class ConditionDto {
-    name: string = 'Covid 19';
+    code: string = '';
     type: string = 'VIRUS';
-    recordedDate: Date = new Date(2024, 3, 1);
-    status: string = 'active';
+    encounterId: string = '';
+    patient: string = '';
+    practitioner: string = '';
+    date: Date = new Date();
+    status: string = '';
+    end: Date = new Date();
+    start: Date = new Date();
+
+    constructor(code: string) {
+        this.code = code;
+    }
 }
 
 

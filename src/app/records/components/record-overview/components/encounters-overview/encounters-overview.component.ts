@@ -17,19 +17,19 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
     styleUrl: './encounters-overview.component.scss'
 })
 export class EncountersOverviewComponent {
-    encounters = [new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto()];
+    encounters = new Array<EncounterDto>();
 
     constructor(private route: ActivatedRoute) {
-        this.calculateMonthsAgo();
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.encounters = patientRecord.encounters;
+            this.calculateMonthsAgo();
         }
     }
 
     getMonthsAgo(date: Date) {
-        let dateFrom = date;
+        let dateFrom = new Date(date);
         let dateTo = new Date();
 
         let months = dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
@@ -47,7 +47,7 @@ export class EncountersOverviewComponent {
 
     private calculateMonthsAgo() {
         this.encounters.forEach((encounter) => {
-            encounter.ago = this.getMonthsAgo(encounter.actualPeriod.start);
+            encounter.ago = this.getMonthsAgo(encounter.start);
         })
     }
 }

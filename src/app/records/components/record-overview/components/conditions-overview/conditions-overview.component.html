@@ -9,14 +9,14 @@
             <span *ngIf="condition.type == 'HEART'" class="material-symbols-outlined condition-type">ecg_heart</span>
             <span *ngIf="condition.type == 'LUNGS'" class="material-symbols-outlined condition-type">pulmonology</span>
             <div class="allergy-right-container">
-                <div class="condition-name">{{ condition.name }}</div>
-                <div class="condition-date">{{ condition.recordedDate | date }}</div>
+                <div class="condition-name">{{ condition.code }}</div>
+                <div class="condition-date">{{ condition.date | date }}</div>
             </div>
             <span><button *ngIf="edit" class="small" mat-icon-button><span
                     class="material-symbols-outlined">delete</span></button></span>
         </div>
     </div>
-    <div class="list-item no-items" *ngIf="!conditions.length">
+    <div *ngIf="!conditions.length" class="list-item no-items">
         <div class="medication-container">
             <div class="medication-name">No conditions right now.</div>
         </div>

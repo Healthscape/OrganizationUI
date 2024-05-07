@@ -1,40 +1,40 @@
 ::ng-deep .records-host-wrapper {
-  display: flex;
-  overflow: auto;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
 }
 
 .available-requests {
-  overflow: auto;
-  padding: 20px;
-  box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  background-color: #fff;
+    overflow: auto;
+    padding: 20px;
+    box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #fff;
 }
 
 .no-requests {
-  color: lightgray;
-  margin: 20px 0;
+    color: lightgray;
+    margin: 20px 0;
 }
 
 .avatar-image {
-  width: 35px;
-  height: 35px;
-  margin: 0 auto;
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
 }
 
 .mat-column-avatar {
-  text-align: center;
+    text-align: center;
 }
 
 .mat-column-name {
-  text-align: left;
+    text-align: left;
 }
 
 .mat-column-more {
-  text-align: right;
+    text-align: right;
 }
 
 /*# sourceMappingURL=records.component.css.map */

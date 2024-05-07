@@ -5,7 +5,7 @@ import {UserService} from "../../services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatTable, MatTableModule} from "@angular/material/table";
-import {SubjectService} from "../../../utils/events/subject.service";
+import {SubjectService} from "../../../utils/services/subject.service";
 
 @Component({
     selector: 'app-users',

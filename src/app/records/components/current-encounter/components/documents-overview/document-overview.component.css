@@ -1,39 +1,41 @@
 ::ng-deep .documents-overview-host-wrapper {
-  display: flex;
-  overflow: auto;
-  flex: 1;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 25px;
-  border-radius: 10px;
-  background-color: #fff;
+    display: flex;
+    overflow: auto;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .document-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .document-container .document-name {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 150px;
 }
 
 .footer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
 }
+
 .header h3 {
-  margin: 0;
+    margin: 0;
 }
 
 /*# sourceMappingURL=document-overview.component.css.map */

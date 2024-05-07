@@ -7,7 +7,7 @@ import {UserService} from "../../../users/services/user.service";
 import {UserDto} from "../../../auth/dto/user.dto";
 import {NewDoctorComponent} from "../../../users/components/new-doctor/new-doctor.component";
 import {MatDialog} from "@angular/material/dialog";
-import {SubjectService} from "../../../utils/events/subject.service";
+import {SubjectService} from "../../../utils/services/subject.service";
 
 @Component({
     selector: 'app-main-window',
@@ -19,7 +19,7 @@ import {SubjectService} from "../../../utils/events/subject.service";
     templateUrl: './main-window.component.html',
     styleUrl: './main-window.component.scss'
 })
-export class MainWindowComponent implements OnDestroy, OnInit{
+export class MainWindowComponent implements OnDestroy, OnInit {
     static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
     readonly home = {icon: 'pi pi-home', url: 'home'};
     menuItems: { label: string, url: string }[] = [];
@@ -42,7 +42,7 @@ export class MainWindowComponent implements OnDestroy, OnInit{
             .subscribe(() => {
                 this.menuItems = this.createBreadcrumbs(this.activatedRoute.root)
             });
-        this.subjectService.reloadBreadcrumbs.subscribe(() =>{
+        this.subjectService.reloadBreadcrumbs.subscribe(() => {
             this.menuItems = this.createBreadcrumbs(this.activatedRoute.root)
         })
     }

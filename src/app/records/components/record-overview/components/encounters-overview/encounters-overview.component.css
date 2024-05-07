@@ -1,41 +1,45 @@
 ::ng-deep .encounters-overview-host-wrapper {
-  display: flex;
-  overflow: auto;
-  flex: 1;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 25px;
-  border-radius: 10px;
-  background-color: #fff;
+    display: flex;
+    overflow: auto;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .encounters-timeline {
-  overflow: auto;
-  box-sizing: border-box;
-  height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    height: 100%;
 }
+
 .encounters-timeline .timeline-container {
-  color: rgba(42, 56, 71, 0.88);
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 5px 20px;
-  border: 2px solid rgb(200, 219, 244);
-  border-radius: 10px;
-  background-color: rgba(200, 219, 244, 0.2);
+    color: rgba(42, 56, 71, 0.88);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px 20px;
+    border: 2px solid rgb(200, 219, 244);
+    border-radius: 10px;
+    background-color: rgba(200, 219, 244, 0.2);
 }
+
 .encounters-timeline .timeline-container .specialty {
-  font-weight: 500;
-  color: rgb(16, 49, 81);
+    font-weight: 500;
+    color: rgb(16, 49, 81);
 }
+
 .encounters-timeline .timeline-container .ago {
-  font-size: 14px;
-  color: rgba(42, 56, 71, 0.88);
+    font-size: 14px;
+    color: rgba(42, 56, 71, 0.88);
 }
+
 .encounters-timeline .timeline-container:hover {
-  border-color: oklch(0.623 0.048 253.741/0.88);
+    border-color: oklch(0.623 0.048 253.741/0.88);
 }
 
 /*# sourceMappingURL=encounters-overview.component.css.map */

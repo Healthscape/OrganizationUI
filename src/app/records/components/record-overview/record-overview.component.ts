@@ -11,8 +11,6 @@ import {AllergiesOverviewComponent} from "./components/allergies-overview/allerg
 import {
     PatientRecordToolbarComponent
 } from "../patient-record/components/patient-record-toolbar/patient-record-toolbar.component";
-import {PatientRecordDto} from "../../dto/patientRecord.dto";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-record-overview',

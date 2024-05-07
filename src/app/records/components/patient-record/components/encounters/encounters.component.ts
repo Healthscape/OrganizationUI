@@ -43,13 +43,13 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
 })
 export class EncountersComponent {
     displayedColumns: string[] = ['start', 'specialty', 'serviceProvider', 'more'];
-    encounters = [new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto(), new EncounterDto()];
+    encounters = new Array<EncounterDto>();
     startDateCtrl: FormControl = new FormControl('');
     endDateCtrl: FormControl = new FormControl('');
 
     constructor(private route: ActivatedRoute) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
-        if(patientRecordStr){
+        if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.encounters = patientRecord.encounters;
         }

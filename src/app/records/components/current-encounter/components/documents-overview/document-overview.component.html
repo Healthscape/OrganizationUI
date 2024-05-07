@@ -1,15 +1,16 @@
 <div class="header">
     <span><h3>Documents</h3></span>
-    <span><button class="small" mat-icon-button><span class="material-symbols-outlined">add</span></button></span>
+    <input #fileInput (input)="onAddInput($event)" style="display: none;" type="file" [multiple]="true">
+    <span><button class="small" mat-icon-button [disabled]="disabled" (click)="onAdd(fileInput)"><span class="material-symbols-outlined">add</span></button></span>
 </div>
 <div class="documents-list">
     <div class="list-item">
-        <div class="document-container">
-            <div class="document-name">fasfsafdfadfdsafdafdafdsfasdd</div>
+        <div class="document-container" *ngFor="let document of documents">
+            <div class="document-name">{{document.title}}</div>
             <div class="footer">
-                <button class="small" mat-icon-button><span class="material-symbols-outlined">open_in_new</span>
+                <button class="small" mat-icon-button [disabled]="disabled" (click)="onOpen(document)"><span class="material-symbols-outlined">open_in_new</span>
                 </button>
-                <button class="small" mat-icon-button><span class="material-symbols-outlined">delete</span></button>
+                <button class="small" mat-icon-button [disabled]="disabled" (click)="onDelete(document)"><span class="material-symbols-outlined">delete</span></button>
             </div>
         </div>
     </div>

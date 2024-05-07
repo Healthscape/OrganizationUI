@@ -10,8 +10,8 @@ export class RecordsService {
     _http = inject(HttpClient)
     private REQUEST_MAPPING: string = "/records";
 
-    getPatientRecord(patientId: string) {
-        return this._http.get<any>(environment.apiUrl + this.REQUEST_MAPPING + "/" + patientId);
+    getPatientRecord(requestId: string) {
+        return this._http.get<any>(environment.apiUrl + this.REQUEST_MAPPING + "/" + requestId);
     }
 
     findRecordWithPersonalId(personalId: string) {

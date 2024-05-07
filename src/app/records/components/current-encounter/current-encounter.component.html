@@ -8,17 +8,24 @@
 </div>
 
 <div class="clinical-impression">
-    <app-clinical-impression></app-clinical-impression>
+    <app-clinical-impression [disabled]="!encounterStarted"></app-clinical-impression>
 </div>
 
 <div class="documents">
-    <app-documents-overview></app-documents-overview>
+    <app-documents-overview [disabled]="!encounterStarted"></app-documents-overview>
 </div>
 
-<div class="conditions">
-    <app-conditions-overview [edit]="true"></app-conditions-overview>
-</div>
-
-<div class="medications">
-    <app-medications-overview [edit]="true"></app-medications-overview>
+<div class="options">
+    <div (click)="onManageMedications()" class="action-line" [ngClass]="!encounterStarted ? 'disabled' : ''">
+        <span class="material-symbols-outlined">chevron_right</span>
+        <p>Manage medications</p>
+    </div>
+    <div (click)="onManageConditions()" class="action-line" [ngClass]="!encounterStarted ? 'disabled' : ''">
+        <span class="material-symbols-outlined">chevron_right</span>
+        <p>Manage conditions</p>
+    </div>
+    <div (click)="onManageAllergies()" class="action-line" [ngClass]="!encounterStarted ? 'disabled' : ''">
+        <span class="material-symbols-outlined">chevron_right</span>
+        <p>Manage allergies</p>
+    </div>
 </div>

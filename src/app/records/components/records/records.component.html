@@ -23,7 +23,7 @@
         <ng-container matColumnDef="more">
             <th *matHeaderCellDef mat-header-cell> More</th>
             <td *matCellDef="let request" mat-cell>
-                <button (click)="onViewRecord(request.patientId)" mat-raised-button>View Record</button>
+                <button (click)="onViewRecord(request.requestId)" mat-raised-button>View Record</button>
             </td>
         </ng-container>
 

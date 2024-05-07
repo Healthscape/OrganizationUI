@@ -1,11 +1,13 @@
 <h2 mat-dialog-title>Access Request</h2>
 <mat-dialog-content>
     <div class="practitioner-info">
-        <div *ngIf="role === 'ROLE_PRACTITIONER'" [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.patientImage + '\')'}"
+        <div *ngIf="role === 'ROLE_PRACTITIONER'"
+             [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.patientImage + '\')'}"
              class="avatar-image"
              mat-card-avatar>
         </div>
-        <div *ngIf="role === 'ROLE_PATIENT'" [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.practitionerImage + '\')'}"
+        <div *ngIf="role === 'ROLE_PATIENT'"
+             [ngStyle]="{'background-image': 'url(\'data:image/png;base64, ' + request.practitionerImage + '\')'}"
              class="avatar-image"
              mat-card-avatar>
         </div>
@@ -117,7 +119,9 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <button *ngIf="!loading" cdkFocusInitial mat-dialog-close mat-raised-button>Cancel</button>
-    <button (click)="onResend()" *ngIf="role === 'ROLE_PRACTITIONER' && this.request.decision == DecisionEnum.NO_ACCESS && !loading" color="primary"
+    <button (click)="onResend()"
+            *ngIf="role === 'ROLE_PRACTITIONER' && this.request.decision == DecisionEnum.NO_ACCESS && !loading"
+            color="primary"
             mat-raised-button>Resend
         request
     </button>

@@ -37,8 +37,8 @@ export class UpdateAccountInfoComponent {
 
     constructor(_tokenService: TokenService, private router: Router, private userService: UserService) {
         this.me = this.router.getCurrentNavigation()?.extras?.state?.['me'];
-        if(!this.me){
-            this.userService.me().subscribe((response) =>{
+        if (!this.me) {
+            this.userService.me().subscribe((response) => {
                 this.me = response;
                 console.log(this.me);
                 this.initializeForm();
@@ -112,10 +112,10 @@ export class UpdateAccountInfoComponent {
 
     onCancel() {
         this.initializeForm();
-        if(this.avatarPhoto){
+        if (this.avatarPhoto) {
             this.avatarPhoto.style.backgroundImage = 'url(\'data:image/png;base64, ' + this.photoCtrl.value + '\')'
         }
-        if(this.fileInput){
+        if (this.fileInput) {
             this.fileInput.nativeElement.value = "";
         }
         this.file = new File([], '');
