@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import { SubjectService } from '../../../../../utils/services/subject.service';
 
 @Component({
     selector: 'app-patient-record-toolbar',

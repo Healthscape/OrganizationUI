@@ -10,6 +10,7 @@ import {PermissionsService} from "./access.guard";
 import {provideEnvironmentNgxMask} from "ngx-mask";
 import {MatNativeDateModule} from "@angular/material/core";
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+import {PermanentSnackBarComponent} from "./utils/custom-components/permanent-snack-bar/permanent-snack-bar.component";
 
 export const MY_FORMATS = {
     parse: {
@@ -33,5 +34,5 @@ export const appConfig: ApplicationConfig = {
         {
             provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
             useValue: {duration: 3000},
-        }, PermissionsService],
+        }, PermissionsService, PermanentSnackBarComponent],
 };

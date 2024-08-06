@@ -17,7 +17,6 @@ export class SettingsComponent {
     constructor(private userService: UserService) {
         userService.me().subscribe({
             next: (user) => {
-                console.log(user)
                 this.me = user;
                 this.isLoading = false;
                 this.userService.updateImage.next(user.image);

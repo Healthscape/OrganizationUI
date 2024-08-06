@@ -38,11 +38,15 @@ export class PatientRecordComponent implements OnInit, OnDestroy {
     subscription: Subscription = new Subscription();
 
     constructor(private subjectService: SubjectService, private dialog: MatDialog, private route: ActivatedRoute, private encounterService: EncounterService) {
-
+            this.subjectService.encounterEnded.subscribe(() => {
+                this.encounterStarted = false;
+            })
+            this.subjectService.encounterStarted.subscribe(() => {
+                this.encounterStarted = true;
+            })
     }
 
     onTabChanged(tabName: string) {
-        console.log(this.startedAt)
         this.currentTab = tabName;
     }
 
@@ -70,7 +74,6 @@ export class PatientRecordComponent implements OnInit, OnDestroy {
                         let requestId = sessionStorage.getItem("request");
                         if (requestId) {
                             this.encounterService.startEncounter(requestId).subscribe((response) => {
-                                console.log(response);
                                 sessionStorage.setItem("updated", JSON.stringify(response));
                             })
                         }

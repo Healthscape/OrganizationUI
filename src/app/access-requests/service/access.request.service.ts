@@ -30,7 +30,6 @@ export class AccessRequestService {
     }
 
     reviewAccessRequest(updated: AccessRequestDto) {
-        console.log(updated)
         return this._http.put<AccessRequestDto>(environment.apiUrl + this.REQUEST_MAPPING, updated);
     }
 

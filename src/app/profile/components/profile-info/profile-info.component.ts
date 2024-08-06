@@ -38,7 +38,6 @@ export class ProfileInfoComponent implements OnChanges {
     }
 
     ngOnChanges() {
-        console.log(this.me)
         this.gender = this.genderEnum.getViewValue(this.me?.gender)
         this.maritalStatus = this.maritalStatusEnum.getViewValue(this.me?.maritalStatus)
     }

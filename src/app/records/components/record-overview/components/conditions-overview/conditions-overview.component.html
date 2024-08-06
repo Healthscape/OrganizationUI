@@ -1,22 +1,21 @@
 <div class="header">
-    <span><h3>Conditions</h3></span>
-    <span *ngIf="edit"><button class="small" mat-icon-button><span class="material-symbols-outlined">add</span></button></span>
+    <span *ngIf="type == 'NO_EDIT'"><h3>Active Conditions</h3></span>
+    <!-- <span><h3>Conditions</h3></span>
+    <span *ngIf="edit"><button class="small" mat-icon-button><span class="material-symbols-outlined">add</span></button></span> -->
 </div>
 <div class="conditions-list">
-    <div *ngFor="let condition of conditions" class="list-item">
-        <div class="condition-container">
-            <span *ngIf="condition.type == 'VIRUS'" class="material-symbols-outlined condition-type">coronavirus</span>
-            <span *ngIf="condition.type == 'HEART'" class="material-symbols-outlined condition-type">ecg_heart</span>
-            <span *ngIf="condition.type == 'LUNGS'" class="material-symbols-outlined condition-type">pulmonology</span>
+    <mat-progress-bar mode="buffer" *ngIf="loading"></mat-progress-bar>
+    <div *ngFor="let condition of showingCondtions" class="list-item">
+        <div class="condition-container" [ngClass]="condition.updated ? 'updated': ''">
             <div class="allergy-right-container">
                 <div class="condition-name">{{ condition.code }}</div>
                 <div class="condition-date">{{ condition.date | date }}</div>
             </div>
-            <span><button *ngIf="edit" class="small" mat-icon-button><span
+            <span><button *ngIf="type == 'EDIT'" class="small" mat-icon-button><span
                     class="material-symbols-outlined">delete</span></button></span>
         </div>
     </div>
-    <div *ngIf="!conditions.length" class="list-item no-items">
+    <div *ngIf="!showingCondtions.length && !loading" class="list-item no-items">
         <div class="medication-container">
             <div class="medication-name">No conditions right now.</div>
         </div>

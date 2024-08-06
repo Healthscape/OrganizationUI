@@ -45,7 +45,6 @@ export class ChangePasswordComponent {
 
         this.userService.changeEmail(this.emailCtrl.value).subscribe({
             next: (response) => {
-                console.log(response);
                 this.authService.updateTokens(response);
                 this.snackBar.open("Your have successfully changed your email!");
                 this.email = this.emailCtrl.value

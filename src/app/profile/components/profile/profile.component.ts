@@ -21,7 +21,6 @@ export class ProfileComponent {
         this.isAdmin = _tokenService.isAdmin();
         _userService.getDetailedMe().subscribe({
             next: (user) => {
-                console.log(user)
                 this.me = user;
                 this.isLoading = false;
             }

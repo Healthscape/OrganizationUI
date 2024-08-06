@@ -3,11 +3,11 @@
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="tabs">
         <mat-tab label="Active">
             <div class="active-medications">
-                <app-medications-overview [type]="'EDIT'" [id]="id"></app-medications-overview>
+                <app-conditions-overview [type]="'EDIT'" [id]="id"></app-conditions-overview>
             </div></mat-tab>
         <mat-tab label="History">
             <div class="medication-history">
-                <app-medications-overview [type]="'HISTORY'"></app-medications-overview>
+                <app-conditions-overview [type]="'HISTORY'"></app-conditions-overview>
             </div></mat-tab>
     </mat-tab-group>
     <div class="new-medication-form" [formGroup]="form">

@@ -1,6 +1,6 @@
 <div class="search-container">
     <mat-form-field [ngClass]="disabled ? 'disabled' : ''" appearance="outline" class="search">
-        <input [formControl]="searchCtrl" matInput placeholder="Search...">
+        <input [formControl]="searchCtrl" matInput placeholder="Search..." (keyup.enter)="onSearch() ">
         <span (click)="onSearch()" class="material-symbols-outlined" matSuffix>search</span>
     </mat-form-field>
 </div>

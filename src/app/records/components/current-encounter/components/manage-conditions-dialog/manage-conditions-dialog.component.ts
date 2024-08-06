@@ -14,9 +14,8 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatTab, MatTabGroup} from "@angular/material/tabs";
 import {
-    MedicationsOverviewComponent
-} from "../../../record-overview/components/medications-overview/medications-overview.component";
-import {MedicationAdministrationDto} from "../../../../dto/medicationAdministrationDto";
+    ConditionsOverviewComponent
+} from "../../../record-overview/components/conditions-overview/conditions-overview.component";
 import {ActivatedRoute} from "@angular/router";
 import {SubjectService} from "../../../../../utils/services/subject.service";
 import {ConditionDto} from "../../../../dto/condition.dto";
@@ -24,12 +23,12 @@ import {ConditionDto} from "../../../../dto/condition.dto";
 @Component({
   selector: 'app-manage-conditions-dialog',
   standalone: true,
-  imports: [CommonModule, CdkTextareaAutosize, FormsModule, MatButton, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatFormField, MatInput, MatLabel, MatTab, MatTabGroup, MedicationsOverviewComponent, ReactiveFormsModule],
+  imports: [CommonModule, CdkTextareaAutosize, FormsModule, MatButton, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatFormField, MatInput, MatLabel, MatTab, MatTabGroup, ReactiveFormsModule, ConditionsOverviewComponent],
   templateUrl: './manage-conditions-dialog.component.html',
   styleUrl: './manage-conditions-dialog.component.scss'
 })
 export class ManageConditionsDialogComponent {
-  medications: MedicationAdministrationDto[] = []
+  conditions: ConditionDto[] = []
   loadingHistory: boolean = true;
   id: string = '';
   conditionCtrl!: FormControl;
@@ -41,7 +40,6 @@ export class ManageConditionsDialogComponent {
       id = data.id;
     }
     this.id = id;
-    console.log(id)
 
     this.initForm();
   }

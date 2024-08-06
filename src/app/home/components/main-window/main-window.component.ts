@@ -36,7 +36,6 @@ export class MainWindowComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.menuItems = this.createBreadcrumbs(this.activatedRoute.root)
-        console.log(this.menuItems)
         this.subscription = this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(() => {

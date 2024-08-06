@@ -9,6 +9,7 @@ import {ConditionDto} from "../../records/dto/condition.dto";
     providedIn: 'root'
 })
 export class SubjectService {
+    isLoading = false;
     newDoctorSubject = new Subject<UserDto>();
     collapseSidebar = new Subject();
     encounterStarted = new Subject();

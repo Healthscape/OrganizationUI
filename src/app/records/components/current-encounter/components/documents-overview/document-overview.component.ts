@@ -1,9 +1,10 @@
-import {Component, Inject, Input} from '@angular/core';
+import {Component, Inject, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {DocumentReferenceDto} from "../../../../dto/document.reference.dto";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordUpdateDto} from "../../../../dto/patientRecordUpdate.dto";
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-documents-overview',
@@ -15,14 +16,37 @@ import {PatientRecordUpdateDto} from "../../../../dto/patientRecordUpdate.dto";
     templateUrl: './document-overview.component.html',
     styleUrl: './document-overview.component.scss'
 })
-export class DocumentOverviewComponent {
+export class DocumentOverviewComponent implements OnInit, OnChanges, OnDestroy {
     @Input() disabled!: boolean;
     documents: DocumentReferenceDto[] = []
     files: File[] = [];
     id: string = "";
+    subscriptions: Subscription[] = [];
 
     constructor(private route: ActivatedRoute) {
         this.id = this.route.snapshot.params['id'];
+    }
+
+    ngOnInit() {
+        let patientRecordUpdated = sessionStorage.getItem('updated');
+        if(patientRecordUpdated){
+            let patientRecord: PatientRecordUpdateDto = JSON.parse(patientRecordUpdated);
+            this.documents = patientRecord.documents;
+        }
+    }
+
+    ngOnChanges() {
+        if(!this.disabled){
+            this.files = [];
+            this.documents = [];
+            this.id = '';
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(sub => {
+            sub.unsubscribe();
+        });
     }
 
     onOpen(document: DocumentReferenceDto) {

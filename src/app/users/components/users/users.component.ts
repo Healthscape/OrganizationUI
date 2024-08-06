@@ -25,9 +25,7 @@ export class UsersComponent {
     constructor(_subjectService: SubjectService, _userService: UserService) {
         _subjectService.newDoctorSubject.subscribe({
             next: (response) => {
-                console.log(response)
                 this.users.push(response);
-                console.log(this.users)
                 this.table?.renderRows();
             },
             error: (err) => {

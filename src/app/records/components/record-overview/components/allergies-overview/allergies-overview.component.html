@@ -1,17 +1,19 @@
 <h3>Allergies</h3>
 <div class="allergies-list">
-    <div *ngFor="let allergy of allergies" class="list-item">
+    <div *ngFor="let allergy of showingAllergies" class="list-item">
         <div class="allergy-container">
-            <span *ngIf="allergy.type == 'MEDICINE'" class="material-symbols-outlined">pill</span>
-            <span *ngIf="allergy.type == 'FOOD'" class="material-symbols-outlined">fastfood</span>
-            <span *ngIf="allergy.type == 'OTHER'" class="material-symbols-outlined">block</span>
+            <span *ngIf="allergy.category == 'MEDICATION'" class="material-symbols-outlined">pill</span>
+            <span *ngIf="allergy.category == 'FOOD'" class="material-symbols-outlined">fastfood</span>
+            <span *ngIf="allergy.category == 'ENVIRONMENT'" class="material-symbols-outlined">block</span>
+            <span *ngIf="allergy.category == 'BIOLOGIC'" class="material-symbols-outlined">block</span>
             <div class="allergy-right-container">
-                <div class="allergy-to">Allergy to {{ allergy.type.toLowerCase() }}</div>
+                <div class="allergy-to">Allergy to {{ allergy.category?.toLowerCase() }}</div>
+                <div class="allergy-criticality">{{ allergy.criticality?.toLowerCase() }}</div>
                 <div class="allergy-name">{{ allergy.code }}</div>
             </div>
         </div>
     </div>
-    <div *ngIf="!allergies.length" class="list-item no-items">
+    <div *ngIf="!showingAllergies.length" class="list-item no-items">
         <div class="medication-container">
             <div class="medication-name">No allergies right now.</div>
         </div>

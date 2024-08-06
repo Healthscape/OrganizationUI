@@ -43,7 +43,6 @@ export class RecordPreviewDialogComponent {
         this.accessRequestService.getAccessRequestForUser(this.recordOverview.id).subscribe({
             next: (response) => {
                 this.loading = false
-                console.log(response)
                 this.accessRequest = response;
             },
             error: (err) => {
@@ -57,7 +56,6 @@ export class RecordPreviewDialogComponent {
         this.loading = true;
         this.accessRequestService.sendAccessRequest(this.recordOverview.id).subscribe({
             next: (response) => {
-                console.log(response)
                 this.accessRequestService.newAccessRequest.next(response);
                 this.dialogRef.close();
                 this._snackBar.open("Access requests successfully sent.");

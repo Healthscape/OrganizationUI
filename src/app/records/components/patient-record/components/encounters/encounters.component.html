@@ -25,10 +25,16 @@
     <div class="documents">
         <table [dataSource]="encounters" [multiTemplateDataRows]="true" class="mat-elevation-z8 no-color" mat-table>
 
-            <!-- Start Column -->
-            <ng-container matColumnDef="start">
-                <th *matHeaderCellDef mat-header-cell>Start</th>
+            <!-- Date Column -->
+            <ng-container matColumnDef="date">
+                <th *matHeaderCellDef mat-header-cell>Date</th>
                 <td *matCellDef="let encounter" mat-cell>{{ encounter.start | date }}</td>
+            </ng-container>
+
+            <!-- Time Column -->
+            <ng-container matColumnDef="time">
+                <th *matHeaderCellDef mat-header-cell>Time</th>
+                <td *matCellDef="let encounter" mat-cell>{{ encounter.start | date: "HH:mm" }}</td>
             </ng-container>
 
             <!-- Specialty Column -->

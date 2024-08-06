@@ -42,7 +42,7 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
     styleUrl: './encounters.component.scss'
 })
 export class EncountersComponent {
-    displayedColumns: string[] = ['start', 'specialty', 'serviceProvider', 'more'];
+    displayedColumns: string[] = ['date', 'time', 'specialty', 'serviceProvider', 'more'];
     encounters = new Array<EncounterDto>();
     startDateCtrl: FormControl = new FormControl('');
     endDateCtrl: FormControl = new FormControl('');

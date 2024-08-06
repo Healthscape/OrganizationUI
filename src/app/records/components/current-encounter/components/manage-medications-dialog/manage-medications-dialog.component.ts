@@ -58,7 +58,6 @@ export class ManageMedicationsDialogComponent {
             id = data.id;
         }
         this.id = id;
-        console.log(id)
 
         this.initForm();
     }

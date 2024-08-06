@@ -1,6 +1,6 @@
 export class ConditionDto {
+    id: string|null = null;
     code: string = '';
-    type: string = 'VIRUS';
     encounterId: string = '';
     patient: string = '';
     practitioner: string = '';
@@ -8,6 +8,7 @@ export class ConditionDto {
     status: string = '';
     end: Date = new Date();
     start: Date = new Date();
+    updated: boolean = false;
 
     constructor(code: string) {
         this.code = code;

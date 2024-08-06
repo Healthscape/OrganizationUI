@@ -3,11 +3,11 @@
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="tabs">
         <mat-tab label="Active">
             <div class="active-medications">
-                <app-medications-overview [type]="'EDIT'" [id]="id"></app-medications-overview>
+                <app-allergies-overview [type]="'EDIT'" [id]="id"></app-allergies-overview>
             </div></mat-tab>
         <mat-tab label="History">
             <div class="medication-history">
-                <app-medications-overview [type]="'HISTORY'"></app-medications-overview>
+                <app-allergies-overview [type]="'HISTORY'"></app-allergies-overview>
             </div></mat-tab>
     </mat-tab-group>
     <div class="new-medication-form" [formGroup]="form">
@@ -15,6 +15,22 @@
         <mat-form-field  appearance="fill" >
             <mat-label>Allergy</mat-label>
             <input type="text" [formControl]="allergyCtrl" matInput>
+        </mat-form-field>
+        <mat-form-field  appearance="fill" >
+            <mat-label>Category</mat-label>
+            <mat-select [formControl]="categoryCtrl">
+                @for (category of categories; track category) {
+                  <mat-option [value]="category" style="text-transform: capitalize;">{{category}}</mat-option>
+                }
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field  appearance="fill" >
+            <mat-label>Criticality</mat-label>
+            <mat-select [formControl]="criticalityCtrl">
+                @for (criticality of criticalities; track criticality) {
+                  <mat-option [value]="criticality">{{criticality}}</mat-option>
+                }
+              </mat-select>
         </mat-form-field>
         <button (click)="onAdd()" mat-raised-button>Add</button>
     </div>

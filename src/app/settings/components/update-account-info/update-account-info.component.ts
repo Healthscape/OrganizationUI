@@ -40,7 +40,6 @@ export class UpdateAccountInfoComponent {
         if (!this.me) {
             this.userService.me().subscribe((response) => {
                 this.me = response;
-                console.log(this.me);
                 this.initializeForm();
             })
         }

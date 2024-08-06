@@ -69,7 +69,6 @@ export class NewDoctorComponent {
                 this._snackBar.open("You have successfully registered a new doctor!");
             },
             error: (err: HttpErrorResponse) => {
-                console.log(err.error as ResponseJson)
                 this.newDoctorForm.enable()
                 this.isLoading = false;
                 let responseErr = (err.error as ResponseJson);

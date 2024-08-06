@@ -68,7 +68,6 @@ export class ToolbarComponent implements OnDestroy {
             this.recordsService.findRecordWithPersonalId(this.searchCtrl.value).subscribe({
                 next: (response) => {
                     this.disabled = false;
-                    console.log(response)
                     this.searchCtrl.setValue('');
                     this.dialog.open(RecordPreviewDialogComponent, {
                         minWidth: "40vw",
