@@ -6,7 +6,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {UserService} from "../../../users/services/user.service";
+import {RegistrationService} from "../../../users/services/registration.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ResponseJson} from "../../../utils/dto/response-json.dto";
@@ -43,7 +43,7 @@ export class LoginRegisterComponent {
     isLoading: boolean = false;
     registerIDCtrl: FormControl = new FormControl();
 
-    constructor(private _userService: UserService, private _authService: AuthService, private _snackBar: MatSnackBar) {
+    constructor(private registrationService: RegistrationService, private _authService: AuthService, private _snackBar: MatSnackBar) {
         this.initLoginForm();
         this._authService.errorResponse.subscribe((value) => {
             if (value != null) {
@@ -66,7 +66,7 @@ export class LoginRegisterComponent {
     onRegister() {
         this.isLoading = true
         this.registerForm.disable()
-        this._userService.registerUser(this.registerForm.value).subscribe({
+        this.registrationService.registerPatient(this.registerForm.value).subscribe({
             next: () => {
                 this.onChange()
                 this.isLoading = false;

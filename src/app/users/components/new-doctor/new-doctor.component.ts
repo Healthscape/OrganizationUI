@@ -22,7 +22,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {ResponseJson} from "../../../utils/dto/response-json.dto";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserDto} from "../../../auth/dto/user.dto";
-import {UserService} from "../../services/user.service";
+import {RegistrationService} from "../../services/registration.service";
 
 @Component({
     selector: 'app-new-doctor',
@@ -44,7 +44,7 @@ export class NewDoctorComponent {
     specialtyCtrl: FormControl = new FormControl<any>('');
     specialties: SpecialtyDto[] = [];
 
-    constructor(private dialogRef: MatDialogRef<NewDoctorComponent>, private _specialtyService: SpecialtyService, private userService: UserService, private _snackBar: MatSnackBar) {
+    constructor(private dialogRef: MatDialogRef<NewDoctorComponent>, private _specialtyService: SpecialtyService, private registrationService: RegistrationService, private _snackBar: MatSnackBar) {
         this.initForm();
         this._specialtyService.getAllSpecialties().subscribe(
             {
@@ -62,7 +62,7 @@ export class NewDoctorComponent {
     onRegister() {
         this.isLoading = true
         this.newDoctorForm.disable()
-        this.userService.registerPractitioner(this.newDoctorForm.value).subscribe({
+        this.registrationService.registerPractitioner(this.newDoctorForm.value).subscribe({
             next: (response: UserDto) => {
                 this.isLoading = false;
                 this.dialogRef.close(response);

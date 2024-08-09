@@ -1,7 +1,6 @@
 import {inject, Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environment";
-import {RegisterDto} from "../../auth/dto/register.dto";
 import {UserDto} from "../../auth/dto/user.dto";
 import {PasswordDto} from "../../auth/dto/password.dto";
 import {FhirUserDto} from "../../settings/dto/fhirUserDto";
@@ -18,10 +17,6 @@ export class UserService {
 
     getDetailedMe() {
         return this._http.get<FhirUserDto>(environment.apiUrl + this.REQUEST_MAPPING + "/me/detailed");
-    }
-
-    registerUser(registerDto: RegisterDto) {
-        return this._http.post(environment.apiUrl + this.REQUEST_MAPPING + "/patient", registerDto);
     }
 
     me() {
@@ -54,9 +49,5 @@ export class UserService {
         return this._http.put<any>(environment.apiUrl + this.REQUEST_MAPPING + "/info", formData, {
             headers: header
         });
-    }
-
-    registerPractitioner(registerDto: RegisterDto) {
-        return this._http.post<UserDto>(environment.apiUrl + this.REQUEST_MAPPING + "/practitioner", registerDto);
     }
 }
