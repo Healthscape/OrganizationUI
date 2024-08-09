@@ -27,6 +27,10 @@ export class UserService {
         return this._http.get<UserDto[]>(environment.apiUrl + this.REQUEST_MAPPING);
     }
 
+    getPatients() {
+        return this._http.get<UserDto[]>(environment.apiUrl + this.REQUEST_MAPPING + "/patients");
+    }
+
     changeEmail(email: string) {
         return this._http.put<TokensDto>(environment.apiUrl + this.REQUEST_MAPPING + '/email', email);
     }
