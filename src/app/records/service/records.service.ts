@@ -18,4 +18,8 @@ export class RecordsService {
         return this._http.get<RecordOverviewDto>(environment.apiUrl + this.REQUEST_MAPPING, {params: {personalId: personalId}});
     }
 
+    findRecordWithUserId(userId: string) {
+        return this._http.get<RecordOverviewDto>(environment.apiUrl + this.REQUEST_MAPPING, {params: {userId: userId}});
+    }
+
 }

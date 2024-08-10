@@ -30,6 +30,14 @@
         <td *matCellDef="let user" mat-cell> {{ user.dateCreated | date }}</td>
     </ng-container>
 
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th *matHeaderCellDef mat-header-cell> </th>
+        <td *matCellDef="let user" mat-cell> 
+            <button (click)="openPatientRecord(user.id)" mat-raised-button>View</button>
+        </td>
+    </ng-container>
+
     <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
     <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
