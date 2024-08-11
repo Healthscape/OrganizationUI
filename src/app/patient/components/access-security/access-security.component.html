@@ -1,0 +1,42 @@
+<table [dataSource]="accessLogs" class="mat-elevation-z8" mat-table>
+
+    <!-- Org Column -->
+    <ng-container matColumnDef="org">
+        <th *matHeaderCellDef mat-header-cell> Organization</th>
+        <td *matCellDef="let log" mat-cell> {{ log.accessorOrg }}</td>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+        <th *matHeaderCellDef mat-header-cell> Role</th>
+        <td *matCellDef="let log" mat-cell>
+      <span *ngIf="log.accessorRole == 'ROLE_PRACTITIONER'" class="material-symbols-outlined role"
+            matTooltip="Practitioner">stethoscope</span>
+            <span *ngIf="log.accessorRole == 'ROLE_PATIENT'" class="material-symbols-outlined role" matTooltip="Patient">personal_injury</span>
+            <span *ngIf="log.accessorRole == 'ROLE_ADMIN'" class="material-symbols-outlined role"
+                  matTooltip="Admin">manage_accounts</span>
+        </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let log" mat-cell> {{ log.accessorName }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell> Action</th>
+        <td *matCellDef="let log" mat-cell> {{ log.action }}</td>
+    </ng-container>
+
+    <!-- Timestamp Column -->
+    <ng-container matColumnDef="timestamp">
+        <th *matHeaderCellDef mat-header-cell> Timestamp</th>
+        <td *matCellDef="let log" mat-cell> {{ log.timestamp | date }}</td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+

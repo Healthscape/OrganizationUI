@@ -7,6 +7,7 @@ import {UsersComponent} from "./users/components/users/users.component";
 import {RequestsOverviewComponent} from "./access-requests/components/requests-overview/requests-overview.component";
 import {AccessGuard} from "./access.guard";
 import {PatientRecordComponent} from "./records/components/patient-record/patient-record.component";
+import { AccessSecurityComponent } from './patient/components/access-security/access-security.component';
 
 export const routes: Routes = [
     {
@@ -105,6 +106,13 @@ export const routes: Routes = [
                     breadcrumb: 'Record Overview',
                 },
                 component: PatientRecordComponent
+            },
+            {
+                path: 'access-security',
+                data: {
+                    breadcrumb: 'Access & Security',
+                },
+                component: AccessSecurityComponent
             }
         ]
     },

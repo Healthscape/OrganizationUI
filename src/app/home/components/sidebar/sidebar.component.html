@@ -23,6 +23,11 @@
                 <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
             </div>
+            <div (click)="select('access-security')" [ngClass]="selected == 'access-security' ? 'selected' : ''"
+                 class="card card-hover-container">
+                <span class=" material-symbols-outlined material-icons  right-align">key</span>
+                <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access & Security</p></span>
+            </div>
             <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
