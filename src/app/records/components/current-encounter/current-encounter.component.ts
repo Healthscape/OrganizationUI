@@ -17,6 +17,7 @@ import { duration } from 'moment';
 import { RecordsService } from '../../service/records.service';
 import { ManageConditionsDialogComponent } from './components/manage-conditions-dialog/manage-conditions-dialog.component';
 import { ManageAllergiesDialogComponent } from './components/manage-allergies-dialog/manage-allergies-dialog.component';
+import { PatientRecordDto } from '../../dto/patientRecord.dto';
 
 @Component({
   selector: 'app-current-encounter',
@@ -81,6 +82,7 @@ export class CurrentEncounterComponent implements OnInit {
       this.encounterStarted = false;
       this.snackBar.open('Encounter is saving...', undefined, { duration: 0 });
       let patientRecordUpdated = JSON.parse(patientRecordUpdatedStr);
+      patientRecordUpdated.date = this.startedAt;
       this.subjectService.isLoading = true;
       this.encounterService.endEncounter(patientRecordUpdated).subscribe(() => {
         this.subjectService.encounterEnded.next('');
@@ -90,8 +92,10 @@ export class CurrentEncounterComponent implements OnInit {
         let request = sessionStorage.getItem('request');
         if (request) {
           this.recordsService
-            .getPatientRecord(request)
+            .findRecordWithUserId(request)
             .subscribe((response) => {
+              const patientId = sessionStorage.getItem('request') ?? '';
+              response.patientId = patientId;
               sessionStorage.setItem(this.route.snapshot.params['id'], JSON.stringify(response));
               this.subjectService.isLoading = false;
             });
@@ -103,15 +107,6 @@ export class CurrentEncounterComponent implements OnInit {
   ngOnInit(): void {
     if (this.encounterStarted) {
       this.startTimer();
-    }
-  }
-
-  private startEncounter() {
-    let requestId = sessionStorage.getItem('request');
-    if (requestId) {
-      this.encounterService.startEncounter(requestId).subscribe((response) => {
-        sessionStorage.setItem('updated', JSON.stringify(response));
-      });
     }
   }
 
@@ -137,7 +132,8 @@ export class CurrentEncounterComponent implements OnInit {
   startNow() {
     this.startedAt = new Date();
     this.startTimer();
-    this.startEncounter();
+    let patietnRecord = JSON.parse(sessionStorage.getItem(this.route.snapshot.params['id']) ?? '');
+    sessionStorage.setItem('updated', JSON.stringify(new PatientRecordDto(patietnRecord.patientId, patietnRecord.offlineDataUrl)));
     this.subjectService.encounterStarted.next('');
   }
 

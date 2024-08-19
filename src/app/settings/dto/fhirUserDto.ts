@@ -1,15 +1,15 @@
 export class FhirUserDto {
     identifier?: string;
-    name: string = 'Lea';
-    surname: string = 'Kalmar';
-    birthDate: Date = new Date(1999, 6, 26);
-    gender: string = 'FEMALE';
+    name: string = '';
+    surname: string = '';
+    birthDate: Date = new Date();
+    gender: string = '';
     address?: string;
     maritalStatus?: string;
     image?: string;
     imagePath?: string;
     phone?: string;
-    email?: string = 'lea.kalmar@gmail.com';
+    email?: string = '';
     specialty?: string;
 
     constructor() {

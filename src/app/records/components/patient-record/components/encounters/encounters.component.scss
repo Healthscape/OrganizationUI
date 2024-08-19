@@ -1,13 +1,13 @@
 @use '../../../../../../styles/variables' as *;
 
-::ng-deep .encounters-host-wrapper {
-  display: grid;
-  overflow: auto;
-  grid-template-areas: 'search-container'
-    'documents-container';
-  gap: 0.5rem;
-  grid-template-rows: 0.1fr 1fr;
-}
+// ::ng-deep .encounters-host-wrapper {
+//   display: grid;
+//   overflow: auto;
+//   grid-template-areas: 'search-container'
+//     'documents-container';
+//   gap: 0.5rem;
+//   grid-template-rows: 0.1fr 1fr;
+// }
 
 .search-container {
   grid-area: search-container;
@@ -64,4 +64,53 @@
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
+}
+tr.example-detail-row {
+  height: 0;
+}
+
+td.mat-column-expandedDetail{
+  padding: 0!important;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;    
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
 }

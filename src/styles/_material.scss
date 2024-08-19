@@ -82,6 +82,13 @@ table {
   }
 
   &.mat-mdc-table {
+    &.encounters{
+      
+      td {
+        padding: 10px;
+        border-bottom: 0!important;
+      }
+    }
     &.no-align {
       tr.mat-mdc-row {
         text-align-last: auto;
@@ -99,7 +106,7 @@ table {
         background-color: white;
 
         tr.mat-mdc-header-row {
-          color: lightgray;
+          color: rgba(42, 56, 71, 0.88);
           height: 50px;
         }
 
@@ -124,6 +131,13 @@ table {
         td {
           padding: 10px;
           border-bottom: 1px solid lightgray;
+        }
+
+        td.mat-column-expandedDetail{
+          padding: 10px;
+          border-color: transparent;
+          border-top: 0;
+
         }
 
         td:first-child,

@@ -5,10 +5,10 @@
             <div class="active-medications">
                 <app-allergies-overview [type]="'EDIT'" [id]="id"></app-allergies-overview>
             </div></mat-tab>
-        <mat-tab label="History">
+        <!-- <mat-tab label="History">
             <div class="medication-history">
                 <app-allergies-overview [type]="'HISTORY'"></app-allergies-overview>
-            </div></mat-tab>
+            </div></mat-tab> -->
     </mat-tab-group>
     <div class="new-medication-form" [formGroup]="form">
         <h3>New Allergy</h3>
@@ -19,18 +19,14 @@
         <mat-form-field  appearance="fill" >
             <mat-label>Category</mat-label>
             <mat-select [formControl]="categoryCtrl">
-                @for (category of categories; track category) {
-                  <mat-option [value]="category" style="text-transform: capitalize;">{{category}}</mat-option>
-                }
+                <mat-option *ngFor="let category of categoriesMap | keyvalue" [value]="category.value" [id]="category.key" style="text-transform: capitalize;">{{category.value}}</mat-option>
               </mat-select>
         </mat-form-field>
         <mat-form-field  appearance="fill" >
             <mat-label>Criticality</mat-label>
             <mat-select [formControl]="criticalityCtrl">
-                @for (criticality of criticalities; track criticality) {
-                  <mat-option [value]="criticality">{{criticality}}</mat-option>
-                }
-              </mat-select>
+                <mat-option *ngFor="let criticality of criticalitiesMap | keyvalue" [value]="criticality.value" [id]="criticality.key" style="text-transform: capitalize;">{{criticality.value}}</mat-option>
+            </mat-select>
         </mat-form-field>
         <button (click)="onAdd()" mat-raised-button>Add</button>
     </div>

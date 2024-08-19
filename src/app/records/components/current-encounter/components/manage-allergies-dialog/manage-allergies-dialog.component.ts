@@ -18,7 +18,7 @@ import {
 } from "../../../record-overview/components/allergies-overview/allergies-overview.component";
 import {ActivatedRoute} from "@angular/router";
 import {SubjectService} from "../../../../../utils/services/subject.service";
-import {AllergyDto, AllergyCriticality, AllergyCategory, AllergyCategories, AllergyCriticalities} from "../../../../dto/allergy.dto";
+import {AllergyDto, AllergyCriticality, AllergyCategory, AllergyCategories, criticalities, categories} from "../../../../dto/allergy.dto";
 import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
@@ -36,8 +36,8 @@ export class ManageAllergiesDialogComponent {
   form!: FormGroup;
   categoryCtrl!: FormControl;
   criticalityCtrl!: FormControl;
-  categories: AllergyCategory[] = AllergyCategories;
-  criticalities: AllergyCriticality[] = AllergyCriticalities;
+  categoriesMap = categories;
+  criticalitiesMap = criticalities;
 
   constructor(private route: ActivatedRoute, @Inject(MAT_DIALOG_DATA) public data: { id: string }, private subjectService:SubjectService) {
     let id = this.route.snapshot.params['id'];

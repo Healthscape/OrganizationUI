@@ -14,4 +14,11 @@ export class PatientRecordDto {
     conditions: Array<ConditionDto> = [];
     allergies: Array<AllergyDto> = [];
     clinicalImpressions: Array<ClinicalImpressionDto> = [];
+    patientId: string = '';
+    offlineDataUrl: string = '';
+
+    constructor(patientId: string, offlineDataUrl: string){
+        this.patientId = patientId;
+        this.offlineDataUrl = offlineDataUrl;
+    }
 }

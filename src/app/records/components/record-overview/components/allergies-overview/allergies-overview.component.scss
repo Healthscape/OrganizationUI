@@ -26,8 +26,10 @@
 
 .allergy-container {
   display: flex;
-  flex-direction: row;
   gap: 1rem;
+  flex-direction: row;
+  border-radius: 7px;
+  padding: 5px;
 }
 
 .allergy-to {
@@ -42,4 +44,23 @@
 .allergy-right-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.medication-status {
+  white-space: nowrap;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: $light-light-blue;
+  flex: 0.8;
+}
+
+.updated{
+  background-color: #ffedd8;
 }

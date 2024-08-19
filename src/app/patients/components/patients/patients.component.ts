@@ -38,6 +38,8 @@ export class PatientsComponent {
     openPatientRecord(patientUserId: string) {
         this.recordService.findRecordWithUserId(patientUserId).subscribe((response) => {
             const id = crypto.randomUUID();
+            console.log(response);
+            response.patientId = patientUserId;
             sessionStorage.setItem(id, JSON.stringify(response));
             sessionStorage.setItem("request", patientUserId);
             this.router.navigate(['home','records', id]).then();

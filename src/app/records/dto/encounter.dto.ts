@@ -6,4 +6,6 @@ export class EncounterDto {
     start: Date = new Date();
     end: Date = new Date();
     status: string = '';
+    description: string = '';
+    summary: string = '';
 }

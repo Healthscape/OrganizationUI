@@ -1,8 +1,12 @@
-export type AllergyCategory  = "FOOD" | "MEDICATION" | "ENVIRONMENT" | "BIOLOGIC";
-export const AllergyCategories: AllergyCategory[] = ["FOOD", "MEDICATION", "ENVIRONMENT", "BIOLOGIC"];
+export type AllergyCategory  = "food" | "medication" | "environment" | "biologic";
+export const AllergyCategories: AllergyCategory[] = ["food", "medication", "environment", "biologic"];
 
-export type AllergyCriticality = "LOW" | "HIGH" | "UNABLE_TO_ASSESS";
-export const AllergyCriticalities: AllergyCriticality[] = ["LOW", "HIGH", "UNABLE_TO_ASSESS"];
+export type AllergyCriticality = "low" | "high" | "unable-to-assess";
+export const AllergyCriticalities: AllergyCriticality[] = ["low", "high", "unable-to-assess"];
+
+export const criticalities = new Map().set("low", "Low").set('high', "High").set("unable-to-assess","Unable to asses");
+export const categories = new Map().set("food", "Food").set('medication', "Medication").set("environment","Environment").set("biologic","Biologic");
+export const statuses = new Map().set("ACTIVE", "Active").set('INACTIVE', "Inactive");
 
 export class AllergyDto {
     id: string|null = null;

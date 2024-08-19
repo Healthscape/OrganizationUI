@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ConditionDto} from "../../../../dto/condition.dto";
+import {ConditionDto, statuses} from "../../../../dto/condition.dto";
 import {MatButtonModule} from "@angular/material/button";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
@@ -8,6 +8,7 @@ import { SubjectService } from '../../../../../utils/services/subject.service';
 import { EncounterService } from '../../../../service/encounter.service';
 import { PatientRecordUpdateDto } from '../../../../dto/patientRecordUpdate.dto';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
     selector: 'app-conditions-overview',
@@ -15,7 +16,7 @@ import { MatProgressBar } from '@angular/material/progress-bar';
     host: {
         class: "conditions-overview-host-wrapper"
     },
-    imports: [CommonModule, MatButtonModule, MatProgressBar],
+    imports: [CommonModule, MatButtonModule, MatProgressBar, MatSelect, MatOption],
     templateUrl: './conditions-overview.component.html',
     styleUrl: './conditions-overview.component.scss'
 })
@@ -27,6 +28,8 @@ export class ConditionsOverviewComponent {
     showingCondtions: ConditionDto[] = [];
     updatedConditions: ConditionDto[] = []
     loading: boolean = false;
+    statusMap = statuses;
+
 
     constructor(private route: ActivatedRoute, private subjectService: SubjectService, private encounterService: EncounterService) {
     }

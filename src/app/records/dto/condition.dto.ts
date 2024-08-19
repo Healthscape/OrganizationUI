@@ -1,3 +1,5 @@
+export const statuses = new Map().set('ACTIVE', 'Active').set("INACTIVE", "Inactive");
+
 export class ConditionDto {
     id: string|null = null;
     code: string = '';

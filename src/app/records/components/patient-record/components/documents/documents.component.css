@@ -1,10 +1,10 @@
-::ng-deep .documents-host-wrapper {
+/* ::ng-deep .documents-host-wrapper {
     display: grid;
     overflow: auto;
-    grid-template-areas: "search-container" "documents-container";
+    grid-template-areas: "documents-container";
     gap: 0.5rem;
     grid-template-rows: 0.1fr 1fr;
-}
+} */
 
 .search-container {
     grid-area: search-container;

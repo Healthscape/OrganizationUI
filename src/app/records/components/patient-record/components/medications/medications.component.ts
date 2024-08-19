@@ -27,7 +27,7 @@ import {
 import {MatFormField, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatTooltip} from "@angular/material/tooltip";
-import {MedicationAdministrationDto} from "../../../../dto/medicationAdministrationDto";
+import {MedicationAdministrationDto, medicationStatus} from "../../../../dto/medicationAdministrationDto";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
 
@@ -46,6 +46,7 @@ export class MedicationsComponent {
     medications: MedicationAdministrationDto[] = [];
     startDateCtrl: FormControl = new FormControl('');
     endDateCtrl: FormControl = new FormControl('');
+    medicationStatusMap = medicationStatus;
 
 
     constructor(private route: ActivatedRoute) {

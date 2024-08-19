@@ -20,9 +20,10 @@
 
 .condition-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1rem;
-  align-items: center;
+  border-radius: 7px;
+  padding: 5px;
 
   .condition-type {
     color: $dark-dark-blue;
@@ -56,3 +57,21 @@
   }
 }
 
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.medication-status {
+  white-space: nowrap;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: $light-light-blue;
+  flex: 0.8;
+}
+
+.updated{
+  background-color: #ffedd8;
+}

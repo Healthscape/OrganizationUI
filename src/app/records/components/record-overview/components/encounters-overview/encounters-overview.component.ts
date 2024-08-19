@@ -5,6 +5,7 @@ import {MatCardModule} from "@angular/material/card";
 import {TimelineComponent} from "../../../../../utils/custom-components/timeline/timeline.component";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
+import { ClinicalImpressionDto } from '../../../../dto/clinicalImpression.dto';
 
 @Component({
     selector: 'app-encounters-overview',

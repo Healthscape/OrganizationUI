@@ -7,8 +7,8 @@
         <div class="medication-container" [ngClass]="medication.updated ? 'updated': ''">
             <div class="medication-name">{{ medication.medication }}</div>
             <div class="medication-instructions">{{ medication.dosage }}</div>
+            <div class="medication-date">{{ medication.start | date }}</div>
             <div class="footer">
-                <div class="medication-date">{{ medication.start | date }}</div>
                 <div *ngIf="type == 'EDIT' && !medication.id" class="">
                     <button mat-flat-button color="primary" (click)="onDelete(medication)">Remove</button>
                 </div>
@@ -20,6 +20,7 @@
                     </mat-select>
                 </div>
             </div>
+            
         </div>
     </div>
     <div *ngIf="!showingMedications.length && !loading" class="list-item no-items">

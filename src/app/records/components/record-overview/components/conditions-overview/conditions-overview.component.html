@@ -4,21 +4,51 @@
     <span *ngIf="edit"><button class="small" mat-icon-button><span class="material-symbols-outlined">add</span></button></span> -->
 </div>
 <div class="conditions-list">
-    <mat-progress-bar mode="buffer" *ngIf="loading"></mat-progress-bar>
-    <div *ngFor="let condition of showingCondtions" class="list-item">
-        <div class="condition-container" [ngClass]="condition.updated ? 'updated': ''">
-            <div class="allergy-right-container">
-                <div class="condition-name">{{ condition.code }}</div>
-                <div class="condition-date">{{ condition.date | date }}</div>
+    <div *ngIf="type == 'EDIT'">
+        <mat-progress-bar mode="buffer" *ngIf="loading"></mat-progress-bar>
+        <div *ngFor="let condition of showingCondtions" class="list-item">
+            <div class="condition-container" [ngClass]="condition.updated ? 'updated': ''">
+                <div class="allergy-right-container">
+                    <div class="condition-name">{{ condition.code }}</div>
+                    <div class="condition-date">{{ condition.date | date }}</div>
+                </div>
+                   
+                <div class="footer">
+                    <div *ngIf="!condition.id" class="">
+                        <button mat-flat-button color="primary" (click)="onDelete(condition)">Remove</button>
+                    </div>
+                    <div *ngIf="condition.id" class="medication-status">
+                        <mat-select [value]="condition.status" (valueChange)="onStatusChange($event, condition)">
+                            <mat-option *ngFor="let status of statusMap | keyvalue" [id]="status.key" [value]="status.key" >
+                                {{ status.value }}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
             </div>
-            <span><button *ngIf="type == 'EDIT'" class="small" mat-icon-button><span
-                    class="material-symbols-outlined">delete</span></button></span>
+        </div>
+        <div *ngIf="!showingCondtions.length && !loading" class="list-item no-items">
+            <div class="medication-container">
+                <div class="medication-name">No conditions right now.</div>
+            </div>
+
         </div>
     </div>
-    <div *ngIf="!showingCondtions.length && !loading" class="list-item no-items">
-        <div class="medication-container">
-            <div class="medication-name">No conditions right now.</div>
+    <div *ngIf="type == 'NO_EDIT'">
+        <mat-progress-bar mode="buffer" *ngIf="loading"></mat-progress-bar>
+        <div *ngFor="let condition of originalConditions" class="list-item">
+            <div class="condition-container" [ngClass]="condition.updated ? 'updated': ''">
+                <div class="allergy-right-container">
+                    <div class="condition-name">{{ condition.code }}</div>
+                    <div class="condition-date">{{ condition.date | date }}</div>
+                </div>
+            </div>
         </div>
+        <div *ngIf="!originalConditions.length && !loading" class="list-item no-items">
+            <div class="medication-container">
+                <div class="medication-name">No conditions right now.</div>
+            </div>
 
+        </div>
     </div>
 </div>

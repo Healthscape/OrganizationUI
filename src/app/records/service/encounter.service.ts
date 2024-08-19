@@ -37,6 +37,6 @@ export class EncounterService{
     }
 
     endEncounter(patientRecordUpdated: PatientRecordUpdateDto) {
-        return this._http.post(environment.apiUrl + this.REQUEST_MAPPING + "/end", patientRecordUpdated);
+        return this._http.post(environment.apiUrl + this.REQUEST_MAPPING, patientRecordUpdated);
     }
 }

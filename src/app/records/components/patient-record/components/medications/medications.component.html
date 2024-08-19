@@ -1,4 +1,4 @@
-<div class="search-container">
+<!-- <div class="search-container">
     <div class="form">
         <h3>Search</h3>
         <mat-form-field appearance="fill" class="update-info flex-1">
@@ -19,7 +19,7 @@
             </mat-date-range-picker>
         </mat-form-field>
     </div>
-</div>
+</div> -->
 <div class="documents-container">
 
     <div class="documents">
@@ -28,7 +28,7 @@
             <!-- Status Column -->
             <ng-container matColumnDef="status">
                 <th *matHeaderCellDef mat-header-cell>Status</th>
-                <td *matCellDef="let medication" mat-cell>{{ medication.status }}</td>
+                <td *matCellDef="let medication" mat-cell>{{ medicationStatusMap.get(medication.status) }}</td>
             </ng-container>
 
             <!-- Medication Column -->

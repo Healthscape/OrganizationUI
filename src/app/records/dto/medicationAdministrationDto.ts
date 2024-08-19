@@ -1,3 +1,6 @@
+
+export const medicationStatus = new Map().set('in-progress', 'In Progress').set('stopped', 'Stopped').set('completed', 'Completed');
+
 export class MedicationAdministrationDto {
     id: string|null = null;
     status: string = '';

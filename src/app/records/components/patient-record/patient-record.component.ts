@@ -5,7 +5,6 @@ import {PatientRecordToolbarComponent} from "./components/patient-record-toolbar
 import {RecordOverviewComponent} from "../record-overview/record-overview.component";
 import {SubjectService} from "../../../utils/services/subject.service";
 import {MatDialog} from "@angular/material/dialog";
-import {QuestionDialogComponent} from "../../../utils/custom-components/question-dialog/question-dialog.component";
 import {CurrentEncounterComponent} from "../current-encounter/current-encounter.component";
 import {DocumentsComponent} from "./components/documents/documents.component";
 import {
@@ -34,7 +33,7 @@ export class PatientRecordComponent implements OnInit, OnDestroy {
     currentTab: string = "overview";
     encounterStarted: boolean = false;
     startedAt: Date = new Date();
-    patientRecord: PatientRecordDto = new PatientRecordDto();
+    patientRecord: PatientRecordDto = new PatientRecordDto('','');
     subscription: Subscription = new Subscription();
 
     constructor(private subjectService: SubjectService, private dialog: MatDialog, private route: ActivatedRoute, private encounterService: EncounterService) {
@@ -58,29 +57,6 @@ export class PatientRecordComponent implements OnInit, OnDestroy {
         this.route.snapshot.data['breadcrumb'] = this.patientRecord.userDto.name + " " + this.patientRecord.userDto.surname;
         this.subjectService.reloadBreadcrumbs.next("");
         this.subjectService.collapseSidebar.next('');
-        this.subscription = this.route.params.subscribe((res) => {
-            let dialogRef = this.dialog.open(QuestionDialogComponent, {
-                minWidth: "40vw",
-                data: {
-                    question: "Do you want to start an encounter?"
-                }
-            });
-
-            dialogRef.afterClosed().subscribe({
-                next: (response) => {
-                    this.encounterStarted = response;
-                    this.startedAt = new Date();
-                    if(response) {
-                        let requestId = sessionStorage.getItem("request");
-                        if (requestId) {
-                            this.encounterService.startEncounter(requestId).subscribe((response) => {
-                                sessionStorage.setItem("updated", JSON.stringify(response));
-                            })
-                        }
-                    }
-                }
-            });
-        })
     }
 
     ngOnDestroy(): void {

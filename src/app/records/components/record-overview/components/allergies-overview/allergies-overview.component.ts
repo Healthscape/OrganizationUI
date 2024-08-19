@@ -1,11 +1,12 @@
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AllergyDto, AllergyCategory} from "../../../../dto/allergy.dto";
+import {AllergyDto, AllergyCategory, categories, criticalities, statuses} from "../../../../dto/allergy.dto";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
 import { SubjectService } from '../../../../../utils/services/subject.service';
 import { EncounterService } from '../../../../service/encounter.service';
 import { PatientRecordUpdateDto } from '../../../../dto/patientRecordUpdate.dto';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
     selector: 'app-allergies-overview',
@@ -13,7 +14,7 @@ import { PatientRecordUpdateDto } from '../../../../dto/patientRecordUpdate.dto'
     host: {
         class: "allergies-overview-host-wrapper"
     },
-    imports: [CommonModule],
+    imports: [CommonModule, MatSelect, MatOption],
     templateUrl: './allergies-overview.component.html',
     styleUrl: './allergies-overview.component.scss'
 })
@@ -25,6 +26,9 @@ export class AllergiesOverviewComponent {
     showingAllergies: AllergyDto[] = [];
     updatedAllergies: AllergyDto[] = []
     loading: boolean = false;
+    categoriesMap = categories;
+    criticalitiesMap = criticalities;
+    statusMap = statuses;
 
     constructor(private route: ActivatedRoute, private subjectService: SubjectService, private encounterService: EncounterService) {
     }
@@ -34,6 +38,9 @@ export class AllergiesOverviewComponent {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.showingAllergies = patientRecord.allergies.map(e => ({...e}));
             this.originalAllergies = patientRecord.allergies;
+            console.log(this.showingAllergies);
+            console.log(this.originalAllergies);
+
         }
     }
 

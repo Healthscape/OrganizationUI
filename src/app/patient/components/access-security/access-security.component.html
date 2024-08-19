@@ -33,7 +33,7 @@
     <!-- Timestamp Column -->
     <ng-container matColumnDef="timestamp">
         <th *matHeaderCellDef mat-header-cell> Timestamp</th>
-        <td *matCellDef="let log" mat-cell> {{ log.timestamp | date }}</td>
+        <td *matCellDef="let log" mat-cell> {{ log.timestamp | date: 'short' }}</td>
     </ng-container>
 
     <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>

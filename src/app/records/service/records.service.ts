@@ -2,6 +2,7 @@ import {inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environment";
 import {RecordOverviewDto} from "../dto/record.overview.dto";
+import { PatientRecordDto } from "../dto/patientRecord.dto";
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,7 @@ export class RecordsService {
     }
 
     findRecordWithUserId(userId: string) {
-        return this._http.get<RecordOverviewDto>(environment.apiUrl + this.REQUEST_MAPPING, {params: {userId: userId}});
+        return this._http.get<PatientRecordDto>(environment.apiUrl + this.REQUEST_MAPPING, {params: {userId: userId}});
     }
 
 }
