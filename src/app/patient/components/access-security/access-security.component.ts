@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -15,20 +15,8 @@ import { MonitoringService } from '../../service/monitoring.service';
   styleUrl: './access-security.component.scss'
 })
 export class AccessSecurityComponent {
-  accessLogs: AccessLogEntryDto[] = []
+  @Input() accessLogs: AccessLogEntryDto[] = []
   @ViewChild(MatTable) table?: MatTable<AccessLogEntryDto>;
   displayedColumns: string[] = ['org', 'role', 'name', 'action', 'timestamp'];
-
-  constructor(private monitoringService: MonitoringService) {
-      this.monitoringService.getAccessLogs().subscribe({
-          next: (accessLogs) => {
-            console.log(accessLogs);
-              this.accessLogs = accessLogs;
-          },
-          error: (err) => {
-              console.log(err)
-          }
-      })
-  }
 
 }

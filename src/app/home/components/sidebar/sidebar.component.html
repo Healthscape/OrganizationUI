@@ -23,16 +23,16 @@
                 <span class=" material-symbols-outlined material-icons  right-align">dashboard</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Dashboard</p></span>
             </div>
-            <div (click)="select('access-security')" [ngClass]="selected == 'access-security' ? 'selected' : ''"
+            <!-- <div (click)="select('access-security')" [ngClass]="selected == 'access-security' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined material-icons  right-align">key</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access & Security</p></span>
-            </div>
-            <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
+            </div> -->
+            <!-- <div (click)="select('requests')" [ngClass]="selected == 'requests' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined material-icons  right-align">lock_person</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Access Requests</p></span>
-            </div>
+            </div> -->
             <div (click)="select('profile')" [ngClass]="selected == 'profile' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined right-align">person</span>
@@ -43,32 +43,32 @@
                 <span class="material-symbols-outlined right-align">meeting_room</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Encounters</p></span>
             </div>
-            <div (click)="select('clinical-impressions')"
+            <!-- <div (click)="select('clinical-impressions')"
                  [ngClass]="selected == 'clinical-impressions' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined right-align">diagnosis</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Clinical Impressions</p></span>
-            </div>
-            <div (click)="select('documents')" [ngClass]="selected == 'documents' ? 'selected' : ''"
+            </div> -->
+            <!-- <div (click)="select('documents')" [ngClass]="selected == 'documents' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined right-align">content_copy</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Documents</p></span>
-            </div>
+            </div> -->
             <div (click)="select('medications')" [ngClass]="selected == 'medications' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined right-align">pill</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Medications</p></span>
             </div>
-            <div (click)="select('conditions')" [ngClass]="selected == 'conditions' ? 'selected' : ''"
+            <!-- <div (click)="select('conditions')" [ngClass]="selected == 'conditions' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined right-align">pulse_alert</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Conditions</p></span>
-            </div>
-            <div (click)="select('allergies')" [ngClass]="selected == 'allergies' ? 'selected' : ''"
+            </div> -->
+            <!-- <div (click)="select('allergies')" [ngClass]="selected == 'allergies' ? 'selected' : ''"
                  class="card card-hover-container">
                 <span class=" material-symbols-outlined right-align">allergy</span>
                 <span [ngClass]="isCollapsed ? 'no-show' : 'show'" class="left-align"><p>Allergies</p></span>
-            </div>
+            </div> -->
         </div>
         <div *ngIf="me.role == 'ROLE_PRACTITIONER'" class="sidebar-main">
             <div (click)="select('home')" [ngClass]="selected == 'home' ? 'selected' : ''"

@@ -1,0 +1,80 @@
+@use '../../../../styles/variables' as *;
+
+::ng-deep .patient-dashboard-host-wrapper{
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+}
+
+.monitoring{
+    grid-column: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 2px solid rgb(200, 219, 244);
+    border-radius: 30px;
+    background-color: #fff;
+
+}
+
+.access-stats{
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 2px solid rgb(200, 219, 244);
+    border-radius: 30px;
+    background-color: #fff;
+
+}
+
+.stats-block{
+    display: flex;
+    margin-bottom: 1em;
+
+    span{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        .number{
+            font-size: xx-large;
+            color: $dark-dark-blue;
+        }
+
+        .subtitle{
+            color: gray;
+        }
+    }
+
+}
+
+.integrity-block{
+    grid-column: 2;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 2px solid rgb(200, 219, 244);
+    border-radius: 30px;
+    background-color: #fff;
+
+
+    display: flex;
+    background-color: $sidepanel;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    // padding: 10px;
+
+    p{
+        margin: 0;
+    }
+}

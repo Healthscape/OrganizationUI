@@ -1,0 +1,32 @@
+<div class="monitoring">
+    <h3>Access Log</h3>
+    <app-access-security [accessLogs]="accessLogs">
+    </app-access-security>
+</div>
+<div class="access-stats">
+<h3>Access Stats</h3>
+<div class="stats-block">
+    <span >
+        <div class="number">{{viewCount}}</div>
+        <div class="subtitle">VIEWS</div>
+    </span>
+    <span>
+        <div class="number">{{editCount}}</div>
+        <div class="subtitle">EDITS</div>
+    </span>
+</div>
+<div class="stats-block">
+    <span >
+        <div class="number">{{viewCount}}</div>
+        <div class="subtitle">ENCOUTNERS</div>
+    </span>
+</div>
+</div>
+
+<div class="integrity-block">
+    <mat-icon>verified_user</mat-icon>
+    <diV>
+        <p>Secure</p>
+        <div>Last Updated At: {{timeWhenSecurityChecked | date: 'HH:mm'}}</div>
+    </diV>
+</div>
