@@ -30,6 +30,7 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {MedicationAdministrationDto, medicationStatus} from "../../../../dto/medicationAdministrationDto";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
+import { RecordsService } from '../../../../service/records.service';
 
 @Component({
     selector: 'app-medications',
@@ -42,18 +43,34 @@ import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
     styleUrl: './medications.component.scss'
 })
 export class MedicationsComponent {
-    displayedColumns: string[] = ['status', 'medication', 'start', 'end', 'more'];
+    displayedColumns: string[] = ['status', 'medication', 'start', 'end'];
     medications: MedicationAdministrationDto[] = [];
     startDateCtrl: FormControl = new FormControl('');
     endDateCtrl: FormControl = new FormControl('');
     medicationStatusMap = medicationStatus;
 
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, private recordsService: RecordsService) {
         const patientRecordStr = sessionStorage.getItem(this.route.snapshot.params['id']);
         if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             this.medications = patientRecord.medications;
+        }else{
+            const patientRecordStr = sessionStorage.getItem('myRecord');
+            if (patientRecordStr) {
+                let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
+                this.medications = patientRecord.medications;
+            }else{
+                this.recordsService.getMyPatientRecord().subscribe({
+                    next:(record) => {
+                        sessionStorage.setItem('myRecord', JSON.stringify(record));
+                        this.medications = record.medications;
+                    },
+                    error: (e) =>{
+                        console.error(e);
+                    }
+                })
+            }
         }
     }
 

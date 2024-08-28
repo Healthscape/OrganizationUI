@@ -15,6 +15,10 @@ export class RecordsService {
         return this._http.get<any>(environment.apiUrl + this.REQUEST_MAPPING + "/" + requestId);
     }
 
+    getMyPatientRecord() {
+        return this._http.get<any>(environment.apiUrl + this.REQUEST_MAPPING + "/me");
+    }
+
     findRecordWithPersonalId(personalId: string) {
         return this._http.get<RecordOverviewDto>(environment.apiUrl + this.REQUEST_MAPPING, {params: {personalId: personalId}});
     }

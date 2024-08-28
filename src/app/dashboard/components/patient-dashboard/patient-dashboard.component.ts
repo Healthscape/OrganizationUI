@@ -22,11 +22,13 @@ export class PatientDashboardComponent {
   editCount: number = 0;
   accessLogs: AccessLogEntryDto[] = []
   timeWhenSecurityChecked: Date | undefined = new Date();
+  securityStatus: boolean | undefined = true;
 
   constructor(private monitoringService: MonitoringService, private subjectService:SubjectService) {
       this.monitoringService.getAccessLogs().subscribe({
           next: (accessLogs) => {
             this.timeWhenSecurityChecked = subjectService.securityCheck.date;
+            this.securityStatus = subjectService.securityCheck.status;
               this.accessLogs = accessLogs;
               accessLogs.forEach(log => {
                 if(log.action === 'EDIT'){
@@ -43,6 +45,7 @@ export class PatientDashboardComponent {
         this.monitoringService.getSecurityStatus().subscribe({
           next: (securityStatus) => {
             this.timeWhenSecurityChecked = new Date();
+            this.securityStatus = securityStatus;
             subjectService.securityCheck = new SecurityCheckDto(this.timeWhenSecurityChecked, securityStatus);
           },
           error: (err) => {

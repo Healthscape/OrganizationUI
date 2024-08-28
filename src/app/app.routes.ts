@@ -8,6 +8,9 @@ import {AccessGuard} from "./access.guard";
 import {PatientRecordComponent} from "./records/components/patient-record/patient-record.component";
 import { PatientDashboardComponent } from './dashboard/components/patient-dashboard/patient-dashboard.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
+import { MedicationsOverviewComponent } from './records/components/record-overview/components/medications-overview/medications-overview.component';
+import { MedicationsComponent } from './records/components/patient-record/components/medications/medications.component';
+import { EncountersComponent } from './records/components/patient-record/components/encounters/encounters.component';
 
 export const routes: Routes = [
     {
@@ -73,6 +76,20 @@ export const routes: Routes = [
                     breadcrumb: 'Record Overview',
                 },
                 component: PatientRecordComponent
+            },
+            {
+                path: 'medications',
+                data: {
+                    breadcrumb: 'Medications Overview',
+                },
+                component: MedicationsComponent
+            },
+            {
+                path: 'encounters',
+                data: {
+                    breadcrumb: 'Encounter Overview',
+                },
+                component: EncountersComponent
             }
         ]
     },
