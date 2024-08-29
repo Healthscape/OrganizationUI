@@ -1,20 +1,21 @@
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AllergyDto, AllergyCategory, categories, criticalities, statuses} from "../../../../dto/allergy.dto";
+import {AllergyDto, categories, criticalities, statuses} from "../../../../dto/allergy.dto";
 import {ActivatedRoute} from "@angular/router";
 import {PatientRecordDto} from "../../../../dto/patientRecord.dto";
 import { SubjectService } from '../../../../../utils/services/subject.service';
 import { EncounterService } from '../../../../service/encounter.service';
 import { PatientRecordUpdateDto } from '../../../../dto/patientRecordUpdate.dto';
 import { MatOption, MatSelect } from '@angular/material/select';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-allergies-overview',
     standalone: true,
     host: {
-        class: "allergies-overview-host-wrapper"
+        class: "allergies-overview-host-wrapper",
     },
-    imports: [CommonModule, MatSelect, MatOption],
+    imports: [CommonModule, MatSelect, MatOption, MatButton],
     templateUrl: './allergies-overview.component.html',
     styleUrl: './allergies-overview.component.scss'
 })

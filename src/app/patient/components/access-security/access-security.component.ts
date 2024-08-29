@@ -11,6 +11,10 @@ import { MonitoringService } from '../../service/monitoring.service';
   selector: 'app-access-security',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatTooltipModule, MatTableModule, MatButtonModule],
+  host:{
+    class: 'access-security-host-wrapper'
+  },
+  styles:['::ng-deep .access-security-host-wrapper {overflow: auto}'],
   templateUrl: './access-security.component.html',
   styleUrl: './access-security.component.scss'
 })

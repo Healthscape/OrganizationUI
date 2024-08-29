@@ -3,12 +3,12 @@
     <div *ngIf="type == 'EDIT'">
         <div *ngFor="let allergy of showingAllergies" class="list-item">
             <div class="allergy-container"  [ngClass]="allergy.updated ? 'updated': ''">
-                <span *ngIf="allergy.category == 'medication'" class="material-symbols-outlined">pill</span>
-                <span *ngIf="allergy.category == 'food'" class="material-symbols-outlined">fastfood</span>
-                <span *ngIf="allergy.category == 'environment'" class="material-symbols-outlined">block</span>
-                <span *ngIf="allergy.category == 'biologic'" class="material-symbols-outlined">block</span>
+                <span *ngIf="allergy.category == 'Medication'" class="material-symbols-outlined">pill</span>
+                <span *ngIf="allergy.category == 'Food'" class="material-symbols-outlined">fastfood</span>
+                <span *ngIf="allergy.category == 'Environment'" class="material-symbols-outlined">public</span>
+                <span *ngIf="allergy.category == 'Biologic'" class="material-symbols-outlined">biotech</span>
                 <div class="allergy-right-container">
-                    <div class="allergy-to">Allergy to {{ categoriesMap.get(allergy.category) }}</div>
+                    <div class="allergy-to">Allergy to {{ categoriesMap.get(allergy.category?.toLocaleLowerCase()) }}</div>
                     <div class="allergy-criticality">{{ criticalitiesMap.get(allergy.criticality) }}</div>
                     <div class="allergy-name">{{ allergy.code }}</div>
                     

@@ -10,8 +10,8 @@ export const statuses = new Map().set("ACTIVE", "Active").set('INACTIVE', "Inact
 
 export class AllergyDto {
     id: string|null = null;
-    category: AllergyCategory | null = null;
-    criticality: AllergyCriticality | null = null;
+    category: string | null = null;
+    criticality: string | null = null;
     encounterId: string = '';
     patient: string = '';
     practitioner: string = '';
@@ -22,7 +22,7 @@ export class AllergyDto {
     code: string = '';
     updated: boolean = false;
 
-    constructor(code: string, category: AllergyCategory, criticality: AllergyCriticality){
+    constructor(code: string, category: AllergyCategory, criticality: string){
         this.code = code;
         this.criticality = criticality;
         this.category = category;

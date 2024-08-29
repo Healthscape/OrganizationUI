@@ -1,6 +1,7 @@
 @use '../../../../styles/variables' as *;
 
 ::ng-deep .patients-host-wrapper {
+  overflow: auto;
 }
 
 .patient-card {

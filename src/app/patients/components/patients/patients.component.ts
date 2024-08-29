@@ -42,7 +42,7 @@ export class PatientsComponent {
             response.patientId = patientUserId;
             sessionStorage.setItem(id, JSON.stringify(response));
             sessionStorage.setItem("request", patientUserId);
-            this.router.navigate(['home','records', id]).then();
+            this.router.navigate(['home','patients', id]).then();
 
         });
     }

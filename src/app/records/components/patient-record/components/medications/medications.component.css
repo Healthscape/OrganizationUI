@@ -1,10 +1,6 @@
-/* ::ng-deep .medications-host-wrapper {
-    display: grid;
+::ng-deep .medications-host-wrapper {
     overflow: auto;
-    grid-template-areas: "documents-container";
-    gap: 0.5rem;
-    grid-template-rows: 0.1fr 1fr;
-} */
+}
 
 .search-container {
     grid-area: search-container;
