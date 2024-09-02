@@ -83,7 +83,7 @@ export class DocumentsComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         console.log(this.encounterId);
-        const patientRecordStr = sessionStorage.getItem('myRecord');
+        const patientRecordStr = sessionStorage.getItem('myRecord') ?? sessionStorage.getItem(this.route.snapshot.params['id']);
         if (patientRecordStr) {
             let patientRecord: PatientRecordDto = JSON.parse(patientRecordStr);
             if(this.encounterId){

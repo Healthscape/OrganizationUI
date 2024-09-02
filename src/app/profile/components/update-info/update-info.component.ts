@@ -176,7 +176,7 @@ export class UpdateInfoComponent {
     private initializeSpecialty() {
         this.specialties.forEach((specialty) => {
             if (specialty.name === this.me?.specialty) {
-                this.specialtyCtrl = new FormControl<any>(specialty.code);
+                this.specialtyCtrl = new FormControl<any>({value: specialty.code, disabled: true});
                 return;
             }
         })
