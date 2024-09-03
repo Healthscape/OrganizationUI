@@ -8,9 +8,6 @@ import {UserDto} from "../../../auth/dto/user.dto";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
-import {
-    RecordPreviewDialogComponent
-} from "../../../records/components/record-preview-dialog/record-preview-dialog.component";
 import {RecordsService} from "../../../records/service/records.service";
 
 @Component({
@@ -69,12 +66,6 @@ export class ToolbarComponent implements OnDestroy {
                 next: (response) => {
                     this.disabled = false;
                     this.searchCtrl.setValue('');
-                    this.dialog.open(RecordPreviewDialogComponent, {
-                        minWidth: "40vw",
-                        data: {
-                            record: response
-                        }
-                    });
                 },
                 error: (err) => {
                     this.disabled = false;

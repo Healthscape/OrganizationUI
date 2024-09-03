@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {RecordsComponent} from "./components/records/records.component";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {
     MatCell,
@@ -36,7 +35,6 @@ import {RecordsRoutingModule} from "./records.routing.module";
         MatHeaderRowDef,
         MatRowDef
     ],
-    declarations: [RecordsComponent]
 })
 export class RecordsModule {
 }

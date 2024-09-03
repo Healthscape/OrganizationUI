@@ -93,8 +93,6 @@ export class LoginRegisterComponent {
 
     private initLoginForm() {
         this.loginEmailCtrl = new FormControl('', [Validators.required])
-        // TODO: uncomment
-        // this.loginEmailCtrl = new FormControl('', [Validators.email, Validators.required])
         this.loginPasswordCtrl = new FormControl('', [Validators.required])
         this.loginForm = new FormGroup({
             'email': this.loginEmailCtrl,

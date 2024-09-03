@@ -79,9 +79,7 @@ export class MainWindowComponent implements OnDestroy, OnInit {
 
             const label = child.snapshot.data[MainWindowComponent.ROUTE_DATA_BREADCRUMB];
             if (label != undefined && label != null) {
-                // if(!this.checkIfExists(label, url)) {
                 breadcrumbs.push({label, url});
-                // }
             }
 
             return this.createBreadcrumbs(child, url, breadcrumbs);
