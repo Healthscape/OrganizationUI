@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {AuthComponent} from "./auth/components/auth/auth.component";
-import {BlankPageComponent} from "./blank-page/blank-page/blank-page.component";
 import {HomeComponent} from "./home/components/home/home.component";
 import {UsersComponent} from "./users/components/users/users.component";
 import {AccessGuard} from "./access.guard";
@@ -82,10 +81,5 @@ export const routes: Routes = [
                 component: EncountersComponent
             }
         ]
-    },
-    {
-        path: 'blank-page',
-        component: BlankPageComponent,
-        canActivate: []
     },
 ];
